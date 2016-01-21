@@ -1,4 +1,13 @@
-
+<script type="text/javascript">
+    $(function()
+    {
+        var vd=$('#vd');
+        vd.textbox('textbox').bind('keydown',function(e)
+        {
+            alert('t');
+        });
+    });
+</script>
 
 <!-- เพิ่มประวัติการรักษา -->
         <div id="add_diagnosis" class="easyui-window" title=" เพิ่มประวัติประวัติการรักษา (Therapeutic Drug Monitoring) "    data-options="
@@ -398,7 +407,7 @@
                        Vd :
                     </td>
                     <td>
-                         <input class="easyui-numberbox" precision="2" value="49.00" style="width:70px;"></input>
+                        <input class="easyui-numberbox" precision="2" id="vd" name="vd" value="49.00" style="width:70px;"></input>
                          Litre
                          <?=nbs(4)?>
                          Cl :

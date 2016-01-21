@@ -97,7 +97,7 @@
        <!--<div data-options="iconCls:'icon-add'">Tool เกี่ยวกับผู้ป่วย</div> -->
        
         <div class="menu-sep"></div>
-        <div  data-options=" iconCls:'icon-add'   " >เพิ่ม User</div>
+        <div  data-options=" iconCls:'icon-add'   " onclick=" $('#win_user').window('open'); ">เพิ่ม User</div>
        
         <!--
         <div class="menu-sep"></div>
