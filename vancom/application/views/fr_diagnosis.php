@@ -2,10 +2,75 @@
     $(function()
     {
         var vd=$('#vd');
+        
+        /*
         vd.textbox('textbox').bind('keydown',function(e)
         {
             alert('t');
         });
+        */
+        
+        var  cl=$('#cl');
+        var  ke=$('#ke');
+        var  hl=$('#hl');
+        var   W=$('#W');
+        var  conts=$('#conts');
+        
+        /*
+        function calvalue(vd,cl,ke,hl)
+        {
+            
+            
+            vd.textbox('textbox').bind('keydown',function(e)
+            {
+                alert('test keydown');
+            });
+        }
+        
+       calvalue(vd,cl,ke,hl);
+        */
+       
+       if( W.textbox('getValue') > 0  &&  conts.textbox('getValue') > 0 )
+       {
+           W.textbox('textbox').bind('keydown',function(e)
+           {
+                var vd_val=W.textbox('getValue')*conts.textbox('getValue');
+                vd.textbox('setText',vd_val);
+           });
+           
+           conts.textbox('textbox').bind('keydown',function(e)
+           {
+               var vd_val=W.textbox('getValue')*conts.textbox('getValue');
+                vd.textbox('setText',vd_val);
+           });
+            /*
+            var vd_val=W*conts;
+            vd.textbox('setText',vd_val);
+            */
+       }
+       
+         if( ke.textbox('getValue') > 0 && vd.textbox('getValue') > 0  )
+         {
+             //alert('test keydown');
+             ke.textbox('textbox').bind('keydown',function(e)
+             { 
+                 //alert('test ke keydown'); 
+                  var  cl_val= ke.textbox('getValue') * vd.textbox('getValue');
+                  cl.textbox('setText',cl_val);
+                  var  hl_val=(0.693)/ke.textbox('getValue');
+                  hl.textbox('setText',hl_val);
+             });
+             
+              vd.textbox('textbox').bind('keydown',function(e)
+             { 
+                 //alert('test ke keydown'); 
+                  var  cl_val= ke.textbox('getValue') * vd.textbox('getValue');
+                  cl.textbox('setText',cl_val);
+             });
+         }
+        
+        
+        
     });
 </script>
 
@@ -109,10 +174,14 @@
                 </tr>
                 
                 <tr>
-                    <td>Weight  :</td>
+                    <td>Body Weight  :</td>
                     <td>
-                        <input class="easyui-numberbox" type="text" name="name" data-options="required:false"  style="  width:100px;height:30px  "></input>
+                        <input class="easyui-numberbox" value="55" type="text" name="W" id="W" data-options="required:false"  style="  width:100px;height:30px  "></input>
                         Kg.
+                        /
+                        Conts. (ค่าคงที่)
+                        <input class="easyui-numberbox" value="2" name="conts" id="conts" style="width: 60px;height: 30px;" >
+                        
                     </td>
                 </tr>
                 
@@ -411,7 +480,7 @@
                          Litre
                          <?=nbs(4)?>
                          Cl :
-                         <input class="easyui-numberbox" precision="4" value="0.01000" style="width:70px;"></input>
+                         <input class="easyui-numberbox" precision="4" id="cl" name="cl" value="0.01000" style="width:70px;"></input>
                          L/hr
                     </td>
                 </tr>
@@ -422,11 +491,11 @@
                        ke :
                     </td>
                     <td>
-                         <input class="easyui-numberbox" precision="2" value="49.00" style="width:70px;"></input>
+                        <input class="easyui-numberbox" precision="2" id="ke" name="ke" value="49.00" style="width:70px;"></input>
                          hr-1
                          <?=nbs(4)?>
                          Half-life :
-                         <input class="easyui-numberbox" precision="4" value="0.01000" style="width:70px;"></input>
+                         <input class="easyui-numberbox" precision="4"  id="hl" name="hl" value="0.01000" style="width:100px;"></input>
                          hr
                     </td>
                 </tr>
