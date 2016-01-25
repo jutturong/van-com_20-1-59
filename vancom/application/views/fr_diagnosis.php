@@ -14,7 +14,7 @@
         var  ke=$('#ke');
         var  hl=$('#hl');
         var   W=$('#W');
-        var  conts=$('#conts');
+        //var  conts=$('#conts');
         
         /*
         function calvalue(vd,cl,ke,hl)
@@ -30,19 +30,45 @@
        calvalue(vd,cl,ke,hl);
         */
        
-       if( W.textbox('getValue') > 0  &&  conts.textbox('getValue') > 0 )
+       var cb_conts=$('#cb_conts');
+       /*
+        cb_conts.combobox({
+            onSelect:function(e)
+            { 
+                //alert('t'); 
+               alert( cb_conts.combobox('getValue') );
+            }
+        });
+       */
+       
+      // if( W.textbox('getValue') > 0  &&  conts.textbox('getValue') > 0 )
+       if( W.textbox('getValue') > 0    )
        {
            W.textbox('textbox').bind('keydown',function(e)
            {
-                var vd_val=W.textbox('getValue')*conts.textbox('getValue');
+                //var vd_val=W.textbox('getValue')*conts.textbox('getValue');
+                 var vd_val=W.textbox('getValue')*cb_conts.combobox('getValue');
                 vd.textbox('setText',vd_val);
            });
            
-           conts.textbox('textbox').bind('keydown',function(e)
+           /*
+            conts.textbox('textbox').bind('keydown',function(e)
            {
                var vd_val=W.textbox('getValue')*conts.textbox('getValue');
                 vd.textbox('setText',vd_val);
            });
+           */
+           
+           cb_conts.combobox({
+            onSelect:function(e)
+            { 
+                
+               //alert( cb_conts.combobox('getValue') );
+               var vd_val=W.textbox('getValue')*cb_conts.combobox('getValue');
+               vd.textbox('setText',vd_val);
+            }
+        });
+           
             /*
             var vd_val=W*conts;
             vd.textbox('setText',vd_val);
@@ -180,8 +206,20 @@
                         Kg.
                         /
                         Conts. (ค่าคงที่)
-                        <input class="easyui-numberbox" value="2" name="conts" id="conts" style="width: 60px;height: 30px;" >
-                        
+                       <!-- <input class="easyui-numberbox" value="2" name="conts" id="conts" style="width: 60px;height: 30px;" /> -->
+                        <select class="easyui-combobox" id="cb_conts" name="cb_conts" style="width:100px;height: 30px" data-options="
+                                onSelect:function(e)
+                                {
+                                  //alert('t');
+                                }
+                                ">
+                            <option value="0"> เลือก Conts. </option>
+                            <option value="0.2">0.2</option>
+                            <option value="0.25">0.25</option>
+                            <option value="0.65">0.65</option>
+                            <option value="0.7">0.7</option>
+                             <option value="1.4">1.4</option>
+                        </select>
                     </td>
                 </tr>
                 
@@ -477,7 +515,7 @@
                     </td>
                     <td>
                         <input class="easyui-numberbox" precision="2" id="vd" name="vd" value="49.00" style="width:70px;"></input>
-                         Litre
+                         L/Kg.
                          <?=nbs(4)?>
                          Cl :
                          <input class="easyui-numberbox" precision="4" id="cl" name="cl" value="0.01000" style="width:70px;"></input>
