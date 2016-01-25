@@ -329,6 +329,21 @@ LIMIT 90 , 30   */
                          echo json_encode($rows);
                  }
                  
+                 public function vancomycin()// combobox vancomycin
+                 {
+                     //http://127.0.0.1/vancom/index.php/welcome/vancomycin
+                     $this->authentication->check_authentication();
+                     $tb="tb_vacomycin";
+                     $query=$this->db->get($tb);
+                     foreach($query->result() as $row )
+                     {
+                         //echo  $row->vancomycin_detail;
+                         //echo  br();
+                         $rows[]=$row;
+                     }
+                     echo json_encode($rows);
+                 }
+                 
                 
                          
 }
