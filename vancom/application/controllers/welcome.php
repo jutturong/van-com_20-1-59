@@ -344,6 +344,31 @@ LIMIT 90 , 30   */
                      echo json_encode($rows);
                  }
                  
+                 public function indication()
+                 {
+                     //http://127.0.0.1/vancom/index.php/welcome/indication
+                     $this->authentication->check_authentication();
+                     $tb="tb_indication";
+                     $query=$this->db->get($tb);
+                     foreach($query->result() as $row)
+                     {
+                         $rows[]=$row;
+                     }
+                     echo json_encode($rows);
+                 }
+                 
+                 public function tb_disease()
+                 {
+                     //http://127.0.0.1/vancom/index.php/welcome/tb_disease
+                     $tb="tb_disease";
+                     $query=$this->db->get($tb);
+                     foreach($query->result() as $row)
+                     {
+                         $rows[]=$row;
+                     }
+                     echo json_encode($rows);
+                 }
+                 
                 
                          
 }

@@ -233,14 +233,24 @@
                 
                 <tr>
                     <td>
-                        Reason for TDM 1 :
+                        Reason for TDM 1 (Indication) :
                     </td>
                     <td>
+                        
+                        <!--
                         <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
         <option value="1">AFI</option>
         <option value="2">ESRD S/P HD</option>
         <option value="3">TVD</option>
                            </select>
+                        -->
+                        
+                        <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/indication',
+                               valueField:'id_indication',
+                               textField:'indication_detail',
+                               
+                               "  />
                         
                         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-large-shapes '  " >Add Indication</a>
                         
@@ -251,14 +261,24 @@
                 
                 <tr>
                     <td>
-                        Reason for TDM 2 :
+                        Reason for TDM 2 (Indication) :
                     </td>
                     <td>
+                        
+                        <!--
                         <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
         <option value="1">AFI</option>
         <option value="2">ESRD S/P HD</option>
         <option value="3">TVD</option>
                            </select>
+                        -->
+                        <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/indication',
+                               valueField:'id_indication',
+                               textField:'indication_detail',
+                               
+                               "  />
+                        
                     </td>
                 </tr>
                 
@@ -268,19 +288,28 @@
                         Underllying disease 1 :
                     </td>
                     <td>
+                        <!--
                         <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
         <option value="1">AFI</option>
         <option value="2">ESRD S/P HD</option>
         <option value="3">TVD</option>
                            </select>
+                        -->
+                        <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
                         
                         Underllying disease 6 :
                         
-                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
-        <option value="1">AFI</option>
-        <option value="2">ESRD S/P HD</option>
-        <option value="3">TVD</option>
-                           </select>
+                         <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
                         
                     </td>
                 </tr>
@@ -291,19 +320,21 @@
                         Underllying disease 2 :
                     </td>
                     <td>
-                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
-        <option value="1">AFI</option>
-        <option value="2">ESRD S/P HD</option>
-        <option value="3">TVD</option>
-                           </select>
+                        <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
                         
                         Underllying disease 7 :
                         
-                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
-        <option value="1">AFI</option>
-        <option value="2">ESRD S/P HD</option>
-        <option value="3">TVD</option>
-                           </select>
+                         <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
                         
                     </td>
                 </tr>
@@ -314,19 +345,21 @@
                         Underllying disease 3 :
                     </td>
                     <td>
-                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
-        <option value="1">AFI</option>
-        <option value="2">ESRD S/P HD</option>
-        <option value="3">TVD</option>
-                           </select>
+                         <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
                         
                         Underllying disease 8 :
                         
-                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
-        <option value="1">AFI</option>
-        <option value="2">ESRD S/P HD</option>
-        <option value="3">TVD</option>
-                           </select>
+                         <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
                         
                     </td>
                 </tr>
@@ -336,19 +369,21 @@
                         Underllying disease 4 :
                     </td>
                     <td>
-                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
-        <option value="1">AFI</option>
-        <option value="2">ESRD S/P HD</option>
-        <option value="3">TVD</option>
-                           </select>
+                        <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
                         
                         Underllying disease 9 :
                         
-                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
-        <option value="1">AFI</option>
-        <option value="2">ESRD S/P HD</option>
-        <option value="3">TVD</option>
-                           </select>
+                        <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
                         
                     </td>
                 </tr>
@@ -359,19 +394,21 @@
                         Underllying disease 5 :
                     </td>
                     <td>
-                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
-        <option value="1">AFI</option>
-        <option value="2">ESRD S/P HD</option>
-        <option value="3">TVD</option>
-                           </select>
+                         <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
                         
                         Underllying disease 10 :
                         
-                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
-        <option value="1">AFI</option>
-        <option value="2">ESRD S/P HD</option>
-        <option value="3">TVD</option>
-                           </select>
+                         <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
                         
                     </td>
                 </tr>
