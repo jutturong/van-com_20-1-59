@@ -433,18 +433,12 @@
                 
                  <tr>
                     <td>
-                       Drug level requested :
+                       Drug level requested (Vancomycin) :
                     </td>
                     <td>
                         
-                        <!--
-                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
-        <option value="1">Vancomycin</option>
-        
-       
-                         </select>
-                        -->
                         
+                        <!--
                         <input class="easyui-combobox"  style=" width:200;height: 30px "
                                data-options=" 
                                  valueField:'id_vancomycin',
@@ -453,6 +447,15 @@
                                  iconCls:'icon-add'
                                "
                                />
+                        -->
+                        <input class="easyui-combobox"  style=" width:200;height: 30px "
+                               data-options=" 
+                                 valueField:'id_drug',
+                                 textField:'drug_detail',
+                                 url:'<?=base_url()?>index.php/welcome/tb_drug/',
+                                 
+                               "
+                               /> 
                            
                           <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-large-shapes '  " >Add Drug level requested</a>
                         

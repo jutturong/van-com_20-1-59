@@ -368,6 +368,17 @@ LIMIT 90 , 30   */
                      }
                      echo json_encode($rows);
                  }
+                 public function  tb_drug()
+                 {
+                      //http://127.0.0.1/vancom/index.php/welcome/tb_drug
+                     $tb="tb_drug";
+                     $query=$this->db->get($tb);
+                     foreach($query->result() as $row)
+                     {
+                         $rows[]=$row;
+                     }
+                     echo json_encode($rows);
+                 }
                  
                 
                          
