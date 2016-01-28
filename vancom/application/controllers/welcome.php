@@ -379,6 +379,12 @@ LIMIT 90 , 30   */
                      }
                      echo json_encode($rows);
                  }
+                 public function insert_drug()
+                 {
+                     //http://127.0.0.1/vancom/index.php/welcome/insertdrug
+                     //echo $drug_detail=trim($this->input->get_post("drug_detail"));
+                     echo "test";
+                 }
                  
                 
                          

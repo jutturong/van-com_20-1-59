@@ -98,6 +98,12 @@
         
         
     });
+    
+    
+    
+  
+    
+    
 </script>
 
 
@@ -110,24 +116,10 @@
       
       ">
     
-    <div id="dia_drug" class="easyui-dialog" style="width:400px;height: 120px;" title="เพิ่มรายการยา " data-options=
-         " closed:true ,
-           modal:true,
-           iconCls:'icon-save',
-         ">
-        <table>
-            <tr>
-                <td> ชื่อยา : </td>
-                <td> <input class="easyui-textbox" required="required" id="drug_detail" name="drug_detail" style="width:200px;height: 30px"  /> </td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center" >
-                    <a href="javascript:void(0)" class="easyui-linkbutton" data-options=" iconCls:'icon-save' " > Insert </a>
-                    <a href="javascript:void(0)" onclick="$('#dia_drug').dialog('close'); "  class="easyui-linkbutton" data-options=" iconCls:'icon-cancel' " > Close </a>
-                </td>
-            </tr>
-        </table>
-    </div> 
+    
+   
+    
+    
     
     
    <!-- <div class="easyui-tabs" style="width:500px;height: 600px"   > -->
@@ -145,6 +137,8 @@
                   // { field:'id_drug',title:'id_drug' },
                    { field:'drug_detail',title:'ชื่อยา' }
                    ]],
+                   
+                   /*
                    toolbar:[
                    { iconCls:'icon-add', text:'เพิ่มรายการยา',handler:function()
                             { 
@@ -154,10 +148,14 @@
                    },
                    { iconCls:'icon-remove', text:'ลบรายการ' ,handler:function() { alert('r'); }  },
                    ]
+                   */
+                   
+                  
+                   
                    ">
                 
             </table>
-            
+  
             
       <!--  </div> -->
       <!--
