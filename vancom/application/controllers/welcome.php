@@ -386,6 +386,7 @@ LIMIT 90 , 30   */
                      echo "test";
                  }
                  
+                /* 
                  public  function tb_indication()
                  {
                         ////http://127.0.0.1/vancom/index.php/welcome/tb_indication
@@ -397,7 +398,7 @@ LIMIT 90 , 30   */
                         }
                         echo  json_encode($rows);
                  }
-                 
+               */
                 
                          
 }

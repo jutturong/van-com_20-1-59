@@ -124,7 +124,34 @@
     
    <!-- <div class="easyui-tabs" style="width:500px;height: 600px"   > -->
    <!--     <div title="ข้อมูลทั้งหมด" style="padding:5px;" >  -->
-            
+      
+   
+   <!--  เพิ่ม tb_disease http://127.0.0.1/vancom/index.php/welcome/tb_disease   --->
+   <div class="easyui-dialog"    id="dg_disease"  style="width:370px;height: 500px;padding: 10px 5"  title=" เพิ่มข้อมูล  Underllying disease   "   
+        data-options=
+        "  
+               closed:true,
+               iconCls:'icon-add',
+               modal:true,
+               toolbar:[     
+                   {   text:'เพิ่ม disease',iconCls:'icon-ok' , handler:function(){  alert('t');  }    }
+               ]
+        "    >
+       <table class="easyui-datagrid"   
+              data-options="
+                  url:'<?=base_url()?>index.php/welcome/tb_disease/'  ,
+                  rownumbers:true,
+                  fitColums:true,
+                  columns:[[
+                      {  field:'disease_detail' , title:'Disease' }
+                  ]],
+                  "  style="width:300px"   >
+           
+       </table>
+       
+   </div>
+   
+   <!--  เพิ่ม tb_disease http://127.0.0.1/vancom/index.php/welcome/tb_disease   --->
     
    <!--  เพิ่ม indication    http://127.0.0.1/vancom/index.php/welcome/tb_indication --->
    <div   id="dia_indication"  class="easyui-dialog"   style="width:300px;height: 500px;padding: 10px 5"   title="  Reason for TDM  (Indication)  "   data-options=
@@ -132,13 +159,18 @@
                  closed:true,
                  iconCls:'icon-man',
                  modal:true,
-                 toolbar:[   ],
+                 toolbar:[  {  iconCls:'icon-add' , text:' เพิ่มข้อมูล Indication ', 
+                                                handler:function(e)
+                                                        {  
+                                                                   alert('t');  
+                                                        }    
+                                   }  ],
                  
                  
           "     >
        <table class="easyui-datagrid"   style="width:260px;padding:10px 5"  data-options=
               "  
-                   url:'<?=base_url()?>index.php/welcome/tb_indication',
+                   url:'<?=base_url()?>index.php/welcome/indication',
                    fitColumns:true,
                    rownumbers:true,
                    columns:[[     
@@ -344,7 +376,7 @@
                                
                                "  />
                         
-                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-large-shapes '  "   onclick=" $('#dia_indication').dialog('open');   "   >Add Indication</a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-add '  "   onclick=" $('#dia_indication').dialog('open');   "   >Add Indication</a>
                         
                     </td>
                     
@@ -402,6 +434,8 @@
                                textField:'disease_detail',
                                
                                "  />
+                      
+                         <a  href="javascript:void(0)"   class="easyui-linkbutton"  data-options=" iconCls:'icon-add' , plain:false  "  onclick="$('#dg_disease').dialog('open')   "   style=" height: 30px "  > Disease</a>
                         
                     </td>
                 </tr>
@@ -511,13 +545,23 @@
                        Reason for TDM :
                     </td>
                     <td>
+                       
+                        <!--
                         <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
         <option value="1">Routine Follow up</option>
-        
+                           
        
                            </select>
+                        -->
                         
-                          <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-large-shapes '  " >Add Reason for TDM</a>
+                            <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
+                        
+                       <!--   <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-large-shapes '  " >Add Reason for TDM</a> -->
                         
                     </td>
                 </tr>

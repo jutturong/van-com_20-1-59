@@ -157,10 +157,10 @@
         <!--<div data-options="iconCls:'icon-add'">เพิ่มชื่อผู้ป่วย</div>-->
         <div data-options="iconCls:'icon-large-shapes'   ">เพิ่มข้อมูล</div>
         <div class="menu-sep"></div>
-        <div onclick=" $('#dia_indication').dialog('open');   "  >Indication</div>
-        <div>Reason for TDM</div>
+        
+        <div   onclick=" $('#dia_indication').dialog('open');   "  >Reason for TDM (Indication)</div>
         <div  onclick="$('#win_drug').window('open')">Drug level requested</div>
-        <div>Add Current Medications</div>
+        <div   onclick="$('#dg_disease').dialog('open')   " > Underllying disease</div>
         <!--
         <div>
             <span>Toolbar</span>
