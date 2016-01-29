@@ -125,7 +125,37 @@
    <!-- <div class="easyui-tabs" style="width:500px;height: 600px"   > -->
    <!--     <div title="ข้อมูลทั้งหมด" style="padding:5px;" >  -->
             
-            
+    
+   <!--  เพิ่ม indication    http://127.0.0.1/vancom/index.php/welcome/tb_indication --->
+   <div   id="dia_indication"  class="easyui-dialog"   style="width:300px;height: 500px;padding: 10px 5"   title="  Reason for TDM  (Indication)  "   data-options=
+          "
+                 closed:true,
+                 iconCls:'icon-man',
+                 modal:true,
+                 toolbar:[   ],
+                 
+                 
+          "     >
+       <table class="easyui-datagrid"   style="width:260px;padding:10px 5"  data-options=
+              "  
+                   url:'<?=base_url()?>index.php/welcome/tb_indication',
+                   fitColumns:true,
+                   rownumbers:true,
+                   columns:[[     
+                   {   field:'indication_detail',title:'indication'      },
+                   
+                   ]],
+                   
+              "  >
+           
+       </table>
+   </div>
+   
+     <!--  เพิ่ม indication    http://127.0.0.1/vancom/index.php/welcome/tb_indication ---> 
+   
+   
+   
+   <!-- เพิ่มข้อมูลยา -->
             <table class="easyui-datagrid" title="รายการยาทั้งหมด"  style="width: 250px;height:500px" data-options="
                    iconCls:'icon-Save',
                    url:'<?=base_url()?>index.php/welcome/tb_drug',
@@ -155,15 +185,7 @@
                    ">
                 
             </table>
-  
-            
-      <!--  </div> -->
-      <!--
-        <div title="เพิ่มข้อมูลยา" style="padding:20px;overflow:auto;">
-            tab2
-        </div>
-      -->
-      
+
     </div>
     
 </div>
@@ -322,7 +344,7 @@
                                
                                "  />
                         
-                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-large-shapes '  " >Add Indication</a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-large-shapes '  "   onclick=" $('#dia_indication').dialog('open');   "   >Add Indication</a>
                         
                     </td>
                     
