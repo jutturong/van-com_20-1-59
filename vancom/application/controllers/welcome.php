@@ -386,19 +386,6 @@ LIMIT 90 , 30   */
                      echo "test";
                  }
                  
-                /* 
-                 public  function tb_indication()
-                 {
-                        ////http://127.0.0.1/vancom/index.php/welcome/tb_indication
-                        $tb="tb_indication";
-                        $query=$this->db->get($tb);
-                        foreach($query->result() as $row)
-                        {
-                            $rows[]=$row;
-                        }
-                        echo  json_encode($rows);
-                 }
-               */
                 
                          
 }

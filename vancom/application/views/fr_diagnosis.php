@@ -124,70 +124,8 @@
     
    <!-- <div class="easyui-tabs" style="width:500px;height: 600px"   > -->
    <!--     <div title="ข้อมูลทั้งหมด" style="padding:5px;" >  -->
-      
-   
-   <!--  เพิ่ม tb_disease http://127.0.0.1/vancom/index.php/welcome/tb_disease   --->
-   <div class="easyui-dialog"    id="dg_disease"  style="width:370px;height: 500px;padding: 10px 5"  title=" เพิ่มข้อมูล  Underllying disease   "   
-        data-options=
-        "  
-               closed:true,
-               iconCls:'icon-add',
-               modal:true,
-               toolbar:[     
-                   {   text:'เพิ่ม disease',iconCls:'icon-ok' , handler:function(){  alert('t');  }    }
-               ]
-        "    >
-       <table class="easyui-datagrid"   
-              data-options="
-                  url:'<?=base_url()?>index.php/welcome/tb_disease/'  ,
-                  rownumbers:true,
-                  fitColums:true,
-                  columns:[[
-                      {  field:'disease_detail' , title:'Disease' }
-                  ]],
-                  "  style="width:300px"   >
-           
-       </table>
-       
-   </div>
-   
-   <!--  เพิ่ม tb_disease http://127.0.0.1/vancom/index.php/welcome/tb_disease   --->
-    
-   <!--  เพิ่ม indication    http://127.0.0.1/vancom/index.php/welcome/tb_indication --->
-   <div   id="dia_indication"  class="easyui-dialog"   style="width:300px;height: 500px;padding: 10px 5"   title="  Reason for TDM  (Indication)  "   data-options=
-          "
-                 closed:true,
-                 iconCls:'icon-man',
-                 modal:true,
-                 toolbar:[  {  iconCls:'icon-add' , text:' เพิ่มข้อมูล Indication ', 
-                                                handler:function(e)
-                                                        {  
-                                                                   alert('t');  
-                                                        }    
-                                   }  ],
-                 
-                 
-          "     >
-       <table class="easyui-datagrid"   style="width:260px;padding:10px 5"  data-options=
-              "  
-                   url:'<?=base_url()?>index.php/welcome/indication',
-                   fitColumns:true,
-                   rownumbers:true,
-                   columns:[[     
-                   {   field:'indication_detail',title:'indication'      },
-                   
-                   ]],
-                   
-              "  >
-           
-       </table>
-   </div>
-   
-     <!--  เพิ่ม indication    http://127.0.0.1/vancom/index.php/welcome/tb_indication ---> 
-   
-   
-   
-   <!-- เพิ่มข้อมูลยา -->
+            
+            
             <table class="easyui-datagrid" title="รายการยาทั้งหมด"  style="width: 250px;height:500px" data-options="
                    iconCls:'icon-Save',
                    url:'<?=base_url()?>index.php/welcome/tb_drug',
@@ -217,7 +155,15 @@
                    ">
                 
             </table>
-
+  
+            
+      <!--  </div> -->
+      <!--
+        <div title="เพิ่มข้อมูลยา" style="padding:20px;overflow:auto;">
+            tab2
+        </div>
+      -->
+      
     </div>
     
 </div>
@@ -376,7 +322,7 @@
                                
                                "  />
                         
-                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-add '  "   onclick=" $('#dia_indication').dialog('open');   "   >Add Indication</a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-large-shapes '  " >Add Indication</a>
                         
                     </td>
                     
@@ -434,8 +380,6 @@
                                textField:'disease_detail',
                                
                                "  />
-                      
-                         <a  href="javascript:void(0)"   class="easyui-linkbutton"  data-options=" iconCls:'icon-add' , plain:false  "  onclick="$('#dg_disease').dialog('open')   "   style=" height: 30px "  > Disease</a>
                         
                     </td>
                 </tr>
@@ -545,23 +489,13 @@
                        Reason for TDM :
                     </td>
                     <td>
-                       
-                        <!--
                         <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
         <option value="1">Routine Follow up</option>
-                           
+        
        
                            </select>
-                        -->
                         
-                            <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
-                               url:'<?=base_url()?>index.php/welcome/tb_disease',
-                               valueField:'id_disease',
-                               textField:'disease_detail',
-                               
-                               "  />
-                        
-                       <!--   <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-large-shapes '  " >Add Reason for TDM</a> -->
+                          <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-large-shapes '  " >Add Reason for TDM</a>
                         
                     </td>
                 </tr>
