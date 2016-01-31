@@ -288,11 +288,15 @@
                                          if( result == "success" )   
                                          {
                                                  $ .messager.alert("Status Insert"," บันทึกข้อมูลแล้ว ","Info");
+                                                  $('#id_drug').combobox('reload');
                                                  $("#gd_drug").datagrid('reload');
+                                                
                                           }else
                                           {
                                                    $ .messager.alert("Status Insert"," ไม่สามารถบันทึกข้อมูลได้ ","Error");
+                                                   $('#id_drug').combobox('reload');
                                                    $("#gd_drug").datagrid('reload');
+                                                   
                                             }
                                         
                                  }     
@@ -305,10 +309,7 @@
        
        
        
-   <!--     เพิ่มข้อมูล combobox --->
-   
-   
-   
+   <!--     เพิ่มข้อมูล combobox   Drug--->
    <div class="easyui-dialog"   id="dia_drug"   title="เพ่ิมข้อมูลยา  (Drug)  Drug level requested (Vancomycin)   "  style="width:500px;height: 600px"  data-options="
         closed:true,
         modal:true,
@@ -325,8 +326,13 @@
                    <form id="fr_drug" method="post"  >
            <div style="padding: 20px  40 " >
                
-               
+               <label for="drug_detail"  style="font-size: 14">
+                   
+                 Drug Detail :
                <input class="easyui-textbox"   id="drug_detail"   name="drug_detail"  style="width:200px;height: 50px"   data-options=" prompt:' ระบุชื่อยา ' "      />
+               
+                 </label>
+               
                
            </div>
            <div style="padding: 5px 20">
@@ -357,21 +363,51 @@
                       url:'<?=base_url()?>index.php/welcome/tb_drug',
                       rownumbers:true,
                       fitColumns:true,
+                      singleSelect:true,
                       columns:[[  
                          {  field:'drug_detail' , title:' Drug Detail '   }
-                      ]]
+                      ]],
+                      toolbar:[
+                      {  text:'Delete', iconCls:'icon-cancel',  handler:function(e)
+                             {
+                                 
+                                   var row=$('#gd_drug').datagrid('getSelected');
+                                   if( row )
+                                   {
+                                               var  id_drug=row.id_drug
+                                 
+                                                   $.post('<?=base_url()?>index.php/welcome/del_drug/'  + id_drug   ,function(data)
+                                                                    { 
+                                                                          //alert(data.success);
+                                                                          var  tt=data.success;
+                                                                            if( tt  )
+                                                                            {
+                                                                                  //alert(tt);
+                                                                                  $.messager.alert('Status','  ลบข้อมูลแล้ว  ','Info');
+                                                                                  $('#gd_drug').datagrid('reload');
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                  //alert('False');
+                                                                                  $.messager.alert('Status',' ไม่สามารถลบข้อมูลได้  ','Error');
+                                                                                     $('#gd_drug').datagrid('reload');
+                                                                            }
+                                                                    } ,'json' );
+                                            
+                                           
+                                              
+                                   }
+                             }  
+                        },
+                      ]
                       "   style="width:200px; " >
                    
                </table>
            </div>           
        </div>
-       
-       
-       
-       
-       
+
    </div>
-   
+      <!--     เพิ่มข้อมูล combobox   Drug--->
    
    
 

@@ -386,7 +386,10 @@ LIMIT 90 , 30   */
                            $drug_detail=trim($this->input->get_post("drug_detail"));
                           //echo br();
                           
-                          if( strlen( $drug_detail )  >  0  )
+                           $query_num=$this->db->query(" select  *  from  $tb  where    drug_detail='$drug_detail' ;  ");
+                           $check_num=$query_num->num_rows();
+                           
+                          if( strlen( $drug_detail )  >  0   &&     $check_num == 0  )
                           {
                                      // $data=array("drug_detail"=>$drug_detail);
                                       //$ck=$this->db->insert($tb,$data);
@@ -401,9 +404,31 @@ LIMIT 90 , 30   */
                                            echo  "false";
                                       }
                           }
-
                  }
-                 
+                 public  function  del_drug()
+                 {
+                       //http://127.0.0.1/vancom/index.php/welcome/del_drug/106
+                         $id_drug=$this->uri->segment(3);
+                         //echo $id_drug;
+                            if( $id_drug > 0 )
+                            {
+                                
+                                 $tb="tb_drug";
+                                   /*
+                                    $this->db->where('id', '5');
+                                    $this->db->delete($tables);
+                                    */
+                                   $this->db->where("id_drug",$id_drug);
+                                   $ck=$this->db->delete($tb);
+                                   if( $ck )
+                                   {
+                                       echo  json_encode(array("success"=>true));
+                                   }
+                                    else {
+                                            echo  json_encode(array("success"=>false));
+                                    }
+                            }
+                 }
                 
                          
 }

@@ -458,7 +458,7 @@
                                "
                                />
                         -->
-                        <input class="easyui-combobox"  style=" width:200;height: 30px "
+                        <input class="easyui-combobox"  id="id_drug"  style=" width:200;height: 30px "
                                data-options=" 
                                  valueField:'id_drug',
                                  textField:'drug_detail',
@@ -468,6 +468,8 @@
                                /> 
                            
                      
+                        <a href="javascript:void(0)"   class="easyui-linkbutton"   data-options=" iconCls:'icon-ok'   "     onclick="$('#dia_drug').dialog('open'); "  >Add Drug</a>
+                        
                         
                     </td>
                 </tr>
