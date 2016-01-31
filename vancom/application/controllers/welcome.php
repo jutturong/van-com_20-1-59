@@ -381,14 +381,10 @@ LIMIT 90 , 30   */
                  }
                  public function insert_drug()
                  {
-                     echo <<<INFO
-<div style="padding:0 50px">
-<p>Name: $name</p>
-<p>Email: $email</p>
-<p>Phone: $phone</p>
-<p>File: $file</p>
-</div>
-INFO;
+                     
+                       //http://127.0.0.1/vancom/index.php/welcome/insert_drug
+                            echo "T";
+
                  }
                  
                 

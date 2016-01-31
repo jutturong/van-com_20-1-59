@@ -157,10 +157,18 @@
         <!--<div data-options="iconCls:'icon-add'">เพิ่มชื่อผู้ป่วย</div>-->
         <div data-options="iconCls:'icon-large-shapes'   ">เพิ่มข้อมูล</div>
         <div class="menu-sep"></div>
+        
+      
+        <!--
         <div >Indication</div>
         <div>Reason for TDM</div>
         <div>Drug level requested</div>
         <div>Add Current Medications</div>
+        -->
+        
+        <div   data-options=" iconCls:'icon-ok'  "  onclick="$('#dia_drug').dialog('open'); ">Drug level requested (Vancomycin) :</div>
+        
+        
         <!--
         <div>
             <span>Toolbar</span>
@@ -256,3 +264,65 @@
         <div  class="easyui-linkbutton"  data-options=" iconCls:' icon-cancel ' " >Sign out</div>
     </div>
        --> 
+       
+       
+       
+       <script type="text/javascript">
+           
+           function dr_submit()
+           {
+                 // $.messager.alert("test");
+                   $('#fr_drug').form({  
+                       url:'<?=base_url()?>index.php/welcome/insert_drug',
+                       onSubmit:function(data)
+                                 {  
+                                         //  alert(data);   
+                                 } , 
+                      success:function(data)
+                                 { 
+                                            alert(data);
+                                 }     
+                                                     });
+           }
+           
+           
+           
+       </script>
+       
+       
+       
+   <!--     เพิ่มข้อมูล combobox --->
+   <div class="easyui-dialog"   id="dia_drug"   title="เพ่ิมข้อมูลยา  (Drug)  Drug level requested (Vancomycin)   "  style="width:500px;height: 200px"  data-options="
+        closed:true,
+        modal:true,
+        iconCls:'icon-ok',
+        
+        "   >
+       
+       <form id="fr_drug" method="post"  >
+           <div style="padding: 20px  40 " >
+               
+               
+               <input class="easyui-textbox"   id="drug_detail"  style="width:200px;height: 50px"   data-options=" prompt:' ระบุชื่อยา ' "      />
+               
+           </div>
+           <div style="padding: 5px 20">
+               <?=nbs(40)?>
+               
+               <!--
+               <a href="javascript:void(0)"   data-options="iconCls:'icon-ok' "  class="easyui-linkbutton"  style=" height: 40px "   onclick=" dr_submit()  ">Insert</a>
+                    -->
+                    <input type="submit"   style="height:40px"      value="INSERT"   onclick=" dr_submit()  "     />
+                    <a href="javascript:void(0)"   onclick="$('#dia_drug').dialog('close');"     style="height: 40px"  class="easyui-linkbutton"  data-options="  iconCls:'icon-cancel'  "   >Close</a>
+                  
+                 
+               
+           </div>
+       </form>
+       
+   </div>
+   
+   
+   
+    <!--     เพิ่มข้อมูล combobox --->  
+   
