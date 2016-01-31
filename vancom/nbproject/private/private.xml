@@ -2,11 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/Library/WebServer/Documents/vancom/application/views/home.php</file>
-            <file>file:/Library/WebServer/Documents/vancom/application/views/topmenu.php</file>
-            <file>file:/Library/WebServer/Documents/vancom/application/views/fr_diagnosis.php</file>
-            <file>file:/Library/WebServer/Documents/vancom/application/controllers/welcome.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
