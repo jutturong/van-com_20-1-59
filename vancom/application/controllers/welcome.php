@@ -381,9 +381,14 @@ LIMIT 90 , 30   */
                  }
                  public function insert_drug()
                  {
-                     //http://127.0.0.1/vancom/index.php/welcome/insertdrug
-                     //echo $drug_detail=trim($this->input->get_post("drug_detail"));
-                     echo "test";
+                     echo <<<INFO
+<div style="padding:0 50px">
+<p>Name: $name</p>
+<p>Email: $email</p>
+<p>Phone: $phone</p>
+<p>File: $file</p>
+</div>
+INFO;
                  }
                  
                 

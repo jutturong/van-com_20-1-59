@@ -100,33 +100,54 @@
     });
     
     
-    
-  
-    
-    
 </script>
 
 
+<script type="text/javascript">
+         function  insert_drug()
+         {
+                  $('#fr_drug').form({   
+                       url:'<?=base_url()?>index.php/welcome/insert_drug/',
+                       success:function(data)
+                       {
+                             alert('t');
+                       }
+                  });
+             
+         }
+</script>
+
+
+<!--  from เพิ่มข้อมูลยา -->
+<div  class="easyui-dialog"  id="dia_drug"   style="width:400px;height: 150px"   title="เพิ่ม Vancomycin"  data-options="
+      closed:true
+      "   >
+    
+    <form id="fr_drug"  action="<?=base_url()?>index.php/welcome/insert_drug/"   enctype="multipart/form-data"   >
+    <div style="padding:10px 10">
+        
+        <input class="easyui-textbox"     id="drug_detail"    name="drug_detail"    style="width:300px;height: 40px"   data-options="  prompt:'Drug level requested (Vancomycin)' "   />
+        
+    </div>
+    <div style="padding: 10px 0  ">
+        <?=nbs(40)?>
+        <a href="javascript:void(0)" class="easyui-linkbutton"   data-options=" iconCls:'icon-add'  "   onclick="insert_drug()"   />Insert</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton"   data-options=" iconCls:'icon-cancel'  "   onclick="$('#dia_drug').dialog('close')"    />Close</a>
+    </div>
+    </form>
+    
+</div>
+<!--  from เพิ่มข้อมูลยา -->
 
 <!-- เพิ่มข้อมูลยา -->
-<div  class="easyui-window" id="win_drug" style="width:280px;height:500px" title=" เพิ่มข้อมูลยา (Vancomycin) "   data-options="
+<div  class="easyui-window" id="win_drug" style="width:310px;height:500px" title="  Drug level requested (Vancomycin) "   data-options="
       closed:true,
       iconCls:'icon-add',
       modal:true,
       
       ">
-    
-    
-   
-    
-    
-    
-    
-   <!-- <div class="easyui-tabs" style="width:500px;height: 600px"   > -->
-   <!--     <div title="ข้อมูลทั้งหมด" style="padding:5px;" >  -->
-            
-            
-            <table class="easyui-datagrid" title="รายการยาทั้งหมด"  style="width: 250px;height:500px" data-options="
+   <div style="padding:  0px   0 "></div>
+            <table class="easyui-datagrid"   style="width: 250px;height:500px" data-options="
                    iconCls:'icon-Save',
                    url:'<?=base_url()?>index.php/welcome/tb_drug',
                    fitColumns:true,
@@ -138,17 +159,17 @@
                    { field:'drug_detail',title:'ชื่อยา' }
                    ]],
                    
-                   /*
+                  
                    toolbar:[
-                   { iconCls:'icon-add', text:'เพิ่มรายการยา',handler:function()
+                   { iconCls:'icon-add', text:'Add',handler:function()
                             { 
-                                // alert('t'); 
-                                 $('#dia_drug').dialog('open');
+                                    
+                                   $('#dia_drug').dialog('open');
                             }  
                    },
                    { iconCls:'icon-remove', text:'ลบรายการ' ,handler:function() { alert('r'); }  },
                    ]
-                   */
+                  
                    
                   
                    
@@ -165,6 +186,8 @@
       -->
       
     </div>
+
+
     
 </div>
 <!-- เพิ่มข้อมูลยา -->
@@ -527,7 +550,7 @@
                                "
                                /> 
                            
-                        <a href="javascript:void(0)" class="easyui-linkbutton" onclick=" $('#win_drug').window('open') " data-options="  iconCls:' icon-add '  " >Vancomycin</a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" onclick=" $('#win_drug').window('open') " data-options="  iconCls:' icon-ok '  " >Vancomycin (Drug)</a>
                         
                     </td>
                 </tr>
