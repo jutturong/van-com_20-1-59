@@ -310,7 +310,7 @@
        
        
    <!--     เพิ่มข้อมูล combobox   Drug--->
-   <div class="easyui-dialog"   id="dia_drug"   title="เพ่ิมข้อมูลยา  (Drug)  Drug level requested (Vancomycin)   "  style="width:500px;height: 600px"  data-options="
+   <div class="easyui-dialog"   id="dia_drug"   title="เพ่ิมข้อมูลยา  (Drug)  Drug level requested (Vancomycin)   "  style="width:480px;height: 500px"  data-options="
         closed:true,
         modal:true,
         iconCls:'icon-ok',
@@ -318,18 +318,18 @@
         "   >
        
        
-       <div class="easyui-tabs"  id="tab_drug" style="width: 450px;height: 500px;padding: 10px">
+       <div class="easyui-tabs"  id="tab_drug" style="width: 450px;height: 450px;padding: 20px  20">
            <div title="เพิ่มข้อมูล Drug( level requested ) "  data-options=" iconCls:'icon-save'  "  style="padding: 10px"  >
             
                
-               <div class="easyui-panel"   style="width: 300px;height: 200px;"  >
+              
                    <form id="fr_drug" method="post"  >
            <div style="padding: 20px  40 " >
                
-               <label for="drug_detail"  style="font-size: 14">
+               <label for="drug_detail"  >
                    
-                 Drug Detail :
-               <input class="easyui-textbox"   id="drug_detail"   name="drug_detail"  style="width:200px;height: 50px"   data-options=" prompt:' ระบุชื่อยา ' "      />
+                ระบุรายละเอียดยา :
+                <input class="easyui-textbox"   id="drug_detail"  required="required"  name="drug_detail"  style="width:200px;height: 50px"   data-options=" prompt:' Drug level requested ' "      />
                
                  </label>
                
@@ -351,7 +351,7 @@
            </div>
        </form>
                    
-               </div>    
+             
                
                
                
