@@ -266,7 +266,9 @@
        --> 
        
        
+      
        
+           <!--     เพิ่มข้อมูล combobox --->  
        <script type="text/javascript">
            
            function dr_submit()
@@ -280,7 +282,19 @@
                                  } , 
                       success:function(data)
                                  { 
-                                            alert(data);
+                                               //     alert(data);                    
+                                          var   result=data;       
+                                                    
+                                         if( result == "success" )   
+                                         {
+                                                 $ .messager.alert("Status Insert"," บันทึกข้อมูลแล้ว ","Info");
+                                                 $("#gd_drug").datagrid('reload');
+                                          }else
+                                          {
+                                                   $ .messager.alert("Status Insert"," ไม่สามารถบันทึกข้อมูลได้ ","Error");
+                                                   $("#gd_drug").datagrid('reload');
+                                            }
+                                        
                                  }     
                                                      });
            }
@@ -292,18 +306,27 @@
        
        
    <!--     เพิ่มข้อมูล combobox --->
-   <div class="easyui-dialog"   id="dia_drug"   title="เพ่ิมข้อมูลยา  (Drug)  Drug level requested (Vancomycin)   "  style="width:500px;height: 200px"  data-options="
+   
+   
+   
+   <div class="easyui-dialog"   id="dia_drug"   title="เพ่ิมข้อมูลยา  (Drug)  Drug level requested (Vancomycin)   "  style="width:500px;height: 600px"  data-options="
         closed:true,
         modal:true,
         iconCls:'icon-ok',
         
         "   >
        
-       <form id="fr_drug" method="post"  >
+       
+       <div class="easyui-tabs"  id="tab_drug" style="width: 450px;height: 500px;padding: 10px">
+           <div title="เพิ่มข้อมูล Drug( level requested ) "  data-options=" iconCls:'icon-save'  "  style="padding: 10px"  >
+            
+               
+               <div class="easyui-panel"   style="width: 300px;height: 200px;"  >
+                   <form id="fr_drug" method="post"  >
            <div style="padding: 20px  40 " >
                
                
-               <input class="easyui-textbox"   id="drug_detail"  style="width:200px;height: 50px"   data-options=" prompt:' ระบุชื่อยา ' "      />
+               <input class="easyui-textbox"   id="drug_detail"   name="drug_detail"  style="width:200px;height: 50px"   data-options=" prompt:' ระบุชื่อยา ' "      />
                
            </div>
            <div style="padding: 5px 20">
@@ -312,17 +335,44 @@
                <!--
                <a href="javascript:void(0)"   data-options="iconCls:'icon-ok' "  class="easyui-linkbutton"  style=" height: 40px "   onclick=" dr_submit()  ">Insert</a>
                     -->
-                    <input type="submit"   style="height:40px"      value="INSERT"   onclick=" dr_submit()  "     />
+                    <input type="submit"    style="height:40px"       value="INSERT"   onclick=" dr_submit()  "     />
+                   
                     <a href="javascript:void(0)"   onclick="$('#dia_drug').dialog('close');"     style="height: 40px"  class="easyui-linkbutton"  data-options="  iconCls:'icon-cancel'  "   >Close</a>
                   
-                 
+                  
+                
                
            </div>
        </form>
+                   
+               </div>    
+               
+               
+               
+               
+           </div>
+           <div title="ข้อมูลทั้งหมด Drug Detail "   style="padding: 10px"    >
+               <div style="padding: 0px "></div>
+               <table class="easyui-datagrid" id="gd_drug"   title="ข้อมูลทั้งหมด Drug "   data-options="  
+                      url:'<?=base_url()?>index.php/welcome/tb_drug',
+                      rownumbers:true,
+                      fitColumns:true,
+                      columns:[[  
+                         {  field:'drug_detail' , title:' Drug Detail '   }
+                      ]]
+                      "   style="width:200px; " >
+                   
+               </table>
+           </div>           
+       </div>
+       
+       
+       
+       
        
    </div>
    
    
    
-    <!--     เพิ่มข้อมูล combobox --->  
+
    

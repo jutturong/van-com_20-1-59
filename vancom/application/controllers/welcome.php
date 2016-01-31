@@ -381,9 +381,26 @@ LIMIT 90 , 30   */
                  }
                  public function insert_drug()
                  {
-                     
-                       //http://127.0.0.1/vancom/index.php/welcome/insert_drug
-                            echo "T";
+                         //http://127.0.0.1/vancom/index.php/welcome/insert_drug
+                          $tb="tb_drug";
+                           $drug_detail=trim($this->input->get_post("drug_detail"));
+                          //echo br();
+                          
+                          if( strlen( $drug_detail )  >  0  )
+                          {
+                                     // $data=array("drug_detail"=>$drug_detail);
+                                      //$ck=$this->db->insert($tb,$data);
+                                       $this->db->set("drug_detail",$drug_detail);
+                                       $ck=$this->db->insert($tb);
+                                      if( $ck )
+                                      {
+                                           echo  "success";
+                                      }
+                                      else
+                                      {
+                                           echo  "false";
+                                      }
+                          }
 
                  }
                  
