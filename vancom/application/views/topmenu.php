@@ -167,6 +167,8 @@
         -->
         
         <div   data-options=" iconCls:'icon-ok'  "  onclick="$('#dia_drug').dialog('open'); ">Drug level requested (Vancomycin) :</div>
+        <div  data-options=" iconCls:'icon-ok'  "  onclick="$('#dia_disease').dialog('open');   ">Underllying disease</div>
+        <div  data-options=" iconCls:'icon-ok'  "  >Reason for TDM  (Indication)</div>
         
         
         <!--
@@ -273,6 +275,11 @@
        <!--   dialog  Drug   (tb_drug)  -->
        <?=$this->load->view("manage_drug")?>
         <!--   dialog  Drug   (tb_drug)  -->
+        
+        
+        <!-- dialog Underllying disease  -->
+        <?=$this->load->view("manage_disease")?>
+        <!-- dialog Underllying disease  -->
    
 
    

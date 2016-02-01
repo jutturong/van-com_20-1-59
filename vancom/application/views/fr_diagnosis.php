@@ -117,11 +117,11 @@
                  closable:true,
                  resizable:true,
                  "
-                 style="width:990px;height:650px;padding:10px;">
+                 style="width:900px;height:650px;padding:10px;">
             
             
             
-            <div style="padding:10px 60px 20px 60px">
+            <div style="padding:10px 0px ">
                 <form id="fr_diagnosis" method="post">
                     <table>
                        <tr>
@@ -305,7 +305,7 @@
         <option value="3">TVD</option>
                            </select>
                         -->
-                        <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"  id="disease_detail_1"  style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -314,12 +314,14 @@
                         
                         Underllying disease 6 :
                         
-                         <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                         <input class="easyui-combobox"  id="disease_detail_6"  style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
                                
                                "  />
+                         
+                         <a href="javascript:void(0)"   class="easyui-linkbutton" data-options=" iconCls:'icon-ok'  "  onclick="$('#dia_disease').dialog('open');   "  >Disease</a>
                         
                     </td>
                 </tr>
@@ -330,7 +332,7 @@
                         Underllying disease 2 :
                     </td>
                     <td>
-                        <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"  id="disease_detail_2"  style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -339,7 +341,7 @@
                         
                         Underllying disease 7 :
                         
-                         <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                         <input class="easyui-combobox"  id="disease_detail_7"   style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -355,7 +357,7 @@
                         Underllying disease 3 :
                     </td>
                     <td>
-                         <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                         <input class="easyui-combobox"  id="disease_detail_3"   style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -364,7 +366,7 @@
                         
                         Underllying disease 8 :
                         
-                         <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                         <input class="easyui-combobox"    id="disease_detail_8"  style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -379,7 +381,7 @@
                         Underllying disease 4 :
                     </td>
                     <td>
-                        <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"    id="disease_detail_4"   style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -388,7 +390,7 @@
                         
                         Underllying disease 9 :
                         
-                        <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"   id="disease_detail_9"   style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -404,7 +406,7 @@
                         Underllying disease 5 :
                     </td>
                     <td>
-                         <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                         <input class="easyui-combobox"   id="disease_detail_5"     style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -413,7 +415,7 @@
                         
                         Underllying disease 10 :
                         
-                         <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                         <input class="easyui-combobox"    id="disease_detail_10"    style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',

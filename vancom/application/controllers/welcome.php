@@ -429,6 +429,56 @@ LIMIT 90 , 30   */
                                     }
                             }
                  }
+                 
+                 public  function insert_disease()
+                 {
+                     //http://127.0.0.1/vancom/index.php/welcome/insert_disease
+                      //echo "T";
+                          $disease_detail=trim($this->input->get_post("disease_detail"));
+                          $tb="tb_disease";
+                          
+                          $query_ck=$this->db->query(" select  *  from  $tb  where   disease_detail='$disease_detail'  ;      ");
+                          $ck=  $query_ck->num_rows();
+                          
+                        if( $ck == 0 )
+                        {
+                                    $this->db->set("disease_detail",$disease_detail);
+                                   $inst= $this->db->insert($tb);
+                                   if( $inst )
+                                   {
+                                       echo "true";
+                                   }
+                                   else
+                                   {
+                                       echo "false";
+                                   }
+                        }
+                          
+                     
+                 }
+                 
+                 public function del_disease()
+                 {
+                     //http://127.0.0.1/vancom/index.php/welcome/del_disease/56
+                       $id_disease=$this->uri->segment(3);
+                       if(  $id_disease > 0  )
+                       {
+                           
+                                   $tb="tb_disease";
+                                   $this->db->where('id_disease',  $id_disease );
+                                   $del=$this->db->delete($tb);
+                                   if( $del )
+                                   {
+                                       echo json_encode(array("success"=>true));
+                                   }
+                                   else
+                                   {
+                                       echo json_encode(array("success"=>false));
+                                   }
+                                   
+                       }
+                     
+                 }
                 
                          
 }
