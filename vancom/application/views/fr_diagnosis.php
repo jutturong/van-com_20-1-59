@@ -255,14 +255,14 @@
                            </select>
                         -->
                         
-                        <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"   id="indication_detail1"  style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/indication',
                                valueField:'id_indication',
                                textField:'indication_detail',
                                
                                "  />
                         
-                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-large-shapes '  " >Add Indication</a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-ok '  "   onclick="$('#dia_indication').dialog('open');  "  >Add Indication</a>
                         
                     </td>
                     
@@ -282,7 +282,7 @@
         <option value="3">TVD</option>
                            </select>
                         -->
-                        <input class="easyui-combobox"  style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"   id="indication_detail2"  style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/indication',
                                valueField:'id_indication',
                                textField:'indication_detail',

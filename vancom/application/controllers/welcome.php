@@ -357,6 +357,54 @@ LIMIT 90 , 30   */
                      echo json_encode($rows);
                  }
                  
+                 public  function insert_indication()
+                 {
+                     //http://127.0.0.1/vancom/index.php/welcome/insert_indication
+                        $tb="tb_indication";
+                       $indication_detail=trim($this->input->get_post("indication_detail"));
+                       
+                       $query=$this->db->query(" select    *   from  $tb  where    indication_detail   = '$indication_detail'   ;      ");
+                      
+                         $ck=$query->num_rows();
+                       
+                       if( $ck == 0 )
+                       {
+                                        $this->db->set("indication_detail",$indication_detail);
+                                        $inst=$this->db->insert($tb);
+                                        if( $inst )
+                                        {
+                                               echo "true";
+                                        }
+                                        else
+                                        {
+                                               echo "false"; 
+                                        }
+                       }
+                      else 
+                          {
+                                echo "excess"; 
+                          }
+                 }
+                 
+                 public  function  del_indication()
+                 {
+                     //http://127.0.0.1/vancom/index.php/welcome/del_indication/45
+                     
+                      $tb="tb_indication";
+                      $id_indication=$this->uri->segment(3);
+                      $this->db->where("id_indication",$id_indication);
+                      $del=$this->db->delete($tb);
+                      if( $del )
+                      {
+                          echo  json_encode(array("success"=>true));
+                      }
+                      else
+                      {
+                           echo  json_encode(array("success"=>false));
+                      }
+                 }
+                 
+                 
                  public function tb_disease()
                  {
                      //http://127.0.0.1/vancom/index.php/welcome/tb_disease
