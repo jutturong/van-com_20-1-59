@@ -580,6 +580,17 @@
                        Vd :
                     </td>
                     <td>
+                        
+                        <input class="easyui-combobox"   id="id_vd"   style="width:150px;height: 30px;padding: 10px"  
+                               data-options="
+                                  url:'<?=base_url()?>index.php/welcome/tb_vd',
+                                  valueField:'id_vd',
+                                  textField:'vd_detail',
+                                  
+                               "     />
+                        
+                        <a href="javascript:void(0)"   class="easyui-linkbutton"   onclick=" $('#dia_vd').dialog('open'); "  data-options=" iconCls:'icon-ok'         ">เพิ่ม Vd</a>
+                        
                         <input class="easyui-numberbox" precision="2" id="vd" name="vd" value="49.00" style="width:70px;"></input>
                          L/Kg.
                          <?=nbs(4)?>

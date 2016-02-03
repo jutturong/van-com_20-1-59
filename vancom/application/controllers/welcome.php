@@ -527,6 +527,60 @@ LIMIT 90 , 30   */
                        }
                      
                  }
+                 
+                 public function tb_vd()
+                 {
+                     //http://127.0.0.1/vancom/index.php/welcome/tb_vd
+                       $tb="tb_vd";
+                       $q=$this->db->get($tb);
+                       foreach($q->result() as $row)
+                       {
+                             $rows[]=$row;
+                       }
+                         echo  json_encode($rows);
+                     
+                 }
+                 public  function  insert_vd()
+                 {
+                      //http://127.0.0.1/vancom/index.php/welcome/insert_vd
+                        $vd_detail = $this->input->get_post("add_vd_detail");
+                       $tb="tb_vd";
+                       $qck=$this->db->get_where($tb,array("vd_detail"=>$vd_detail));
+                        $ck=$qck->num_rows();
+                        if( $ck == 0)
+                        {
+                              $this->db->set("vd_detail",$vd_detail);
+                              $inst=$this->db->insert($tb);
+                              if( $inst )
+                              {
+                                     echo "true";
+                              }
+                              else
+                              {
+                                     echo "false";
+                              }
+                        }else{
+                            echo "exess";
+                        }                 
+                 }
+                 
+                 public  function  del_vd()
+                 {
+                     //http://127.0.0.1/vancom/index.php/welcome/del_vd/10
+                       $tb="tb_vd";
+                       $id_vd=$this->uri->segment(3);
+                       $this->db->where("id_vd",$id_vd);
+                       $del=$this->db->delete($tb);
+                       if( $del )
+                       {
+                             echo  json_encode(array("success"=>true));
+                       }
+                       else
+                       {
+                             echo   json_encode(array("success"=>false));
+                       }
+                     
+                 }
                 
                          
 }
