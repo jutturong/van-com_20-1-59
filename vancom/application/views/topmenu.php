@@ -170,6 +170,7 @@
         <div  data-options=" iconCls:'icon-ok'  "  onclick="$('#dia_disease').dialog('open');   ">Underllying disease</div>
         <div  data-options=" iconCls:'icon-ok'  "  onclick="$('#dia_indication').dialog('open');  ">Reason (Indication)</div>
         <div   data-options=" iconCls:'icon-ok'  "   onclick=" $('#dia_vd').dialog('open'); "> เพิ่ม Vd</div>
+        <div data-options="iconCls:'icon-ok' "   onclick=" $('#dia_reason').dialog('open'); "    >Add Reason for TDM</div>
         
         
         <!--
@@ -293,3 +294,9 @@
    <!-- manage   VD -->
      <?=$this->load->view("manage_vd")?>
    <!-- manage  VD -->
+   
+   
+   
+   <!-- Add Reason for TDM  -->
+  <?=$this->load->view("reason_for_tdm")?>
+  <!-- Add Reason for TDM  -->  

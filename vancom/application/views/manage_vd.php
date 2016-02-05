@@ -48,7 +48,7 @@
                    <input class="easyui-textbox"   id="add_vd_detail"   name="add_vd_detail"    style="width:220px;height: 40px"   data-options=" iconCls:'icon-lock' ,  prompt:' เพิ่มข้อมูลยา Vd  '   "   />
                </label>
                    
-                       <input type="submit"  style="height: 30px;"  onclick="submit_vd()"   />
+                       <input type="submit"   style="height: 30px;"  onclick="submit_vd()"   />
                    </form>
                    
                    

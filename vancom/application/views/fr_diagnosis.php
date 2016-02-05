@@ -431,13 +431,23 @@
                        Reason for TDM :
                     </td>
                     <td>
-                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
-        <option value="1">Routine Follow up</option>
-        
-       
-                           </select>
                         
-                          <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-large-shapes '  " >Add Reason for TDM</a>
+                        <!--
+                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
+        <option value="1">Routine Follow up</option>     
+                           </select>
+                        -->
+                        
+                        <input class="easyui-combobox" id="reason_for_tdm" style="width:200px;height: 30px;"
+                             data-options="
+                             url:'<?=base_url()?>index.php/welcome/reason_tdm',
+                             valueField:'id_reason',
+                             textField:'reason_detail',                                                        
+                             "
+                             />
+                        
+                   
+                          <a href="javascript:void(0)"  onclick=" $('#dia_reason').dialog('open'); "    class="easyui-linkbutton" data-options="  iconCls:' icon-ok '  " >Add Reason for TDM</a>
                         
                     </td>
                 </tr>
