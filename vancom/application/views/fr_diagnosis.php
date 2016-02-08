@@ -31,15 +31,9 @@
         */
        
        var cb_conts=$('#cb_conts');
-       /*
-        cb_conts.combobox({
-            onSelect:function(e)
-            { 
-                //alert('t'); 
-               alert( cb_conts.combobox('getValue') );
-            }
-        });
-       */
+       
+        
+       
        
       // if( W.textbox('getValue') > 0  &&  conts.textbox('getValue') > 0 )
        if( W.textbox('getValue') > 0    )
@@ -100,9 +94,39 @@
     });
     
     
+    
+    
+    
 </script>
 
-
+<script type="text/javascript">
+$(function()
+{
+    $('#cb_conts').combobox({
+        onSelect:function()
+        {
+            //alert('t');
+            var  val=$('#cb_conts').combobox('getValue');
+           // var  cb_id_vd=$('#id_vd').combobox();
+            if( val > 0)
+            {
+                //alert(val);
+                if( val == 0.25 )
+                {
+                    //Aninoglycosides
+                    $('#id_vd').combobox('setText','Aninoglycosides');
+                }
+                if( val == 0.7 )
+                {
+                    //Aninoglycosides
+                    $('#id_vd').combobox('setText','Vancomycin');
+                }
+            }
+        }
+        
+    });
+});
+</script>
 
 
 
@@ -217,18 +241,13 @@
                         /
                         Conts. (ค่าคงที่)
                        <!-- <input class="easyui-numberbox" value="2" name="conts" id="conts" style="width: 60px;height: 30px;" /> -->
-                        <select class="easyui-combobox" id="cb_conts" name="cb_conts" style="width:100px;height: 30px" data-options="
-                                onSelect:function(e)
-                                {
-                                  //alert('t');
-                                }
-                                ">
-                            <option value="0"> เลือก Conts. </option>
-                            <option value="0.2">0.2</option>
-                            <option value="0.25">0.25</option>
-                            <option value="0.65">0.65</option>
-                            <option value="0.7">0.7</option>
-                             <option value="1.4">1.4</option>
+                        <select class="easyui-combobox" id="cb_conts" name="cb_conts" style="width:100px;height: 30px" >                               
+                            <option value=0> เลือก Conts. </option>
+                            <option value=0.2>0.2</option>
+                            <option value=0.25>0.25</option>
+                            <option value=0.65>0.65</option>
+                            <option value=0.7>0.7</option>
+                             <option value=1.4>1.4</option>
                         </select>
                     </td>
                 </tr>
