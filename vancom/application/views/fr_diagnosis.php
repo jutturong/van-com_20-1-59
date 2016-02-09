@@ -115,11 +115,40 @@ $(function()
                 {
                     //Aninoglycosides
                     $('#id_vd').combobox('setText','Aninoglycosides');
+                    $('#id_vd').combobox('setValue',1);
+                    //alert( $('#id_vd').combobox('getValue') );
                 }
                 if( val == 0.7 )
                 {
                     //Aninoglycosides
                     $('#id_vd').combobox('setText','Vancomycin');
+                    $('#id_vd').combobox('setValue',2);
+                }
+                 if( val == 0.65 )
+                {
+                    //Aninoglycosides
+                    $('#id_vd').combobox('setText','Phenobarbital');
+                    $('#id_vd').combobox('setValue',3);
+                }
+                
+                if( val == 0.655 )
+                {
+                    //Aninoglycosides
+                    $('#id_vd').combobox('setText','Phenytoin');
+                    $('#id_vd').combobox('setValue',4);
+                }
+                
+                if( val == 0.2 )
+                {
+                    //Aninoglycosides
+                    $('#id_vd').combobox('setText','Valproate');
+                    $('#id_vd').combobox('setValue',5);
+                }
+                if( val == 1.4 )
+                {
+                    //Aninoglycosides
+                    $('#id_vd').combobox('setText','Carbamazepine');
+                    $('#id_vd').combobox('setValue',6);
                 }
             }
         }
@@ -246,6 +275,7 @@ $(function()
                             <option value=0.2>0.2</option>
                             <option value=0.25>0.25</option>
                             <option value=0.65>0.65</option>
+                            <option value=0.655>0.65</option>
                             <option value=0.7>0.7</option>
                              <option value=1.4>1.4</option>
                         </select>
@@ -610,7 +640,7 @@ $(function()
                     </td>
                     <td>
                         
-                        <input class="easyui-combobox"   id="id_vd"   style="width:150px;height: 30px;padding: 10px"  
+                        <input class="easyui-combobox"   id="id_vd"   style="width:200px;height: 30px;padding: 10px"  
                                data-options="
                                   url:'<?=base_url()?>index.php/welcome/tb_vd',
                                   valueField:'id_vd',
