@@ -633,7 +633,74 @@ LIMIT 90 , 30   */
                      }
                  }
                 
-                         
+              public function insert_dia()//บันทึกประวัติการรักษา
+              {
+                  //echo "TEST";
+                  echo  $id_patient=trim($this->input->get_post("HN_dia"));
+                  echo "<br>";
+                  echo  $age=trim($this->input->get_post("age"));
+                  echo "<br>";
+                  echo  $ward=trim($this->input->get_post("ward"));
+                  echo "<br>";
+                  echo  $W=trim($this->input->get_post("W"));  //body weight
+                  echo "<br>";
+                  echo  $cb_conts=trim($this->input->get_post("cb_conts")); //ค่าคงที่
+                  echo "<br>";
+                  echo  $height=trim($this->input->get_post("height")); //Height
+                  echo  "<br>";
+                  
+                  echo  $indication_detail1=trim($this->input->get_post("indication_detail1"));  // Reason for TDM 1 (Indication) :
+                  echo "<br>";
+                  echo  $indication_detail2=trim($this->input->get_post("indication_detail2"));  //Reason for TDM 2 (Indication) :
+                  echo "<br>";
+                  
+                  echo $disease_detail_1=trim($this->input->get_post("disease_detail_1")); // Underllying disease 1 :
+                  echo "<br>";
+                  
+                 
+                  
+                  echo $disease_detail_6=trim($this->input->get_post("disease_detail_6"));   // Underllying disease 6 :
+                  echo "<br>";
+                  
+                  
+                  echo  $disease_detail_2=trim($this->input->get_post("disease_detail_2")); // Underllying disease 2 :
+                  echo "<br>";
+                  
+                  echo  $disease_detail_7=trim($this->input->get_post("disease_detail_7")); //Underllying disease 7 :
+                  echo "<br>";
+                  
+                  echo $disease_detail_3=trim($this->input->get_post("disease_detail_3")); // Underllying disease 3 :
+                  echo "<br>";
+                  
+                  echo $disease_detail_8=trim($this->input->get_post("disease_detail_8")); // Underllying disease 8 :
+                  echo "<br>";
+                  
+                  echo $disease_detail_4=trim($this->input->get_post("disease_detail_4")); // Underllying disease 4 :
+                  echo "<br>";
+                  
+                  echo $disease_detail_9=trim($this->input->get_post("disease_detail_9")); //Underllying disease 9 :
+                  echo "<br>";
+                  
+                  echo  $disease_detail_5=trim($this->input->get_post("disease_detail_5")); // Underllying disease 5 :
+                  echo "<br>";
+                  
+                  echo $disease_detail_10=trim($this->input->get_post("disease_detail_10")); // Underllying disease 10 :
+                  echo "<br>";
+                  
+                  echo $reason_for_tdm=trim($this->input->get_post("reason_for_tdm")); // Reason for TDM :
+                  echo "<br>";
+                  
+                  echo $id_drug=trim($this->input->get_post("id_drug")); // Drug level requested (Vancomycin) :
+                  echo "<br>";
+                   
+                  echo $current_medications=trim($this->input->get_post("current_medications")); // Current Medications :
+                  echo "<br>";
+                  
+                  echo $current_medications_weight=trim($this->input->get_post("current_medications_weight")); //Current Medications :  g
+                  echo "<br>";
+                  
+                  
+              }
 }
 
 /* End of file welcome.php */

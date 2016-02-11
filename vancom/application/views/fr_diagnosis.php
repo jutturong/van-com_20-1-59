@@ -1,3 +1,5 @@
+
+
 <script type="text/javascript">
     $(function()
     {
@@ -157,10 +159,10 @@ $(function()
 });
 </script>
 
+<script type="text/javascript">
 
 
-
-
+</script>
 
 
 <!-- เพิ่มประวัติการรักษา -->
@@ -169,13 +171,14 @@ $(function()
                  iconCls:' icon-large-shapes ',
                  closable:true,
                  resizable:true,
+                
                  "
-                 style="width:900px;height:650px;padding:10px;">
+                 style="width:900px;height:600px;padding:10px;top:5px;left:5px;">
             
             
             
             <div style="padding:10px 0px ">
-                <form id="fr_diagnosis" method="post">
+                <form id="fr_diag" action="<?=base_url()?>index.php/welcome/insert_dia"  method="post"  enctype="multipart/form-data" >
                     <table>
                        <tr>
                     <td>HN :</td>
@@ -187,7 +190,7 @@ $(function()
             idField: 'HN',
             textField: 'HN',
             mode:'remote',
-            idField:'HN',
+            idField:'id_patient',
             url: '<?=base_url()?>index.php/welcome/cmb_hn/',
             method: 'post',
             columns: [[
@@ -233,15 +236,15 @@ $(function()
                 <tr>
                     <td>Patient's Name - Lastname :</td>
                     <td>
-                        <input class="easyui-textbox" type="text" name="name_dia" id="name_dia"  data-options="required:true, iconCls:' icon-lock '   "  style="  width:150px;height:30px  "></input>
-                         <input class="easyui-textbox" type="text" name="lastname_dia" id='lastname_dia'  data-options="required:true , iconCls:'icon-lock'  "  style="  width:200px;height:30px  "></input>
+                        <input class="easyui-textbox" type="text" name="name_dia" id="name_dia"  data-options="required:false, iconCls:' icon-lock '   "  style="  width:150px;height:30px  "></input>
+                         <input class="easyui-textbox" type="text" name="lastname_dia" id='lastname_dia'  data-options="required:false , iconCls:'icon-lock'  "  style="  width:200px;height:30px  "></input>
                     </td>
                 </tr>
                 
                 <tr>
                     <td>Sex :</td>
                     <td>
-                        <input class="easyui-textbox" type="text" name="sex_dia"  id="sex_dia"  data-options="required:true,iconCls:'icon-lock '  "  style="  width:100px;height:30px  "></input>
+                        <input class="easyui-textbox" type="text" name="sex_dia"  id="sex_dia"  data-options="required:false,iconCls:'icon-lock '  "  style="  width:100px;height:30px  "></input>
                          
                     </td>
                 </tr>
@@ -249,7 +252,7 @@ $(function()
                 <tr>
                     <td>Age :</td>
                     <td>
-                        <input class="easyui-textbox" type="text" name="name" data-options="required:true,iconCls:'icon-lock '  "  style="  width:100px;height:30px  "></input>
+                        <input class="easyui-textbox" type="text" id="age" name="age" data-options="required:false,iconCls:'icon-lock '  "  style="  width:100px;height:30px  "></input>
                          
                     </td>
                 </tr>
@@ -257,7 +260,7 @@ $(function()
                 <tr>
                     <td>Ward :</td>
                     <td>
-                        <input class="easyui-textbox" type="text" name="name" data-options="required:false"  style="  width:100px;height:30px;  "></input>
+                        <input class="easyui-textbox" type="text" name="ward" id="ward" data-options="required:false"  style="  width:100px;height:30px;  "></input>
                   
                     </td>
                 </tr>
@@ -285,7 +288,7 @@ $(function()
                  <tr>
                     <td>Height  :</td>
                     <td>
-                        <input class="easyui-numberbox" type="text" name="name" data-options="required:false"  style="  width:100px;height:30px  "></input>
+                        <input class="easyui-numberbox" type="text" name="height" id="height" data-options="required:false"  style="  width:100px;height:30px  "></input>
                         cm.
                     </td>
                 </tr>
@@ -304,7 +307,7 @@ $(function()
                            </select>
                         -->
                         
-                        <input class="easyui-combobox"   id="indication_detail1"  style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"   id="indication_detail1" name="indication_detail1" style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/indication',
                                valueField:'id_indication',
                                textField:'indication_detail',
@@ -331,7 +334,7 @@ $(function()
         <option value="3">TVD</option>
                            </select>
                         -->
-                        <input class="easyui-combobox"   id="indication_detail2"  style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"   id="indication_detail2" name="indication_detail2"  style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/indication',
                                valueField:'id_indication',
                                textField:'indication_detail',
@@ -354,7 +357,7 @@ $(function()
         <option value="3">TVD</option>
                            </select>
                         -->
-                        <input class="easyui-combobox"  id="disease_detail_1"  style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"  id="disease_detail_1" name="disease_detail_1"  style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -363,7 +366,7 @@ $(function()
                         
                         Underllying disease 6 :
                         
-                         <input class="easyui-combobox"  id="disease_detail_6"  style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"  id="disease_detail_6" name="disease_detail_6" style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -381,7 +384,7 @@ $(function()
                         Underllying disease 2 :
                     </td>
                     <td>
-                        <input class="easyui-combobox"  id="disease_detail_2"  style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"  id="disease_detail_2" name="disease_detail_2"  style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -390,7 +393,7 @@ $(function()
                         
                         Underllying disease 7 :
                         
-                         <input class="easyui-combobox"  id="disease_detail_7"   style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"  id="disease_detail_7" name="disease_detail_7"  style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -406,7 +409,7 @@ $(function()
                         Underllying disease 3 :
                     </td>
                     <td>
-                         <input class="easyui-combobox"  id="disease_detail_3"   style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"  id="disease_detail_3" name="disease_detail_3"   style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -415,7 +418,7 @@ $(function()
                         
                         Underllying disease 8 :
                         
-                         <input class="easyui-combobox"    id="disease_detail_8"  style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"    id="disease_detail_8" name="disease_detail_8" style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -430,7 +433,7 @@ $(function()
                         Underllying disease 4 :
                     </td>
                     <td>
-                        <input class="easyui-combobox"    id="disease_detail_4"   style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"    id="disease_detail_4" name="disease_detail_4"   style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -439,7 +442,7 @@ $(function()
                         
                         Underllying disease 9 :
                         
-                        <input class="easyui-combobox"   id="disease_detail_9"   style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"   id="disease_detail_9" name="disease_detail_9"   style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -455,7 +458,7 @@ $(function()
                         Underllying disease 5 :
                     </td>
                     <td>
-                         <input class="easyui-combobox"   id="disease_detail_5"     style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"   id="disease_detail_5"  name="disease_detail_5"    style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -464,7 +467,7 @@ $(function()
                         
                         Underllying disease 10 :
                         
-                         <input class="easyui-combobox"    id="disease_detail_10"    style="width:200px;height: 30px" data-options="
+                        <input class="easyui-combobox"    id="disease_detail_10" name="disease_detail_10"    style="width:200px;height: 30px" data-options="
                                url:'<?=base_url()?>index.php/welcome/tb_disease',
                                valueField:'id_disease',
                                textField:'disease_detail',
@@ -487,7 +490,7 @@ $(function()
                            </select>
                         -->
                         
-                        <input class="easyui-combobox" id="reason_for_tdm" style="width:200px;height: 30px;"
+                        <input class="easyui-combobox" id="reason_for_tdm" name="reason_for_tdm" style="width:200px;height: 30px;"
                              data-options="
                              url:'<?=base_url()?>index.php/welcome/reason_tdm',
                              valueField:'id_reason',
@@ -519,7 +522,7 @@ $(function()
                                "
                                />
                         -->
-                        <input class="easyui-combobox"  id="id_drug"  style=" width:200;height: 30px "
+                        <input class="easyui-combobox"  id="id_drug" name="id_drug"  style=" width:200;height: 30px "
                                data-options=" 
                                  valueField:'id_drug',
                                  textField:'drug_detail',
@@ -542,13 +545,13 @@ $(function()
                        Current Medications :
                     </td>
                     <td>
-                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
-        <option value="1">ceftazidime </option>
-         <option value="2">Vancomycin </option>
+                        <select class="easyui-combobox" name="current_medications" id="current_medications" style="width:200px;height: 30px;">
+        <option value=1>ceftazidime </option>
+         <option value=2>Vancomycin </option>
        
                            </select>
                         
-                        <input class="easyui-numberbox" value="2" style="height: 30px;width: 50px" /> g
+                        <input class="easyui-numberbox" value="2" id="current_medications_weight" name="current_medications_weight" style="height: 30px;width: 50px" /> g
                         
                         <input class="easyui-datebox" style="width:100px;height: 30px"/>
                         
@@ -575,7 +578,7 @@ $(function()
                         
                      Date Labotory Data
                         
-                          <input class="easyui-datebox" style="height: 30px;width:100px;"  data-options="required:true" ></input>
+                          <input class="easyui-datebox" style="height: 30px;width:100px;"  data-options="required:false" ></input>
                         
                     </td>
                 </tr>
@@ -589,7 +592,7 @@ $(function()
                         
                     
                         
-                          <input class="easyui-datetimebox" style="height: 30px"  data-options="required:true" ></input>
+                          <input class="easyui-datetimebox" style="height: 30px"  data-options="required:false" ></input>
                         
                     </td>
                 </tr>
@@ -603,7 +606,7 @@ $(function()
                         
                     
                         
-                          <input class="easyui-datetimebox" style="height: 30px"  data-options="required:true" ></input>
+                          <input class="easyui-datetimebox" style="height: 30px"  data-options="required:false" ></input>
                         
                     </td>
                 </tr>
@@ -712,7 +715,7 @@ $(function()
                  <tr>
                     <td>Date :</td>
                     <td>
-                        <input class="easyui-datebox" data-options="required:true" style="height: 30px;"></input>
+                        <input class="easyui-datebox" data-options="required:false" style="height: 30px;"></input>
                    
                     </td>
                 </tr>
@@ -720,8 +723,30 @@ $(function()
                 
                  <tr>
                     <td colspan="2">
-                          <a href="javascript:void(0)" class="easyui-linkbutton" data-options=" iconCls:'icon-large-shapes' " >Insert</a>
-                          <a href="javascript:void(0)" class="easyui-linkbutton"  data-options=" iconCls:'icon-cancel'   "  onclick="$('#add_diagnosis').window('close')   "  >Close</a>
+                        
+                        
+                     <!--   <a href="javascript:void(0)" class="easyui-linkbutton" onclick="   "  data-options=" iconCls:'icon-large-shapes' ," >Insert</a> -->                               
+ 
+                          
+                            
+                        
+                          
+                       <input type="submit" onclick="
+                              //alert('t');
+                              //$.messager.alert('t');
+                              $('#fr_diag').form({
+                                  url:'<?=base_url()?>index.php/welcome/insert_dia',
+                                  success:function(data)
+                                  {
+                                      alert(data);      
+                                  }
+                                  
+                              });
+                              "  /> 
+                       
+                        <a href="javascript:void(0)" class="easyui-linkbutton"  data-options=" iconCls:'icon-cancel'   "  onclick="$('#add_diagnosis').window('close')   "  >Close</a>  
+                       
+                       
                     </td>
                 </tr>
                 
