@@ -545,17 +545,24 @@ $(function()
                        Current Medications :
                     </td>
                     <td>
+                        
+                        <!--
                         <select class="easyui-combobox" name="current_medications" id="current_medications" style="width:200px;height: 30px;">
         <option value=1>ceftazidime </option>
          <option value=2>Vancomycin </option>
        
                            </select>
+                        -->
+                        
+                        <input class="easyui-textbox" id="current_medications" name="current_medications"  style="width:200px;height: 30px;"   />
                         
                         <input class="easyui-numberbox" value="2" id="current_medications_weight" name="current_medications_weight" style="height: 30px;width: 50px" /> g
                         
-                        <input class="easyui-datebox" style="width:100px;height: 30px"/>
+                        <input class="easyui-datebox" style="width:200px;height: 30px" name="current_medications_date" id="current_medications_date"/>
                         
+                        <!--
                           <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-large-shapes '  " >Add Current Medications</a>
+                        -->
                         
                     </td>
                 </tr>
@@ -566,19 +573,24 @@ $(function()
                        Laboratory Data (within 5 day) :
                     </td>
                     <td>
-                        <select class="easyui-combobox" name="state" style="width:200px;height: 30px;">
+                       
+                        <!--
+                        <select class="easyui-combobox" name="Laboratory_Data" id="Laboratory_Data" style="width:200px;height: 30px;">
         <option value="1">Creatinine</option>
          <option value="2">Creatinine</option>
        <option value="3">Creatinine</option>
                            </select>
+                        -->
                         
-                        <input class="easyui-numberbox" style="width:60px;height: 30px;"   />
+                        <input class="easyui-textbox"  name="Laboratory_Data" id="Laboratory_Data"  style="width:200px;height: 30px;" />
+                        
+                        <input class="easyui-numberbox" id="Laboratory_Data_mg" name="Laboratory_Data_mg" style="width:60px;height: 30px;"   />
                         mg/dL
                         
                         
                      Date Labotory Data
                         
-                          <input class="easyui-datebox" style="height: 30px;width:100px;"  data-options="required:false" ></input>
+                     <input class="easyui-datebox" id="Laboratory_Data_date" name="Laboratory_Data_date"  style="height: 30px;width:180px;"  data-options="required:false" ></input>
                         
                     </td>
                 </tr>
@@ -592,7 +604,7 @@ $(function()
                         
                     
                         
-                          <input class="easyui-datetimebox" style="height: 30px"  data-options="required:false" ></input>
+                        <input class="easyui-datetimebox"  id="Sampling_Time"  name="Sampling_Time" style="height: 30px;width: 200px;"  data-options="required:false" ></input>
                         
                     </td>
                 </tr>
@@ -606,7 +618,7 @@ $(function()
                         
                     
                         
-                          <input class="easyui-datetimebox" style="height: 30px"  data-options="required:false" ></input>
+                        <input class="easyui-datetimebox" id="DrugAdministrationTime" name="DrugAdministrationTime" style="height: 30px;width: 200px;"  data-options="required:false" ></input>
                         
                     </td>
                 </tr>
@@ -617,11 +629,11 @@ $(function()
                     </td>
                     <td>
 
-                          <input class="easyui-numberbox" precision="2" value="7.96" style="width:70px;height: 30px;" />
+                        <input class="easyui-numberbox" id="Measured_level" name="Measured_level" precision="2" value="7.96" style="width:70px;height: 30px;" />
                         
                          
                         
-                            <select class="easyui-combobox" name="state" style="width:100px;height: 30px;">
+                        <select class="easyui-combobox" name="Measured_level_cmb" id="Measured_level_cmb" style="width:100px;height: 30px;">
         <option value="1">ng/mL</option>
          <option value="2">mg/mL</option>
       
@@ -643,7 +655,7 @@ $(function()
                     </td>
                     <td>
                         
-                        <input class="easyui-combobox"   id="id_vd"   style="width:200px;height: 30px;padding: 10px"  
+                        <input class="easyui-combobox"   id="id_vd" name="id_vd"   style="width:200px;height: 30px;padding: 10px"  
                                data-options="
                                   url:'<?=base_url()?>index.php/welcome/tb_vd',
                                   valueField:'id_vd',
@@ -653,11 +665,11 @@ $(function()
                         
                         <a href="javascript:void(0)"   class="easyui-linkbutton"   onclick=" $('#dia_vd').dialog('open'); "  data-options=" iconCls:'icon-ok'         ">เพิ่ม Vd</a>
                         
-                        <input class="easyui-numberbox" precision="2" id="vd" name="vd" value="49.00" style="width:70px;"></input>
+                        <input class="easyui-numberbox" precision="2" id="vd" name="vd"  style="width:70px;"></input>
                          L/Kg.
                          <?=nbs(4)?>
                          Cl :
-                         <input class="easyui-numberbox" precision="4" id="cl" name="cl" value="0.01000" style="width:70px;"></input>
+                         <input class="easyui-numberbox" precision="4" id="cl" name="cl"  style="width:70px;"></input>
                          L/hr
                     </td>
                 </tr>
@@ -680,34 +692,34 @@ $(function()
                 
                 <tr>
                     <td>Assessment :</td>
-                    <td><input class="easyui-textbox" data-options="iconCls:'icon-add'" style="width:250px;height: 30px"></input></td>
+                    <td><input class="easyui-textbox" id="Assessment" name="Assessment" data-options="iconCls:'icon-add'" style="width:250px;height: 30px"></input></td>
                 </tr>
                 
                 
                 <tr>
                     <td>Interpretation and Recommendation :</td>
-                    <td><input class="easyui-textbox" data-options="iconCls:'icon-add',multiline:true  " style="width:400px;height: 50px"></input></td>
+                    <td><input class="easyui-textbox" data-options="iconCls:'icon-add',multiline:true  " id="Interpretation_Recommendation"  name="Interpretation_Recommendation" style="width:400px;height: 50px"></input></td>
                 </tr>
                 
                 
                  <tr>
                     <td>Note :</td>
-                    <td><input class="easyui-textbox" data-options="iconCls:'icon-add',multiline:true  " style="width:400px;height: 50px"></input></td>
+                    <td><input class="easyui-textbox" id="Note" name="Note" data-options="iconCls:'icon-add',multiline:true  " style="width:400px;height: 50px"></input></td>
                 </tr>
                 
                    <tr>
                     <td>Pharmacist :</td>
                     <td>
-                        <input class="easyui-textbox" data-options="iconCls:'icon-man'  "  value="ภญ.ปฐมา โสภาช"  style="width:200px;height: 30px" ></input>
+                        <input class="easyui-textbox" data-options="iconCls:'icon-man'  " id="Pharmacist1" name="Pharmacist1" value="ภญ.ปฐมา โสภาช"  style="width:200px;height: 30px" ></input>
                         /
-                        <input class="easyui-textbox" data-options="iconCls:'icon-man'  "   value="ภญ.ศิริลักษณ์ ใจซื่อ"  style="width:200px;height: 30px" ></input>
+                        <input class="easyui-textbox" data-options="iconCls:'icon-man'  "  id="Pharmacist2" name="Pharmacist2" value="ภญ.ศิริลักษณ์ ใจซื่อ"  style="width:200px;height: 30px" ></input>
                     </td>
                 </tr>
                 
                 <tr>
                     <td>Tel :</td>
                     <td>
-                        <input class="easyui-numberbox"  value="11967"  style="width:100px;height: 30px" ></input>
+                        <input class="easyui-numberbox" id="tel" name="tel" value="11221"  style="width:100px;height: 30px" ></input>
                    
                     </td>
                 </tr>
@@ -715,7 +727,7 @@ $(function()
                  <tr>
                     <td>Date :</td>
                     <td>
-                        <input class="easyui-datebox" data-options="required:false" style="height: 30px;"></input>
+                        <input class="easyui-datebox"id="date_record" name="date_record" data-options="required:false" style="height: 30px;"></input>
                    
                     </td>
                 </tr>
@@ -727,7 +739,7 @@ $(function()
                         
                      <!--   <a href="javascript:void(0)" class="easyui-linkbutton" onclick="   "  data-options=" iconCls:'icon-large-shapes' ," >Insert</a> -->                               
  
-                          
+                      <?=nbs(60)?>    
                             
                         
                           

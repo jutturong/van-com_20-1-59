@@ -29,6 +29,7 @@ class Welcome extends CI_Controller {
                         // Call the Model constructor
                           parent::__construct();
                           $this->load->model('authentication');
+                          $this->load->model('date');
                     }
     
     
@@ -699,6 +700,90 @@ LIMIT 90 , 30   */
                   echo $current_medications_weight=trim($this->input->get_post("current_medications_weight")); //Current Medications :  g
                   echo "<br>";
                   
+                   $current_medications_date=trim($this->input->get_post("current_medications_date")); //Current Medications  date
+                  //echo "<br>";
+                  
+                  if(  strlen($current_medications_date) > 0  )
+                  {
+                     echo $conv_current_medications_date = $this->date->conv_date($current_medications_date);
+                     echo "<br>";
+                  }
+                  
+                  echo $Laboratory_Data=trim($this->input->get_post("Laboratory_Data")); //Laboratory Data (within 5 day) :
+                  echo "<br>";
+                  
+                  $Laboratory_Data_mg=trim($this->input->get_post("Laboratory_Data_mg")); //Laboratory Data (within 5 day)  mg/dL
+                  //echo "<br>";
+                  
+                  $Laboratory_Data_date=trim($this->input->get_post("Laboratory_Data_date")); //Laboratory Data (within 5 day) date
+                  if(  strlen( $Laboratory_Data_date ) > 0  )
+                  {
+                     echo $conv_Laboratory_Data_date = $this->date->conv_date($Laboratory_Data_date);
+                     echo "<br>";
+                  }
+                  
+                  $Sampling_Time=trim($this->input->get_post("Sampling_Time")); // 1. Sampling Time :
+                  //echo "<br>";
+                  if( strlen($Sampling_Time) > 0 )
+                  {
+                     echo $conv_Sampling_Time=$this->date->conv_date_time($Sampling_Time);
+                      
+                  }
+                  
+                  $DrugAdministrationTime=trim($this->input->get_post("DrugAdministrationTime"));// 2. Drug Administration Time :
+                   if( strlen($DrugAdministrationTime) > 0 )
+                  {
+                     echo $conv_DrugAdministrationTime=$this->date->conv_date_time($DrugAdministrationTime);
+                      
+                  }
+                  
+                 echo $Measured_level=trim($this->input->get_post("Measured_level")); //   3. Measured level :
+                 echo "<br>";
+                 
+                 echo $Measured_level_cmb=trim($this->input->get_post("Measured_level_cmb"));  //3. Measured level : combobox
+                 echo "<br>";
+                  
+                 echo $id_vd=trim($this->input->get_post("id_vd")); //Vd :
+                 echo "<br>";
+                 
+                 echo $vd=trim($this->input->get_post("vd")); //Vd L/Kg.
+                 echo "<br>";
+                 
+                 echo $cl=trim($this->input->get_post("cl"));
+                 echo "<br>";
+                 
+                echo $ke=trim($this->input->get_post("ke"));
+                echo "<br>";
+                
+                echo $hl=trim($this->input->get_post("hl"));
+                echo "<br>";
+                
+                echo $Assessment=trim($this->input->get_post("Assessment"));
+                echo "<br>"; 
+                
+                echo $Interpretation_Recommendation=trim($this->input->get_post("Interpretation_Recommendation"));//Interpretation and Recommendation
+                echo "<br>"; 
+                
+                echo $Note=trim($this->input->get_post("Note"));
+                echo "<br>"; 
+                
+                echo $Pharmacist1=trim($this->input->get_post("Pharmacist1")); //Pharmacist
+                echo "<br>"; 
+                 
+                echo $Pharmacist2=trim($this->input->get_post("Pharmacist2")); //Pharmacist
+                echo "<br>";
+                
+                echo $tel=trim($this->input->get_post("tel"));
+                echo "<br>";
+                
+                 $date_record=trim($this->input->get_post("date_record")); //วันที่บันทึก
+                //echo "<br>";
+                 
+                if(  strlen($date_record) > 0  )
+                  {
+                     echo $conv_date_record = $this->date->conv_date($date_record);
+                     echo "<br>";
+                  }
                   
               }
 }
