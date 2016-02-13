@@ -645,7 +645,7 @@ LIMIT 90 , 30   */
                   echo "<br>";
                   echo  $W=trim($this->input->get_post("W"));  //body weight
                   echo "<br>";
-                  echo  $cb_conts=trim($this->input->get_post("cb_conts")); //ค่าคงที่
+                  echo  $cb_conts=trim($this->input->get_post("cb_conts")); //ค่าคงที่ 
                   echo "<br>";
                   echo  $height=trim($this->input->get_post("height")); //Height
                   echo  "<br>";
@@ -783,6 +783,44 @@ LIMIT 90 , 30   */
                   {
                      echo $conv_date_record = $this->date->conv_date($date_record);
                      echo "<br>";
+                  }
+                  
+                  
+                  $tb="tb_diagnosis";
+                  $this->db->set("id_patient",$id_patient);
+                  $this->db->set("ward_",$ward);
+                  $this->db->set("bodyweight",$W);
+                  $this->db->set("cb_conts",$cb_conts);
+                  $this->db->set("height",$height);
+                  $this->db->set("indication1",$indication_detail1);
+                  $this->db->set("indication2",$indication_detail2);
+                  $this->db->set("underllyingdisease1",$disease_detail_1 );   //underllyingdisease1
+                  $this->db->set("underllyingdisease2",$disease_detail_2);
+                  $this->db->set("underllyingdisease3",$disease_detail_3);
+                  $this->db->set("underllyingdisease4",$disease_detail_4);
+                  $this->db->set("underllyingdisease5",$disease_detail_5);
+                  
+                  $this->db->set("underllyingdisease6",$disease_detail_6 );   //underllyingdisease1
+                  $this->db->set("underllyingdisease7",$disease_detail_7);
+                  $this->db->set("underllyingdisease8",$disease_detail_8);
+                  $this->db->set("underllyingdisease9",$disease_detail_9);
+                  $this->db->set("underllyingdisease10",$disease_detail_10);
+                  
+                  $this->db->set("reason_for_TDM",$reason_for_tdm);
+                  $this->db->set("vancomycin",$id_drug  );  // Drug level requested (Vancomycin)
+                  
+                  $this->db->set("current_medications",$current_medications  );   //Current Medications
+                  $this->db->set("current_medications_weight",$current_medications_weight); //Current Medications เป็น g
+                  
+                  $this->db->set("current_medications_date", $conv_current_medications_date );  //
+                  
+                  $ck_inst=$this->db->insert($tb);
+                  if( $ck_inst )
+                  {
+                      echo "INSERT";
+                  }else
+                  {
+                      echo "INSERT false";
                   }
                   
               }
