@@ -173,7 +173,7 @@ $(function()
                  resizable:true,
                 
                  "
-                 style="width:900px;height:600px;padding:10px;top:5px;left:5px;">
+                 style="width:950px;height:600px;padding:10px;top:5px;left:5px;">
             
             
             

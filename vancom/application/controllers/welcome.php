@@ -637,80 +637,76 @@ LIMIT 90 , 30   */
               public function insert_dia()//บันทึกประวัติการรักษา
               {
                   //echo "TEST";
-                  echo  $id_patient=trim($this->input->get_post("HN_dia"));
-                  echo "<br>";
-                  echo  $age=trim($this->input->get_post("age"));
-                  echo "<br>";
-                  echo  $ward=trim($this->input->get_post("ward"));
-                  echo "<br>";
-                  echo  $W=trim($this->input->get_post("W"));  //body weight
-                  echo "<br>";
-                  echo  $cb_conts=trim($this->input->get_post("cb_conts")); //ค่าคงที่ 
-                  echo "<br>";
-                  echo  $height=trim($this->input->get_post("height")); //Height
-                  echo  "<br>";
+                    $id_patient=trim($this->input->get_post("HN_dia"));
+                  //echo "<br>";
+                   $age=trim($this->input->get_post("age"));
+                  //echo "<br>";
+                    $ward=trim($this->input->get_post("ward"));
+                  //echo "<br>";
+                   $W=trim($this->input->get_post("W"));  //body weight
+                  //echo "<br>";
+                   $cb_conts=trim($this->input->get_post("cb_conts")); //ค่าคงที่ 
+                  //echo "<br>";
+                   $height=trim($this->input->get_post("height")); //Height
+                  //echo  "<br>";                 
+                  $indication_detail1=trim($this->input->get_post("indication_detail1"));  // Reason for TDM 1 (Indication) :
+                  //echo "<br>";
+                  $indication_detail2=trim($this->input->get_post("indication_detail2"));  //Reason for TDM 2 (Indication) :
+                  //echo "<br>";
                   
-                  echo  $indication_detail1=trim($this->input->get_post("indication_detail1"));  // Reason for TDM 1 (Indication) :
-                  echo "<br>";
-                  echo  $indication_detail2=trim($this->input->get_post("indication_detail2"));  //Reason for TDM 2 (Indication) :
-                  echo "<br>";
+                  $disease_detail_1=trim($this->input->get_post("disease_detail_1")); // Underllying disease 1 :
+                  //echo "<br>";
+ 
+                  $disease_detail_6=trim($this->input->get_post("disease_detail_6"));   // Underllying disease 6 :
+                 // echo "<br>";
+ 
+                  $disease_detail_2=trim($this->input->get_post("disease_detail_2")); // Underllying disease 2 :
+                  //echo "<br>";
                   
-                  echo $disease_detail_1=trim($this->input->get_post("disease_detail_1")); // Underllying disease 1 :
-                  echo "<br>";
+                  $disease_detail_7=trim($this->input->get_post("disease_detail_7")); //Underllying disease 7 :
+                  //echo "<br>";
                   
-                 
+                  $disease_detail_3=trim($this->input->get_post("disease_detail_3")); // Underllying disease 3 :
+                  //echo "<br>";
                   
-                  echo $disease_detail_6=trim($this->input->get_post("disease_detail_6"));   // Underllying disease 6 :
-                  echo "<br>";
+                  $disease_detail_8=trim($this->input->get_post("disease_detail_8")); // Underllying disease 8 :
+                  //echo "<br>";
                   
+                 $disease_detail_4=trim($this->input->get_post("disease_detail_4")); // Underllying disease 4 :
+                  //echo "<br>";
                   
-                  echo  $disease_detail_2=trim($this->input->get_post("disease_detail_2")); // Underllying disease 2 :
-                  echo "<br>";
+                  $disease_detail_9=trim($this->input->get_post("disease_detail_9")); //Underllying disease 9 :
+                  //echo "<br>";
                   
-                  echo  $disease_detail_7=trim($this->input->get_post("disease_detail_7")); //Underllying disease 7 :
-                  echo "<br>";
+                  $disease_detail_5=trim($this->input->get_post("disease_detail_5")); // Underllying disease 5 :
+                  //echo "<br>";
                   
-                  echo $disease_detail_3=trim($this->input->get_post("disease_detail_3")); // Underllying disease 3 :
-                  echo "<br>";
+                  $disease_detail_10=trim($this->input->get_post("disease_detail_10")); // Underllying disease 10 :
+                  //echo "<br>";
                   
-                  echo $disease_detail_8=trim($this->input->get_post("disease_detail_8")); // Underllying disease 8 :
-                  echo "<br>";
+                  $reason_for_tdm=trim($this->input->get_post("reason_for_tdm")); // Reason for TDM :
+                  //echo "<br>";
                   
-                  echo $disease_detail_4=trim($this->input->get_post("disease_detail_4")); // Underllying disease 4 :
-                  echo "<br>";
-                  
-                  echo $disease_detail_9=trim($this->input->get_post("disease_detail_9")); //Underllying disease 9 :
-                  echo "<br>";
-                  
-                  echo  $disease_detail_5=trim($this->input->get_post("disease_detail_5")); // Underllying disease 5 :
-                  echo "<br>";
-                  
-                  echo $disease_detail_10=trim($this->input->get_post("disease_detail_10")); // Underllying disease 10 :
-                  echo "<br>";
-                  
-                  echo $reason_for_tdm=trim($this->input->get_post("reason_for_tdm")); // Reason for TDM :
-                  echo "<br>";
-                  
-                  echo $id_drug=trim($this->input->get_post("id_drug")); // Drug level requested (Vancomycin) :
-                  echo "<br>";
+                  $id_drug=trim($this->input->get_post("id_drug")); // Drug level requested (Vancomycin) :
+                  //echo "<br>";
                    
-                  echo $current_medications=trim($this->input->get_post("current_medications")); // Current Medications :
-                  echo "<br>";
+                  $current_medications=trim($this->input->get_post("current_medications")); // Current Medications :
+                  //echo "<br>";
                   
-                  echo $current_medications_weight=trim($this->input->get_post("current_medications_weight")); //Current Medications :  g
-                  echo "<br>";
+                  $current_medications_weight=trim($this->input->get_post("current_medications_weight")); //Current Medications :  g
+                  //echo "<br>";
                   
                    $current_medications_date=trim($this->input->get_post("current_medications_date")); //Current Medications  date
                   //echo "<br>";
                   
                   if(  strlen($current_medications_date) > 0  )
                   {
-                     echo $conv_current_medications_date = $this->date->conv_date($current_medications_date);
-                     echo "<br>";
+                      $conv_current_medications_date = $this->date->conv_date($current_medications_date);
+                     //echo "<br>";
                   }
                   
-                  echo $Laboratory_Data=trim($this->input->get_post("Laboratory_Data")); //Laboratory Data (within 5 day) :
-                  echo "<br>";
+                   $Laboratory_Data=trim($this->input->get_post("Laboratory_Data")); //Laboratory Data (within 5 day) :
+                  //echo "<br>";
                   
                   $Laboratory_Data_mg=trim($this->input->get_post("Laboratory_Data_mg")); //Laboratory Data (within 5 day)  mg/dL
                   //echo "<br>";
@@ -718,71 +714,72 @@ LIMIT 90 , 30   */
                   $Laboratory_Data_date=trim($this->input->get_post("Laboratory_Data_date")); //Laboratory Data (within 5 day) date
                   if(  strlen( $Laboratory_Data_date ) > 0  )
                   {
-                     echo $conv_Laboratory_Data_date = $this->date->conv_date($Laboratory_Data_date);
-                     echo "<br>";
+                      $conv_Laboratory_Data_date = $this->date->conv_date($Laboratory_Data_date);
+                     //echo "<br>";
                   }
                   
                   $Sampling_Time=trim($this->input->get_post("Sampling_Time")); // 1. Sampling Time :
                   //echo "<br>";
                   if( strlen($Sampling_Time) > 0 )
                   {
-                     echo $conv_Sampling_Time=$this->date->conv_date_time($Sampling_Time);
+                      $conv_Sampling_Time=$this->date->conv_date_time($Sampling_Time);
                       
                   }
                   
                   $DrugAdministrationTime=trim($this->input->get_post("DrugAdministrationTime"));// 2. Drug Administration Time :
                    if( strlen($DrugAdministrationTime) > 0 )
                   {
-                     echo $conv_DrugAdministrationTime=$this->date->conv_date_time($DrugAdministrationTime);
+                      $conv_DrugAdministrationTime=$this->date->conv_date_time($DrugAdministrationTime);
                       
                   }
                   
-                 echo $Measured_level=trim($this->input->get_post("Measured_level")); //   3. Measured level :
-                 echo "<br>";
+                  $Measured_level=trim($this->input->get_post("Measured_level")); //   3. Measured level :
+                 //echo "<br>";
                  
-                 echo $Measured_level_cmb=trim($this->input->get_post("Measured_level_cmb"));  //3. Measured level : combobox
-                 echo "<br>";
-                  
-                 echo $id_vd=trim($this->input->get_post("id_vd")); //Vd :
-                 echo "<br>";
+                  $Measured_level_cmb=trim($this->input->get_post("Measured_level_cmb"));  //3. Measured level : combobox
+                 //echo "<br>";
+                
+                 //echo "<hr>";
+                  $vd_index=trim($this->input->get_post("id_vd")); //Vd :
+                 //echo "<hr>";
                  
-                 echo $vd=trim($this->input->get_post("vd")); //Vd L/Kg.
-                 echo "<br>";
+                  $vd=trim($this->input->get_post("vd")); //Vd L/Kg.
+                 //echo "<br>";
                  
-                 echo $cl=trim($this->input->get_post("cl"));
-                 echo "<br>";
+                  $cl=trim($this->input->get_post("cl"));
+                 //echo "<br>";
                  
-                echo $ke=trim($this->input->get_post("ke"));
-                echo "<br>";
+                 $ke=trim($this->input->get_post("ke"));
+                //echo "<br>";
                 
-                echo $hl=trim($this->input->get_post("hl"));
-                echo "<br>";
+                 $hl=trim($this->input->get_post("hl"));
+                //echo "<br>";
                 
-                echo $Assessment=trim($this->input->get_post("Assessment"));
-                echo "<br>"; 
+                $Assessment=trim($this->input->get_post("Assessment"));
+                //echo "<br>"; 
                 
-                echo $Interpretation_Recommendation=trim($this->input->get_post("Interpretation_Recommendation"));//Interpretation and Recommendation
-                echo "<br>"; 
+                 $Interpretation_Recommendation=trim($this->input->get_post("Interpretation_Recommendation"));//Interpretation and Recommendation
+                //echo "<br>"; 
                 
-                echo $Note=trim($this->input->get_post("Note"));
-                echo "<br>"; 
+                 $Note=trim($this->input->get_post("Note"));
+                //echo "<br>"; 
                 
-                echo $Pharmacist1=trim($this->input->get_post("Pharmacist1")); //Pharmacist
-                echo "<br>"; 
+                 $Pharmacist1=trim($this->input->get_post("Pharmacist1")); //Pharmacist
+                //echo "<br>"; 
                  
-                echo $Pharmacist2=trim($this->input->get_post("Pharmacist2")); //Pharmacist
-                echo "<br>";
+                 $Pharmacist2=trim($this->input->get_post("Pharmacist2")); //Pharmacist
+                //echo "<br>";
                 
-                echo $tel=trim($this->input->get_post("tel"));
-                echo "<br>";
+                $tel=trim($this->input->get_post("tel"));
+                //echo "<br>";
                 
                  $date_record=trim($this->input->get_post("date_record")); //วันที่บันทึก
                 //echo "<br>";
                  
                 if(  strlen($date_record) > 0  )
                   {
-                     echo $conv_date_record = $this->date->conv_date($date_record);
-                     echo "<br>";
+                      $conv_date_record = $this->date->conv_date($date_record);
+                     //echo "<br>";
                   }
                   
                   
@@ -812,15 +809,47 @@ LIMIT 90 , 30   */
                   $this->db->set("current_medications",$current_medications  );   //Current Medications
                   $this->db->set("current_medications_weight",$current_medications_weight); //Current Medications เป็น g
                   
-                  $this->db->set("current_medications_date", $conv_current_medications_date );  //
+                  $this->db->set("current_medications_date", $conv_current_medications_date );  //Current Medications  date
                   
+                  $this->db->set("sampling_time", $conv_Sampling_Time );//$Sampling_Time
+                  
+                   $this->db->set("drugadministrationtime", $conv_DrugAdministrationTime );//$Sampling_Time  //$DrugAdministrationTime
+                  
+                   $this->db->set("measured_level",$Measured_level); //$Measured_level
+                   
+                   $this->db->set("measured_level_cmb",$Measured_level_cmb); // 3. Measured level :  combobox (unit)
+                   
+                   $this->db->set("vd_index",$vd_index);   
+                  
+                   $this->db->set("vd",$vd);     // L/kg              
+
+                   $this->db->set("cl",$cl);
+                   
+                   $this->db->set("ke",$ke);
+                   
+                   $this->db->set("hl",$hl);
+                   
+                   $this->db->set("assessment",$Assessment);  //Assessment
+                  
+                   $this->db->set("Interpretation_Recommendation",$Interpretation_Recommendation); //Interpretation_Recommendation  
+                   
+                   $this->db->set("Note",$Note);
+                   
+                   $this->db->set("pharmacist1",$Pharmacist1);
+                   
+                   $this->db->set("pharmacist2",$Pharmacist2);      
+                   
+                   $this->db->set("tel",$tel);
+                   
+                   $this->db->set("date_record",$conv_date_record);   //date_record
+                   
                   $ck_inst=$this->db->insert($tb);
                   if( $ck_inst )
                   {
-                      echo "INSERT";
+                      echo "true";
                   }else
                   {
-                      echo "INSERT false";
+                      echo "false";
                   }
                   
               }
