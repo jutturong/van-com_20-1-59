@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Library/WebServer/Documents/vancom/application/views/topmenu.php</file>
+            <file>file:/Library/WebServer/Documents/vancom/application/views/home.php</file>
             <file>file:/Library/WebServer/Documents/vancom/application/views/fr_diagnosis.php</file>
             <file>file:/Library/WebServer/Documents/vancom/application/controllers/welcome.php</file>
+            <file>file:/Library/WebServer/Documents/vancom/application/views/panel_patient.php</file>
         </group>
     </open-files>
 </project-private>

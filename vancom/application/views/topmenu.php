@@ -69,10 +69,20 @@
         <!--<div data-options="iconCls:'icon-add'">เพิ่มชื่อผู้ป่วย</div>-->
        <!--<div data-options="iconCls:'icon-add'">Tool เกี่ยวกับผู้ป่วย</div> -->
        
-        <div class="menu-sep"></div>
+        <!--<div class="menu-sep"></div>-->
         <div onclick="op_addpatien()" data-options=" iconCls:'icon-man'   " >เพิ่มประวัติผู้ป่วย</div>
         <div class="menu-sep"></div>
-        <div onclick="op_diagnosis()"  data-options=" iconCls:' icon-large-shapes'   ">เพิ่มประวัติการรักษา</div>
+        
+        <div>
+            <span>ประวัติการรักษา</span>
+            <div>
+                <div onclick="op_diagnosis()"  data-options=" iconCls:' icon-large-shapes'   ">เพิ่มประวัติการรักษา</div>
+                <div onclick="$('#window_diagnosis').window('open');"  data-options=" iconCls:' icon-man'   ">แสดงประวัติการรักษา</div>
+            </div>
+            
+            
+        </div>
+        
         
         <!--
         <div  >

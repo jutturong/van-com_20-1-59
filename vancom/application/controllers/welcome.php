@@ -853,6 +853,62 @@ LIMIT 90 , 30   */
                   }
                   
               }
+              
+       function  tb_diagnosis() //table datagrid diagnosis
+       {
+          #http://localhost/vancom/index.php/welcome/tb_diagnosis
+           $tb="tb_diagnosis";
+           $tbj1="tb_drug";
+           $tbj2="tb_patient";
+           $this->db->join($tbj1,$tb.".vancomycin=".$tbj1.".id_drug"); # Drug level requested (Vancomycin)
+           $this->db->join($tbj2,$tb.".id_patient=".$tbj2.".id_patient"); #ชื่อนามสกุล ของคนไข้
+           $query=$this->db->get($tb,10,0);
+           foreach($query->result() as $row )
+           {
+               $rows[]=$row;
+           }
+           echo json_encode($rows);
+       }
+       function fetch_diagnosis()
+       {
+           #http://localhost/vancom/index.php/welcome/fetch_diagnosis/47 
+           $id=$this->uri->segment(3);
+           //echo $id;
+           $tb="tb_diagnosis";
+           $query=$this->db->get_where($tb,array("id_diagnosis"=>$id));
+           foreach($query->result() as $row)
+           {
+               $rows[]=$row;
+               
+           }
+           echo json_encode($rows);
+       }
+       function  del_diagnosis() //delete  
+       {
+           #http://localhost/vancom/index.php/welcome/del_diagnosis
+           // $id=trim($this->input->get_post("id_drug"));
+            $id=$this->uri->segment(3);
+           
+           
+            if( $id > 0 )
+            {
+                $tb="tb_diagnosis";
+                $this->db->where("id_diagnosis",$id);
+                $ck=$this->db->delete($tb);
+                if($ck)
+                {
+                    echo "true";
+                }else
+                {
+                    echo "false";
+                }
+                
+            }
+            
+            
+            
+            
+       }
 }
 
 /* End of file welcome.php */

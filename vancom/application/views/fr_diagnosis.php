@@ -1,4 +1,143 @@
 
+<!--  dialog  หลังจากเพิ่มประวัติการรักษา -->
+<script type="text/javascript">
+    function  view_diag(url)
+    {
+       
+        /*
+        $('#view_diag').datagrid({
+            rownumbers:true,
+            url:url,
+            singleSelect:true,
+            columns:[[
+               { field:'',title:'Ward'  },     
+               { field:'cb_conts',title:'Conts. (ค่าคงที่)' }
+            ]]
+        });
+        */
+        
+       // $('#fr_detail_diag').form('load',url);
+       // $('#fr_detail_diag').form('load',{ id_1:'test' });
+       
+       $.post(url,function(row,data)
+       {
+           alert("" + row["ward_"] );
+           
+       },'json');
+        
+    }
+</script>
+<div class="easyui-dialog" data-options="closed:true," id="dia_view_diag" title="แสดงรายละเอียดของประวัติการรักษา "  style="width:500px;left: 10px;top: 10px;height: 300px;" >
+   <!--
+    <table class="easyui-datagrid" id="view_diag" style="height: 300px;" >       
+    </table> 
+   -->
+   <form id="fr_detail_diag" data-options="
+         
+         " >
+    <div style="padding: 10px;">
+       <label>
+           Ward : <input class="easyui-numberbox" id="ward_up" name="ward_up" style="width:100px;height: 30px;" /> Kg.
+       </label>
+   </div>   
+   <div style="padding: 10px;">
+       <label>
+           Body Weight : <input class="easyui-numberbox" id="W_up" name="W_up" style="width:100px;height: 30px;" /> Kg.
+       </label>
+   </div>
+       
+   </form>
+   
+</div>  
+
+
+   <div class="easyui-window" id="window_diagnosis" title=" แสดงประวัติการรักษาทั้งหมด " style="left:10px;top:10px;width:600px;height: 300px;" 
+     data-options=" 
+      iconCls:'icon-man',
+      closed :false,
+      
+     footer: '#footer_dia'
+    
+     " >
+       <table id="dg_diagnosis"  class="easyui-datagrid" 
+              data-options="
+              url:'<?=base_url()?>index.php/welcome/tb_diagnosis',
+              fitColumns:true,
+              singleSelect:true,
+              rownumbers:true,
+              columns:[[
+              { field:'Title',title:'คำนำหน้าชื่อ'  },
+              { field:'Name',title:'ชื่อ' },
+              { field:'Surname',title:'นามสกุล'  },
+              { field:'HN',title:'HN' },
+              { field:'Sex',title:'เพศ'  },
+              { field:'Status',title:'สถานะ'  },
+             
+              { field:'BirthDate',title:'วัน-เดือน-ปี เกิด'  },
+               { field:'ward_',title:'Ward' },
+               { field:'date_record',title:'วัน-เดือน-ปี ที่มา' },
+              ]],
+              toolbar:[
+              { text:'Del',iconCls:'icon-man',
+                 handler:function(){
+                    var  row=$('#dg_diagnosis').datagrid('getSelected');
+                    if( row )
+                    {
+                       var  id_diagnosis=row.id_diagnosis
+                       
+                        $.messager.confirm('สถานะการลบข้อมูล','คุณแน่ใจว่าต้องการลบข้อมูลจริงหรือไม่',function(r)
+                        {
+                            if(r)
+                            {
+                               $.post('<?=base_url()?>index.php/welcome/del_diagnosis/' + id_diagnosis ,function(data)
+                               { 
+                                  //alert(data); 
+                                  if( data=='true')
+                                  {
+                                     $.messager.alert('สถานะการลบข้อมูล','ข้อมูลถูกลบแล้ว','Info');
+                                     $('#dg_diagnosis').datagrid('reload');
+                                  }
+                                  else
+                                  {
+                                      $.messager.alert('สถานะการลบข้อมูล','ไม่สามารถข้อมูลได้','Error');
+                                  }
+                                  
+                               } );
+                                
+                            } 
+                        } );
+                        
+                        
+                    }
+                 }
+              },
+              { text:'Update/View',iconCls:'icon-ok',handler:function(data)
+                {
+                  var  row=$('#dg_diagnosis').datagrid('getSelected');
+                  if(row)
+                  {
+                    var  id_diagnosis=row.id_diagnosis;
+                      //alert(id_diagnosis);
+                      $('#dia_view_diag').dialog('open');
+                      $('#ward_up').textbox('setText',row.ward_ );
+                      $('#W_up').numberbox('setText',row.bodyweight );
+                  }
+                }  
+              }
+              ]
+              " >
+           
+       </table>   
+       
+       
+    
+</div>
+<div  id="footer_dia">
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options=" iconCls:'icon-cancel' ,onClick:function(){ $('#window_diagnosis').window('close'); } " > Close </a>
+</div>
+<!--  dialog  หลังจากเพิ่มประวัติการรักษา --> 
+
+
 
 <script type="text/javascript">
     $(function()
@@ -770,6 +909,10 @@ $(function()
             </div>
 
 <!-- เพิ่มประวัติการรักษา -->
+
+
+
+
 
 
 
