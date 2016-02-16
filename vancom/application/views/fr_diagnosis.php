@@ -27,7 +27,7 @@
         
     }
 </script>
-<div class="easyui-dialog" data-options="closed:true," id="dia_view_diag" title="แสดงรายละเอียดของประวัติการรักษา "  style="width:500px;left: 10px;top: 10px;height: 300px;" >
+<div class="easyui-dialog" data-options="closed:true," id="dia_view_diag" iconCls="icon-print" title="   แสดงรายละเอียดของประวัติการรักษา "  style="width:750px;left: 10px;top: 10px;height: 600px;" >
    <!--
     <table class="easyui-datagrid" id="view_diag" style="height: 300px;" >       
     </table> 
@@ -35,23 +35,194 @@
    <form id="fr_detail_diag" data-options="
          
          " >
-    <div style="padding: 10px;">
+       <div style="padding: 5px;">
+           Age : <input class="easyui-numberbox" id="age_up" name="age_up" style="width:100px;height: 30px;"  />  ปี
+       </div>   
+       
+    <div style="padding: 5px;">
        <label>
-           Ward : <input class="easyui-numberbox" id="ward_up" name="ward_up" style="width:100px;height: 30px;" /> Kg.
+           Ward : <input class="easyui-textbox" id="ward_up" name="ward_up" style="width:100px;height: 30px;" /> 
        </label>
    </div>   
-   <div style="padding: 10px;">
+   <div style="padding: 5px;">
        <label>
-           Body Weight : <input class="easyui-numberbox" id="W_up" name="W_up" style="width:100px;height: 30px;" /> Kg.
+           Body Weight : <input class="easyui-numberbox" id="W_up" name="W_up" style="width:70px;height: 30px;" /> Kg.
        </label>
    </div>
+       
+   <div style="padding: 5px;">
+       <label>
+           Conts. (ค่าคงที่) <input class="easyui-combobox" id="cb_conts_up" name="cb_conts_up" style="width:70px;height: 30px;"
+               data-options=" 
+                 valueField:'label',
+                 textField:'value',
+                 data:[ 
+                 { label:0.2,value:0.2 },
+                 { label:0.25,value:0.25 },
+                 { label:0.65,value:0.65 },
+                 { label:0.655,value:0.655 },
+                 { label:0.7,value:0.7 },
+                 {  label:1.4,value:1.4 },
+               ] "                     
+                                    
+                                    /> 
+       </label>
+   </div>    
+       
+       <div style="padding: 5px;">
+       <label>
+           Height : <input class="easyui-numberbox" id="height_up" name="height_up" style="width:70px;height: 30px;" /> Cm.
+       </label>
+       </div>
+       
+       <div style="padding: 5px;">
+       <label>
+           Reason for TDM 1 (Indication) : <input class="easyui-combobox" id="indication_detail1_up" name="indication_detail1_up" style="  width:150px;height:30px  "
+                                             data-options="  url:'<?=base_url()?>index.php/welcome/indication',
+                                                               valueField:'id_indication',
+                                                              textField:'indication_detail', "     
+                                            /> 
+             <a href="javascript:void(0)" class="easyui-linkbutton" data-options="  iconCls:' icon-ok '  "   onclick="$('#dia_indication').dialog('open');  "  >Add Indication</a>
+             
+       </label>
+       </div>
+       
+       <div style="padding: 5px">
+           <label>
+               Reason for TDM 2 (Indication) :
+               <input class="easyui-combobox"   id="indication_detail2_up" name="indication_detail2_up"  style="width:150px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/indication',
+                               valueField:'id_indication',
+                               textField:'indication_detail',
+                               
+                               "  />
+           </label>
+       </div>
+       
+       
+       <div style="padding: 5px">
+           <label>
+             Underllying disease 1 :  
+               <input class="easyui-combobox"  id="disease_detail_1_up" name="disease_detail_1_up"  style="width:150px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
+               
+               Underllying disease 6 :             
+           <input class="easyui-combobox"  id="disease_detail_6_up" name="disease_detail_6_up"  style="width:150px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
+               
+                 <a href="javascript:void(0)"   class="easyui-linkbutton" data-options=" iconCls:'icon-ok'  "  onclick="$('#dia_disease').dialog('open');   "  >Disease</a>
+           </label>
+       </div>
+       
+       <div style="padding: 5px">
+           <label>
+            Underllying disease 2 :             
+           <input class="easyui-combobox"  id="disease_detail_2_up" name="disease_detail_2_up"  style="width:150px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
+            Underllying disease 7 :             
+           <input class="easyui-combobox"  id="disease_detail_7_up" name="disease_detail_7_up"  style="width:150px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
+           </label>
+       </div>
+       
+        <div style="padding: 5px">
+           <label>
+            Underllying disease 3 :             
+           <input class="easyui-combobox"  id="disease_detail_3_up" name="disease_detail_3_up"  style="width:150px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
+           
+            Underllying disease 8 :             
+           <input class="easyui-combobox"  id="disease_detail_8_up" name="disease_detail_8_up"  style="width:150px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
+           
+           </label>
+       </div>
+       
+        <div style="padding: 5px">
+           <label>
+            Underllying disease 4 :             
+           <input class="easyui-combobox"  id="disease_detail_4_up" name="disease_detail_4_up"  style="width:150px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
+           
+            Underllying disease 9 :             
+           <input class="easyui-combobox"  id="disease_detail_9_up" name="disease_detail_9_up"  style="width:150px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
+           
+           </label>
+       </div>
+       
+       <div style="padding: 5px">
+           <label>
+            Underllying disease 5 :             
+           <input class="easyui-combobox"  id="disease_detail_5_up" name="disease_detail_5_up"  style="width:150px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
+           
+            Underllying disease 10 :             
+           <input class="easyui-combobox"  id="disease_detail_10_up" name="disease_detail_10_up"  style="width:150px;height: 30px" data-options="
+                               url:'<?=base_url()?>index.php/welcome/tb_disease',
+                               valueField:'id_disease',
+                               textField:'disease_detail',
+                               
+                               "  />
+           
+           </label>
+       </div>
+       
+       <div style="padding: 5px;" >
+           Reason for TDM :
+         <input class="easyui-combobox" id="reason_for_tdm_up" name="reason_for_tdm_up" style="width:200px;height: 30px;"
+                             data-options="
+                             url:'<?=base_url()?>index.php/welcome/reason_tdm',
+                             valueField:'id_reason',
+                             textField:'reason_detail',                                                        
+                             "
+                             />
+                        
+                          <a href="javascript:void(0)"  onclick=" $('#dia_reason').dialog('open'); "    class="easyui-linkbutton" data-options="  iconCls:' icon-ok '  " >Add Reason for TDM</a>
+       </div>                 
        
    </form>
    
 </div>  
 
 
-   <div class="easyui-window" id="window_diagnosis" title=" แสดงประวัติการรักษาทั้งหมด " style="left:10px;top:10px;width:600px;height: 300px;" 
+   <div class="easyui-window" id="window_diagnosis" title=" แสดงประวัติการรักษาทั้งหมด " style="left:10px;top:10px;width:600px;height: 500px;" 
      data-options=" 
       iconCls:'icon-man',
       closed :false,
@@ -121,6 +292,30 @@
                       $('#dia_view_diag').dialog('open');
                       $('#ward_up').textbox('setText',row.ward_ );
                       $('#W_up').numberbox('setText',row.bodyweight );
+                      
+                      $('#cb_conts_up').combobox('setValue',row.cb_conts);
+                      
+                      $('#height_up').numberbox('setText',row.height);
+                      
+                      $('#indication_detail1_up').combobox('setValue',row.indication1); 
+                     // $('#indication_detail1_up').combobox('setText',row.indication_detail);  //indication1
+                      
+                      $('#indication_detail2_up').combobox('setValue',row.indication2); 
+                     // $('#indication_detail2_up').combobox('setText',row.indication_detail);
+                     
+                     $('#disease_detail_1_up').combobox('setValue',row.underllyingdisease1 ); //Underllying disease 1
+                     $('#disease_detail_2_up').combobox('setValue',row.underllyingdisease2 );
+                     $('#disease_detail_3_up').combobox('setValue',row.underllyingdisease3 );
+                     $('#disease_detail_4_up').combobox('setValue',row.underllyingdisease4 );
+                     $('#disease_detail_5_up').combobox('setValue',row.underllyingdisease5 );
+                     $('#disease_detail_6_up').combobox('setValue',row.underllyingdisease6 );
+                     $('#disease_detail_7_up').combobox('setValue',row.underllyingdisease7 );
+                     $('#disease_detail_8_up').combobox('setValue',row.underllyingdisease8 );
+                     $('#disease_detail_9_up').combobox('setValue',row.underllyingdisease9 );
+                     $('#disease_detail_10_up').combobox('setValue',row.underllyingdisease10 );
+                     
+                     $('#reason_for_tdm_up').combobox('setValue',row.reason_for_TDM);//Reason for TDM
+                     
                   }
                 }  
               }

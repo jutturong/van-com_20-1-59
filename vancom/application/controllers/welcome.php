@@ -860,8 +860,16 @@ LIMIT 90 , 30   */
            $tb="tb_diagnosis";
            $tbj1="tb_drug";
            $tbj2="tb_patient";
+           $tbj3="tb_indication";
+           $tbj4="tb_disease"; //underllyingdisease1  id_disease
+          // $tbj5="tb_indication"; //Reason for TDM    id_indication   reason_for_TDM
+           
            $this->db->join($tbj1,$tb.".vancomycin=".$tbj1.".id_drug"); # Drug level requested (Vancomycin)
            $this->db->join($tbj2,$tb.".id_patient=".$tbj2.".id_patient"); #ชื่อนามสกุล ของคนไข้
+           $this->db->join($tbj3,$tb.".indication1=".$tbj3.".id_indication"); #Reason for TDM 1 (Indication) :
+           $this->db->join($tbj4,$tb.".underllyingdisease1=".$tbj4.".id_disease"); #Underllying disease 1
+          // $this->db->join($tbj5,$tb.".reason_for_TDM=".$tbj5.".id_indication"); //Reason for TDM
+           
            $query=$this->db->get($tb,10,0);
            foreach($query->result() as $row )
            {
