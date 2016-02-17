@@ -215,7 +215,99 @@
                              />
                         
                           <a href="javascript:void(0)"  onclick=" $('#dia_reason').dialog('open'); "    class="easyui-linkbutton" data-options="  iconCls:' icon-ok '  " >Add Reason for TDM</a>
-       </div>                 
+       </div> 
+       
+       <div style="padding: 5px;" >
+           <label>
+         Drug level requested (Vancomycin)  
+       <input class="easyui-combobox"  id="id_drug_up" name="id_drug_up"  style=" width:200;height: 30px "
+                               data-options=" 
+                                 valueField:'id_drug',
+                                 textField:'drug_detail',
+                                 url:'<?=base_url()?>index.php/welcome/tb_drug/',
+                                 
+                               "
+                               /> 
+                           
+                     
+         
+                         <a href="javascript:void(0)"   class="easyui-linkbutton"   data-options=" iconCls:'icon-ok'   "     onclick="$('#dia_drug').dialog('open'); "  >Add Drug</a>
+         </label>
+       </div>  
+       
+       
+       <div style="padding: 5px;" >
+           <label> 
+           Current Medications :
+           <input class="easyui-textbox" id="current_medications_up" name="current_medications_up"  style="width:200px;height: 30px;"   />
+             <input class="easyui-numberbox"  id="current_medications_weight_up" name="current_medications_weight_up" style="height: 30px;width: 50px" /> g
+             <input class="easyui-datebox" style="width:200px;height: 30px" name="current_medications_date_up" id="current_medications_date_up"/>
+           
+           </label>
+       </div>
+       
+      
+      <div style="padding: 5px;" >
+           <label>   
+             1. Sampling Time
+         <input class="easyui-datetimebox"  id="Sampling_Time_up"  name="Sampling_Time_up" style="height: 30px;width: 200px;"  data-options="required:false" ></input>
+       </label>
+       </div>
+       
+       
+       
+      <div style="padding: 5px;" > 
+          <label>    
+            2. Drug Administration Time
+              <input class="easyui-datetimebox" id="DrugAdministrationTime_up" name="DrugAdministrationTime_up" style="height: 30px;width: 200px;"  data-options="required:false" ></input>
+     
+          </label>   
+      </div>                 
+     
+     <div style="padding: 5px;" > 
+         <label>
+       3. Measured level
+       <input class="easyui-numberbox" id="Measured_level_up" name="Measured_level_up" precision="2" value="7.96" style="width:70px;height: 30px;" />
+    
+       <input class="easyui-combobox" name="Measured_level_cmb_up" id="Measured_level_cmb_up" style="width:100px;height: 30px;"
+             data-options="
+                valueField:'value',
+                textField:'text',
+               data:[
+               { value:'1',text:'ng/mL' },
+               { value:'2',text:'mg/mL' }
+               ]
+             "
+              />
+         </label>
+       <!--
+     <select class="easyui-combobox" name="Measured_level_cmb" id="Measured_level_cmb" style="width:100px;height: 30px;">
+        <option value="1">ng/mL</option>
+         <option value="2">mg/mL</option>
+      
+                           </select>
+       -->
+       
+     
+     </div>  
+       
+       
+       
+      <div style="padding: 5px;" >  
+          <label>   
+          Vd :    
+       <input class="easyui-combobox"   id="id_vd_up" name="id_vd_up"   style="width:200px;height: 30px;padding: 10px"  
+                               data-options="
+                                  url:'<?=base_url()?>index.php/welcome/tb_vd',
+                                  valueField:'id_vd',
+                                  textField:'vd_detail',
+                                  
+                               "     />
+                        
+                        <a href="javascript:void(0)"   class="easyui-linkbutton"   onclick=" $('#dia_vd').dialog('open'); "  data-options=" iconCls:'icon-ok'         ">เพิ่ม Vd</a>
+          </label>
+      </div>
+       
        
    </form>
    
@@ -315,6 +407,24 @@
                      $('#disease_detail_10_up').combobox('setValue',row.underllyingdisease10 );
                      
                      $('#reason_for_tdm_up').combobox('setValue',row.reason_for_TDM);//Reason for TDM
+                     
+                     $('#id_drug_up').combobox('setValue',row.vancomycin);  // vancomycin  //Drug level requested (Vancomycin)
+                    
+                     $('#current_medications_up').textbox('setValue',row.current_medications); //Current Medications
+                   
+                     $('#current_medications_weight_up').textbox('setValue',row.current_medications_weight); //Current Medications
+                     
+                     $('#current_medications_date_up').datebox('setValue',row.current_medications_date);
+                     
+                     $('#Sampling_Time_up').datebox('setValue',row.sampling_time);
+                     
+                     $('#DrugAdministrationTime_up').datebox('setValue',row.drugadministrationtime );
+                     
+                     $('#Measured_level_up').numberbox('setValue',row.measured_level);
+                     
+                     $('#Measured_level_cmb_up').combobox('setValue',row.measured_level_cmb );
+                     
+                     $('#id_vd_up').combobox('setValue',row.vd_index);
                      
                   }
                 }  
