@@ -922,8 +922,11 @@ LIMIT 90 , 30   */
           #http://localhost/vancom/index.php/welcome/update_diagnosis
           $tb="tb_diagnosis";
           //echo  $age_up=trim($this->input->get_post("age_up"));
-          echo $ward=trim($this->input->get_post("ward_up"));
+          //  trim($this->input->get_post('ward_up'));
           //echo "<br>";
+          
+          $ward_=trim($this->input->get_post("ward_up"));
+          echo  json_encode(array("success"=>$ward_));
           
       }
 }

@@ -33,9 +33,14 @@
  {
     //alert('t'); 
      $('#fr_detail_diag').form({ 
+         url:'<?=base_url()?>index.php/welcome/update_diagnosis',
          success:function(data)
          { 
              //alert(data);  
+             $.post('<?=base_url()?>index.php/welcome/update_diagnosis',function(data)
+             { 
+                 alert(data.success); 
+             },'json');
          } 
      });
           
