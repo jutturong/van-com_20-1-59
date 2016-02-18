@@ -27,14 +27,66 @@
         
     }
 </script>
-<div class="easyui-dialog" data-options="closed:true," id="dia_view_diag" iconCls="icon-print" title="   แสดงรายละเอียดของประวัติการรักษา "  style="width:750px;left: 10px;top: 10px;height: 600px;" >
+
+<script type="text/javascript">
+ function sub_update()
+ {
+    //alert('t'); 
+     $('#fr_detail_diag').form({ 
+         success:function(data)
+         { 
+             //alert(data);  
+         } 
+     });
+          
+                                
+     
+ }
+
+</script>
+
+
+<div class="easyui-dialog" 
+     data-options="
+     closed:true,
+     /*
+     toolbar:[
+     {  text:'Update',iconCls:'icon-edit',handler:function(data){ alert('t');  } },
+     {   },
+     ]
+     */
+     buttons:[ 
+     { text:'Update',iconCls:'icon-print',handler:function(data)
+     { 
+        
+         alert(data.ward_); 
+         /*
+         $.post('<?=base_url()?>index.php/welcome/update_diagnosis',{ ward:$('#ward_up').numberbox('getValue') },function(data)
+         {
+           alert(data);
+         } );
+         */
+         
+         
+         $('#fr_detail_diag').form({ 
+            url:'<?=base_url()?>index.php/welcome/update_diagnosis',
+            onSubmit:function(data)
+            { alert(data);  },
+            success:function(data)
+            {    
+                alert(data);
+            },
+            
+         });
+        
+     } },
+     { text:'Close',iconCls:'icon-cancel',handler:function(data){ $('#dia_view_diag').dialog('close'); } } ]
+     " id="dia_view_diag" iconCls="icon-print" title="   แสดงรายละเอียดของประวัติการรักษา "  style="width:750px;left: 10px;top: 10px;height: 600px;" >
    <!--
     <table class="easyui-datagrid" id="view_diag" style="height: 300px;" >       
     </table> 
    -->
-   <form id="fr_detail_diag" data-options="
-         
-         " >
+   <form id="fr_detail_diag"  action="<?=base_url()?>index.php/welcome/update_diagnosis"  method="post"  enctype="multipart/form-data" >
        <div style="padding: 5px;">
            Age : <input class="easyui-numberbox" id="age_up" name="age_up" style="width:100px;height: 30px;"  />  ปี
        </div>   
@@ -305,9 +357,91 @@
                                "     />
                         
                         <a href="javascript:void(0)"   class="easyui-linkbutton"   onclick=" $('#dia_vd').dialog('open'); "  data-options=" iconCls:'icon-ok'         ">เพิ่ม Vd</a>
+          
+          <input class="easyui-numberbox" precision="2" id="vd_up" name="vd_up"  style="width:70px;"></input>
+                         L/Kg.
+                         <?=nbs(4)?>
+                         Cl :
+                         <input class="easyui-numberbox" precision="4" id="cl_up" name="cl_up"  style="width:70px;"></input>
+                         L/hr
+          
+          
           </label>
       </div>
        
+     
+        <div style="padding: 5px;" >  
+            <label>   
+                ke
+                <input class="easyui-numberbox" precision="2" id="ke_up" name="ke_up"  style="width:70px;"></input>
+                         hr-1
+                         <?=nbs(4)?>
+                         Half-life :
+                         <input class="easyui-numberbox" precision="4"  id="hl_up" name="hl_up"  style="width:100px;"></input>
+                         hr
+            </label>
+      
+        </div>
+       
+      <div style="padding: 5px;" > 
+           <label>
+               Assessment :
+               <input class="easyui-textbox" id="Assessment_up" name="Assessment_up" data-options="iconCls:'icon-add'" style="width:250px;height: 30px" />
+           </label>
+       </div>
+       
+     
+       <div style="padding: 5px;" > 
+           <label>
+               Interpretation and Recommendation :
+               <input class="easyui-textbox" data-options="iconCls:'icon-add',multiline:true  " id="Interpretation_Recommendation_up"  name="Interpretation_Recommendation_up" style="width:400px;height: 50px" />
+           </label>
+       </div>    
+               
+       
+        
+        <div style="padding: 5px;" > 
+             <label>
+                    Note :
+                    <input class="easyui-textbox" id="Note_up" name="Note_up" data-options="iconCls:'icon-add',multiline:true  " style="width:400px;height: 50px" />
+             </label>       
+        </div> 
+       
+       
+       
+       <div style="padding: 5px;" >
+           <label>
+                 Pharmacist :
+                    
+                        <input class="easyui-textbox" data-options="iconCls:'icon-man'  " id="Pharmacist1_up" name="Pharmacist1_up"   style="width:200px;height: 30px" />
+                        /
+                        <input class="easyui-textbox" data-options="iconCls:'icon-man'  "  id="Pharmacist2_up" name="Pharmacist2_up"   style="width:200px;height: 30px" />
+           </label>            
+       </div>  
+       
+       
+       
+       
+       <div style="padding: 5px;" >
+           <label>
+                     Tel :
+                    
+                        <input class="easyui-numberbox" id="tel_up" name="tel_up"   style="width:100px;height: 30px" />
+           </label>         
+       </div>
+       
+       
+       <div style="padding: 5px;" >
+        <label>
+       Date :
+                    
+                        <input class="easyui-datebox"id="date_record_up" name="date_record_up" data-options="required:false" style="height: 30px;" />
+        </label>             
+       </div>             
+         
+       <div style="padding:10px 100px;">
+           <input type="submit" onClick="sub_update()"  />
+       </div>
        
    </form>
    
@@ -425,6 +559,28 @@
                      $('#Measured_level_cmb_up').combobox('setValue',row.measured_level_cmb );
                      
                      $('#id_vd_up').combobox('setValue',row.vd_index);
+                     
+                     $('#vd_up').numberbox('setValue',row.vd );
+                     
+                     $('#cl_up').numberbox('setValue',row.cl);
+                     
+                     $('#ke_up').numberbox('setValue',row.ke);
+                     
+                     $('#hl_up').numberbox('setValue',row.hl );
+                     
+                     $('#Assessment_up').textbox('setValue',row.assessment );
+                     
+                     $('#Interpretation_Recommendation_up').textbox('setValue',row.Interpretation_Recommendation  );
+                     
+                     $('#Note_up').textbox('setValue',row.Note  );
+                     
+                     $('#Pharmacist1_up').textbox('setValue',row.pharmacist1 );
+                     
+                     $('#Pharmacist2_up').textbox('setValue',row.pharmacist2 );
+                     
+                     $('#tel_up').textbox('setValue',row.tel);
+                     
+                     $('#date_record_up').datebox('setValue',row.date_record );  
                      
                   }
                 }  

@@ -917,6 +917,15 @@ LIMIT 90 , 30   */
             
             
        }
+      function update_diagnosis()
+      {
+          #http://localhost/vancom/index.php/welcome/update_diagnosis
+          $tb="tb_diagnosis";
+          //echo  $age_up=trim($this->input->get_post("age_up"));
+          echo $ward=trim($this->input->get_post("ward_up"));
+          //echo "<br>";
+          
+      }
 }
 
 /* End of file welcome.php */
