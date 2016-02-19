@@ -29,18 +29,15 @@
 </script>
 
 <script type="text/javascript">
- function sub_update()
+ function sub_update(id)
  {
     //alert('t'); 
      $('#fr_detail_diag').form({ 
-         url:'<?=base_url()?>index.php/welcome/update_diagnosis',
+         url:'<?=base_url()?>index.php/welcome/update_diagnosis/',
          success:function(data)
          { 
-             //alert(data);  
-             $.post('<?=base_url()?>index.php/welcome/update_diagnosis',function(data)
-             { 
-                 alert(data.success); 
-             },'json');
+             alert(data);  
+             
          } 
      });
           
@@ -60,38 +57,20 @@
      {   },
      ]
      */
-     buttons:[ 
-     { text:'Update',iconCls:'icon-print',handler:function(data)
-     { 
-        
-         alert(data.ward_); 
-         /*
-         $.post('<?=base_url()?>index.php/welcome/update_diagnosis',{ ward:$('#ward_up').numberbox('getValue') },function(data)
-         {
-           alert(data);
-         } );
-         */
-         
-         
-         $('#fr_detail_diag').form({ 
-            url:'<?=base_url()?>index.php/welcome/update_diagnosis',
-            onSubmit:function(data)
-            { alert(data);  },
-            success:function(data)
-            {    
-                alert(data);
-            },
-            
-         });
-        
-     } },
+     buttons:[    
      { text:'Close',iconCls:'icon-cancel',handler:function(data){ $('#dia_view_diag').dialog('close'); } } ]
      " id="dia_view_diag" iconCls="icon-print" title="   แสดงรายละเอียดของประวัติการรักษา "  style="width:750px;left: 10px;top: 10px;height: 600px;" >
    <!--
     <table class="easyui-datagrid" id="view_diag" style="height: 300px;" >       
     </table> 
    -->
-   <form id="fr_detail_diag"  action="<?=base_url()?>index.php/welcome/update_diagnosis"  method="post"  enctype="multipart/form-data" >
+   <form id="fr_detail_diag"   method="post"  enctype="multipart/form-data" >
+       <div style="padding: 5px 0" >
+           <label>
+            ID :   
+               <input class="easyui-textbox" id="id_diagnosis" name="id_diagnosis"  style="width:50px;height: 30px;"  />
+           </label>
+       </div>
        <div style="padding: 5px;">
            Age : <input class="easyui-numberbox" id="age_up" name="age_up" style="width:100px;height: 30px;"  />  ปี
        </div>   
@@ -99,17 +78,15 @@
     <div style="padding: 5px;">
        <label>
            Ward : <input class="easyui-textbox" id="ward_up" name="ward_up" style="width:100px;height: 30px;" /> 
+      
+       
        </label>
    </div>   
    <div style="padding: 5px;">
        <label>
            Body Weight : <input class="easyui-numberbox" id="W_up" name="W_up" style="width:70px;height: 30px;" /> Kg.
-       </label>
-   </div>
        
-   <div style="padding: 5px;">
-       <label>
-           Conts. (ค่าคงที่) <input class="easyui-combobox" id="cb_conts_up" name="cb_conts_up" style="width:70px;height: 30px;"
+        Conts. (ค่าคงที่) <input class="easyui-combobox" id="cb_conts_up" name="cb_conts_up" style="width:70px;height: 30px;"
                data-options=" 
                  valueField:'label',
                  textField:'value',
@@ -124,7 +101,9 @@
                                     
                                     /> 
        </label>
-   </div>    
+   </div>
+       
+     
        
        <div style="padding: 5px;">
        <label>
@@ -521,18 +500,20 @@
                     var  id_diagnosis=row.id_diagnosis;
                       //alert(id_diagnosis);
                       $('#dia_view_diag').dialog('open');
-                      $('#ward_up').textbox('setText',row.ward_ );
-                      $('#W_up').numberbox('setText',row.bodyweight );
+                      $('#ward_up').textbox('setValue',row.ward_ );
+                      $('#W_up').numberbox('setValue',row.bodyweight );
                       
                       $('#cb_conts_up').combobox('setValue',row.cb_conts);
                       
                       $('#height_up').numberbox('setText',row.height);
                       
                       $('#indication_detail1_up').combobox('setValue',row.indication1); 
-                     // $('#indication_detail1_up').combobox('setText',row.indication_detail);  //indication1
+                     // $('#indication_detail1_up').combobox('setValue',row.indication_detail);  //indication1
                       
                       $('#indication_detail2_up').combobox('setValue',row.indication2); 
-                     // $('#indication_detail2_up').combobox('setText',row.indication_detail);
+                     // $('#indication_detail2_up').combobox('setValue',row.indication_detail);
+                     
+                     $('#id_diagnosis').textbox('setValue',row.id_diagnosis);
                      
                      $('#disease_detail_1_up').combobox('setValue',row.underllyingdisease1 ); //Underllying disease 1
                      $('#disease_detail_2_up').combobox('setValue',row.underllyingdisease2 );
@@ -589,7 +570,8 @@
                      
                   }
                 }  
-              }
+              },
+              { text:'refresh',iconCls:'icon-reload',handler:function(){ $('#dg_diagnosis').datagrid('reload'); }  }
               ]
               " >
            

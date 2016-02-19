@@ -923,10 +923,43 @@ LIMIT 90 , 30   */
           $tb="tb_diagnosis";
           //echo  $age_up=trim($this->input->get_post("age_up"));
           //  trim($this->input->get_post('ward_up'));
-          //echo "<br>";
+         
+          echo $id_diagnosis = trim($this->input->get_post("id_diagnosis"));
+          echo "<br>";
           
-          $ward_=trim($this->input->get_post("ward_up"));
-          echo  json_encode(array("success"=>$ward_));
+          if( $id_diagnosis > 0 )
+          {
+             echo $ward_up=trim($this->input->get_post("ward_up"));
+             echo "<br>";
+             if( !empty($ward_up) )
+                  {
+                     $data1=array("ward_"=>$ward_up);
+                     $this->db->where("id_diagnosis",$id_diagnosis);
+                     $ck1=$this->db->update($tb,$data1);
+                     if($ck1)
+                     {
+                         echo "T1";
+                     }
+                  }
+             echo $W_up=trim($this->input->get_post("W_up"));  
+             echo "<br>";
+             if( !empty($W_up)  )
+             {
+                 $data2=array("bodyweight"=>$W_up);
+                 $this->db->where("id_diagnosis",$id_diagnosis);
+                 $ck2=$this->db->update($tb,$data2);
+                 if($ck2)
+                     {
+                         echo "T2";
+                     }
+             }
+             
+             
+                 
+              //cb_conts    
+                  
+        
+          }
           
       }
 }
