@@ -37,14 +37,15 @@
          success:function(data)
          { 
              alert(data);  
-             
+             //$('#ward_up').textbox('reload');
+             $('#dg_diagnosis').datagrid('reload');
          } 
      });
           
                                 
      
  }
-
+     
 </script>
 
 
@@ -94,7 +95,7 @@
                  { label:0.2,value:0.2 },
                  { label:0.25,value:0.25 },
                  { label:0.65,value:0.65 },
-                 { label:0.655,value:0.655 },
+                 { label:0.655,value:0.65 },
                  { label:0.7,value:0.7 },
                  {  label:1.4,value:1.4 },
                ] "                     
@@ -505,7 +506,7 @@
                       
                       $('#cb_conts_up').combobox('setValue',row.cb_conts);
                       
-                      $('#height_up').numberbox('setText',row.height);
+                      $('#height_up').numberbox('setValue',row.height);
                       
                       $('#indication_detail1_up').combobox('setValue',row.indication1); 
                      // $('#indication_detail1_up').combobox('setValue',row.indication_detail);  //indication1

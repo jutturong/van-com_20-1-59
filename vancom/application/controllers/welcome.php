@@ -929,7 +929,7 @@ LIMIT 90 , 30   */
           
           if( $id_diagnosis > 0 )
           {
-             echo $ward_up=trim($this->input->get_post("ward_up"));
+             echo $ward_up=trim($this->input->get_post("ward_up")); //Ward 
              echo "<br>";
              if( !empty($ward_up) )
                   {
@@ -941,7 +941,7 @@ LIMIT 90 , 30   */
                          echo "T1";
                      }
                   }
-             echo $W_up=trim($this->input->get_post("W_up"));  
+             echo $W_up=trim($this->input->get_post("W_up"));  //Body Weight
              echo "<br>";
              if( !empty($W_up)  )
              {
@@ -954,11 +954,23 @@ LIMIT 90 , 30   */
                      }
              }
              
-             
-                 
-              //cb_conts    
-                  
-        
+           echo  $cb_conts_up=trim($this->input->get_post("cb_conts_up")); //Conts. (ค่าคงที่)
+           echo "<br>";  
+           $this->date->ck_insert($id_diagnosis,"cb_conts",$cb_conts_up,$tb);//Height :       
+           echo  $height_up=trim($this->input->get_post("height_up"));      
+           $this->date->ck_insert($id_diagnosis,"height",$height_up,$tb);    
+           echo "<br>";    
+           echo  $indication_detail1_up=$this->input->get_post("indication_detail1_up"); //Reason for TDM 1 (Indication) :  
+           echo "<br>";
+           $this->date->ck_insert($id_diagnosis,"indication1",$indication_detail1_up,$tb);              
+           echo  $indication_detail2_up=$this->input->get_post("indication_detail2_up");
+           echo "<br>";
+           $this->date->ck_insert($id_diagnosis,"indication2",$indication_detail2_up,$tb); 
+           
+           $disease_detail_1_up=$this->input->get_post("disease_detail_1_up");
+           $this->date->ck_insert($id_diagnosis,"underllyingdisease1",$disease_detail_1_up,$tb); 
+           
+           
           }
           
       }

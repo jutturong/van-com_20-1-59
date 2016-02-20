@@ -32,6 +32,16 @@ class  Date  extends CI_Model {
         }
     }
     
+    function  ck_insert($id_diagnosis,$fup,$fname,$tb)
+    {
+        if( !empty($fname) )
+        {
+               $this->db->where("id_diagnosis",$id_diagnosis);
+               $data=array($fup=>$fname);
+               return $this->db->update($tb,$data);
+        }
+    }
+    
     
 }
 ?>
