@@ -42,6 +42,57 @@ class  Date  extends CI_Model {
         }
     }
     
+    function conv_date_time_check($dmy,$fname,$id_diagnosis)
+    {
+        /*
+         if( strlen($Sampling_Time_up) > 0 )
+                {                  
+                    $pos=strpos($Sampling_Time_up,":");
+                    if($pos > 1 )
+                    {
+                        $ex1=  explode(" ",$Sampling_Time_up);
+                       
+                        if( strlen($ex1[1]) > 0 )
+                        {
+                           echo  $conv_Sampling_Time_up=$this->date->conv_date($ex1[0])." ".$ex1[1];
+                           $this->date->ck_insert($id_diagnosis,"sampling_time",$conv_Sampling_Time_up,$tb);
+                        }
+                    }
+                    else
+                    {
+                        $conv_Sampling_Time_up=$this->date->conv_date($Sampling_Time_up);
+                         $this->date->ck_insert($id_diagnosis,"sampling_time",$conv_Sampling_Time_up,$tb);
+                    }
+                }
+           */
+        
+        if( strlen($dmy) > 0 )
+        {
+            $pos=strpos($dmy,":");
+            if($pos > 1 )
+                    {
+                        $ex1=  explode(" ",$dmy);
+                        if( strlen($ex1[1]) > 0 )
+                        {
+                           $conv_Sampling_Time_up=$this->date->conv_date_time($ex1[0])." ".$ex1[1];
+                          return $this->date->ck_insert($id_diagnosis,$fname,$conv_Sampling_Time_up,$tb);
+                        }
+                    }
+            else
+                    {
+                         //$conv_Sampling_Time_up=$this->date->conv_date($dmy);
+                         
+                        
+                         if( strlen($dmy) > 0 && !empty($dmy) )
+                         {
+                             $ex1=explode("/",$dmy);
+                           return  $ex1[2]."-".$ex1[0]."-".$ex1[1];        
+                         }
+                         //$this->date->ck_insert($id_diagnosis,$fname,$conv_Sampling_Time_up,$tb);
+                    }
+        }
+        
+    }
     
 }
 ?>

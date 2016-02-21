@@ -924,52 +924,177 @@ LIMIT 90 , 30   */
           //echo  $age_up=trim($this->input->get_post("age_up"));
           //  trim($this->input->get_post('ward_up'));
          
-          echo $id_diagnosis = trim($this->input->get_post("id_diagnosis"));
-          echo "<br>";
+          $id_diagnosis = trim($this->input->get_post("id_diagnosis"));
+          //echo "<br>";
           
           if( $id_diagnosis > 0 )
           {
-             echo $ward_up=trim($this->input->get_post("ward_up")); //Ward 
-             echo "<br>";
+              $ward_up=trim($this->input->get_post("ward_up")); //Ward 
+             //echo "<br>";
              if( !empty($ward_up) )
                   {
                      $data1=array("ward_"=>$ward_up);
                      $this->db->where("id_diagnosis",$id_diagnosis);
-                     $ck1=$this->db->update($tb,$data1);
-                     if($ck1)
-                     {
-                         echo "T1";
-                     }
+                     $this->db->update($tb,$data1);
+                     
                   }
-             echo $W_up=trim($this->input->get_post("W_up"));  //Body Weight
-             echo "<br>";
+             $W_up=trim($this->input->get_post("W_up"));  //Body Weight
+             //echo "<br>";
              if( !empty($W_up)  )
              {
                  $data2=array("bodyweight"=>$W_up);
                  $this->db->where("id_diagnosis",$id_diagnosis);
-                 $ck2=$this->db->update($tb,$data2);
-                 if($ck2)
-                     {
-                         echo "T2";
-                     }
+                 $this->db->update($tb,$data2);
+                 
              }
              
-           echo  $cb_conts_up=trim($this->input->get_post("cb_conts_up")); //Conts. (ค่าคงที่)
-           echo "<br>";  
+             $cb_conts_up=trim($this->input->get_post("cb_conts_up")); //Conts. (ค่าคงที่)
+           //echo "<br>";  
            $this->date->ck_insert($id_diagnosis,"cb_conts",$cb_conts_up,$tb);//Height :       
-           echo  $height_up=trim($this->input->get_post("height_up"));      
+            $height_up=trim($this->input->get_post("height_up"));      
            $this->date->ck_insert($id_diagnosis,"height",$height_up,$tb);    
-           echo "<br>";    
-           echo  $indication_detail1_up=$this->input->get_post("indication_detail1_up"); //Reason for TDM 1 (Indication) :  
-           echo "<br>";
+           //echo "<br>";    
+            $indication_detail1_up=$this->input->get_post("indication_detail1_up"); //Reason for TDM 1 (Indication) :  
+           //echo "<br>";
            $this->date->ck_insert($id_diagnosis,"indication1",$indication_detail1_up,$tb);              
-           echo  $indication_detail2_up=$this->input->get_post("indication_detail2_up");
-           echo "<br>";
+           $indication_detail2_up=$this->input->get_post("indication_detail2_up");
+           //echo "<br>";
            $this->date->ck_insert($id_diagnosis,"indication2",$indication_detail2_up,$tb); 
            
            $disease_detail_1_up=$this->input->get_post("disease_detail_1_up");
            $this->date->ck_insert($id_diagnosis,"underllyingdisease1",$disease_detail_1_up,$tb); 
            
+           $disease_detail_6_up=$this->input->get_post('disease_detail_6_up');
+           $this->date->ck_insert($id_diagnosis,"underllyingdisease6",$disease_detail_6_up,$tb); 
+           
+           $disease_detail_2_up=$this->input->get_post("disease_detail_2_up");
+           $this->date->ck_insert($id_diagnosis,"underllyingdisease2",$disease_detail_2_up,$tb);
+           
+           $disease_detail_7_up=$this->input->get_post("disease_detail_7_up");
+           $this->date->ck_insert($id_diagnosis,"underllyingdisease7",$disease_detail_7_up,$tb);
+           
+           $disease_detail_3_up=$this->input->get_post("disease_detail_3_up");
+           $this->date->ck_insert($id_diagnosis,"underllyingdisease3",$disease_detail_3_up,$tb);
+           
+           $disease_detail_8_up=$this->input->get_post("disease_detail_8_up");
+           $this->date->ck_insert($id_diagnosis,"underllyingdisease8",$disease_detail_8_up,$tb);
+           
+           $disease_detail_4_up=$this->input->get_post("disease_detail_4_up");
+           $this->date->ck_insert($id_diagnosis,"underllyingdisease4",$disease_detail_4_up,$tb);
+           
+           $disease_detail_9_up=$this->input->get_post("disease_detail_9_up");
+           $this->date->ck_insert($id_diagnosis,"underllyingdisease9",$disease_detail_9_up,$tb);
+           
+           $disease_detail_5_up=$this->input->get_post("disease_detail_5_up");
+           $this->date->ck_insert($id_diagnosis,"underllyingdisease5",$disease_detail_5_up,$tb);
+           
+           $disease_detail_10_up=$this->input->get_post("disease_detail_10_up");
+           $this->date->ck_insert($id_diagnosis,"underllyingdisease10",$disease_detail_10_up,$tb);
+           
+           $reason_for_tdm_up=$this->input->get_post("reason_for_tdm_up");
+           $this->date->ck_insert($id_diagnosis,"reason_for_TDM",$reason_for_tdm_up,$tb);
+           
+           $id_drug_up=trim($this->input->get_post("id_drug_up"));//Drug level requested (Vancomycin)
+           $this->date->ck_insert($id_diagnosis,"vancomycin",$id_drug_up,$tb);
+            
+           $current_medications_up=trim($this->input->get_post("current_medications_up")); 
+           $this->date->ck_insert($id_diagnosis,"current_medications",$current_medications_up,$tb); //current_medications
+           
+           $current_medications_weight_up=trim($this->input->get_post("current_medications_weight_up"));
+           $this->date->ck_insert($id_diagnosis,"current_medications_weight",$current_medications_weight_up,$tb);
+           
+           $current_medications_date_up=trim($this->input->get_post("current_medications_date_up"));
+            if(  strlen($current_medications_date_up) > 0  )
+                  {
+                      $conv_current_medications_date_up = $this->date->conv_date($current_medications_date_up);
+                      $this->date->ck_insert($id_diagnosis,"current_medications_date",$conv_current_medications_date_up,$tb);
+                      
+                  }
+           
+           
+                $Sampling_Time_up=trim($this->input->get_post("Sampling_Time_up"));
+                //echo "<br>";
+                if( strlen($Sampling_Time_up) > 0 )
+                {                  
+                    $pos=strpos($Sampling_Time_up,":");
+                    if($pos > 1 )
+                    {
+                        $ex1=  explode(" ",$Sampling_Time_up);
+                       
+                        if( strlen($ex1[1]) > 0 )
+                        {
+                            $conv_Sampling_Time_up=$this->date->conv_date($ex1[0])." ".$ex1[1];
+                           $this->date->ck_insert($id_diagnosis,"sampling_time",$conv_Sampling_Time_up,$tb);
+                        }
+                    }
+                    else
+                    {
+                        $conv_Sampling_Time_up=$this->date->conv_date($Sampling_Time_up);
+                         $this->date->ck_insert($id_diagnosis,"sampling_time",$conv_Sampling_Time_up,$tb);
+                    }
+                }
+                
+               $DrugAdministrationTime_up=trim($this->input->get_post("DrugAdministrationTime_up")); // 2. Drug Administration Time
+             //conv_date_time_check($dmy,$fname,$id_diagnosis)
+             //echo"<br>";
+              $this->date->conv_date_time_check($DrugAdministrationTime_up,"drugadministrationtime" ,$id_diagnosis);
+              
+             $Measured_level_up=trim($this->input->get_post("Measured level_up"));
+             //echo "<br>";
+            $this->date->conv_date_time_check($Measured_level_up,"measured_level" ,$id_diagnosis);
+            $Measured_level_cmb_up=trim($this->input->get_post("Measured_level_cmb_up"));  
+            //echo "<br>";          
+            $this->date->ck_insert($id_diagnosis,"measured_level_cmb",$Measured_level_cmb_up,$tb);
+            //echo "<br>";
+             $id_vd_up=trim($this->input->get_post("id_vd_up"));
+            //echo "<br>";
+             $this->date->ck_insert($id_diagnosis,"vd_index",$id_vd_up,$tb);
+             $vd_up=trim($this->input->get_post("vd_up"));
+             $this->date->ck_insert($id_diagnosis,"vd",$vd_up,$tb);
+            $cl_up=trim($this->input->get_post("cl_up"));
+            //echo "<br>";
+            $this->date->ck_insert($id_diagnosis,"cl",$cl_up,$tb);
+             $ke_up=trim($this->input->get_post("ke_up"));
+             $this->date->ck_insert($id_diagnosis,"ke",$ke_up,$tb);
+             //echo "<br>";
+             $hl_up=trim($this->input->get_post("hl_up"));
+             $this->date->ck_insert($id_diagnosis,"hl",$hl_up,$tb);
+             //echo "<br>";
+             $Assessment_up=trim($this->input->get_post("Assessment_up")); 
+            
+            $this->date->ck_insert($id_diagnosis,"assessment",$Assessment_up,$tb);
+            //echo "<br>";
+            $Interpretation_Recommendation_up=trim($this->input->get_post("Interpretation_Recommendation_up"));
+            $this->date->ck_insert($id_diagnosis,"Interpretation_Recommendation",$Interpretation_Recommendation_up,$tb);
+            $Note_up=trim($this->input->get_post("Note_up")); 
+            $this->date->ck_insert($id_diagnosis,"Note",$Note_up,$tb);
+            
+            $Pharmacist1_up=trim($this->input->get_post("Pharmacist1_up"));
+            $this->date->ck_insert($id_diagnosis,"pharmacist1",$Pharmacist1_up,$tb);
+            
+            $Pharmacist2_up=trim($this->input->get_post("Pharmacist2_up"));
+             $this->date->ck_insert($id_diagnosis,"pharmacist2",$Pharmacist2_up,$tb);
+             
+             $tel_up=trim($this->input->get_post("tel_up"));
+             $this->date->ck_insert($id_diagnosis,"tel",$tel_up,$tb);
+             
+            $date_record_up=trim($this->input->get_post("date_record_up")); 
+            //echo "<br>";
+            $conv_date_record_up=$this->date->conv_date($date_record_up);
+            //echo "<br>";
+            $this->date->ck_insert($id_diagnosis,"date_record",$conv_date_record_up,$tb);
+            
+                  /*
+          $DrugAdministrationTime_up=trim($this->input->get_post("DrugAdministrationTime_up"));
+          if(  strlen($DrugAdministrationTime_up) > 0  )
+                  {
+                      $conv_DrugAdministrationTime_up = $this->date->conv_date_time($DrugAdministrationTime_up); //$this->date->conv_date_time
+                      $this->date->ck_insert($id_diagnosis,"sampling_time",$conv_DrugAdministrationTime_up,$tb);
+                      
+                  }
+           */
+                  
+                  
            
           }
           

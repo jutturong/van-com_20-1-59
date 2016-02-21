@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Library/WebServer/Documents/vancom/application/views/fr_diagnosis.php</file>
+            <file>file:/Library/WebServer/Documents/vancom/application/models/date.php</file>
             <file>file:/Library/WebServer/Documents/vancom/application/controllers/welcome.php</file>
         </group>
     </open-files>

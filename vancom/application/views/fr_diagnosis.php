@@ -36,7 +36,7 @@
          url:'<?=base_url()?>index.php/welcome/update_diagnosis/',
          success:function(data)
          { 
-             alert(data);  
+             //alert(data);  
              //$('#ward_up').textbox('reload');
              $('#dg_diagnosis').datagrid('reload');
          } 
@@ -436,7 +436,7 @@
    <div class="easyui-window" id="window_diagnosis" title=" แสดงประวัติการรักษาทั้งหมด " style="left:10px;top:10px;width:600px;height: 500px;" 
      data-options=" 
       iconCls:'icon-man',
-      closed :false,
+      closed :true,
       
      footer: '#footer_dia'
     
