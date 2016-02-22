@@ -854,7 +854,7 @@ LIMIT 90 , 30   */
                   
               }
               
-       function  tb_diagnosis() //table datagrid diagnosis
+       function  tb_diagnosis() //table datagrid diagnosis All join table
        {
           #http://localhost/vancom/index.php/welcome/tb_diagnosis
            $tb="tb_diagnosis";
@@ -1007,8 +1007,12 @@ LIMIT 90 , 30   */
             if(  strlen($current_medications_date_up) > 0  )
                   {
                       $conv_current_medications_date_up = $this->date->conv_date($current_medications_date_up);
-                      $this->date->ck_insert($id_diagnosis,"current_medications_date",$conv_current_medications_date_up,$tb);
-                      
+                      //$this->date->ck_insert($id_diagnosis,"current_medications_date",$conv_current_medications_date_up,$tb);
+                    // echo "<br>";
+                     $this->db->where("id_diagnosis",$id_diagnosis);
+                     $this->db->update($tb,array("current_medications_date"=>$conv_current_medications_date_up));
+   
+                     
                   }
            
            
@@ -1039,9 +1043,13 @@ LIMIT 90 , 30   */
              //echo"<br>";
               $this->date->conv_date_time_check($DrugAdministrationTime_up,"drugadministrationtime" ,$id_diagnosis);
               
-             $Measured_level_up=trim($this->input->get_post("Measured level_up"));
-             //echo "<br>";
-            $this->date->conv_date_time_check($Measured_level_up,"measured_level" ,$id_diagnosis);
+             $Measured_level_up=trim($this->input->get_post("Measured_level_up"));
+             $this->date->ck_insert($id_diagnosis,"measured_level",$Measured_level_up,$tb);
+            
+             
+            
+             
+            
             $Measured_level_cmb_up=trim($this->input->get_post("Measured_level_cmb_up"));  
             //echo "<br>";          
             $this->date->ck_insert($id_diagnosis,"measured_level_cmb",$Measured_level_cmb_up,$tb);

@@ -36,9 +36,12 @@
          url:'<?=base_url()?>index.php/welcome/update_diagnosis/',
          success:function(data)
          { 
-             //alert(data);  
-             //$('#ward_up').textbox('reload');
+             alert(data);  
+            
+             //$.messager.alert('แสดงสถานะ','Update ข้อมูลแล้ว','Info');
+            // $('#dia_view_diag').dialog('close');
              $('#dg_diagnosis').datagrid('reload');
+             
          } 
      });
           
@@ -304,7 +307,7 @@
      <div style="padding: 5px;" > 
          <label>
        3. Measured level
-       <input class="easyui-numberbox" id="Measured_level_up" name="Measured_level_up" precision="2" value="7.96" style="width:70px;height: 30px;" />
+       <input class="easyui-numberbox" id="Measured_level_up" name="Measured_level_up" precision="2"  style="width:70px;height: 30px;" />
     
        <input class="easyui-combobox" name="Measured_level_cmb_up" id="Measured_level_cmb_up" style="width:100px;height: 30px;"
              data-options="
@@ -592,97 +595,90 @@
     $(function()
     {
         var vd=$('#vd');
-        
-        /*
-        vd.textbox('textbox').bind('keydown',function(e)
-        {
-            alert('t');
-        });
-        */
-        
+        var  vd_up=$('#vd_up');             
         var  cl=$('#cl');
+        var  cl_up=$('#cl_up');
         var  ke=$('#ke');
+        var  ke_up=$('#ke_up');
         var  hl=$('#hl');
+        var  hl_up=$('#hl_up');
         var   W=$('#W');
-        //var  conts=$('#conts');
-        
-        /*
-        function calvalue(vd,cl,ke,hl)
-        {
-            
-            
-            vd.textbox('textbox').bind('keydown',function(e)
-            {
-                alert('test keydown');
-            });
-        }
-        
-       calvalue(vd,cl,ke,hl);
-        */
-       
+        var   W_up=$('#W_up');
+           
        var cb_conts=$('#cb_conts');
-       
-        
-       
-       
-      // if( W.textbox('getValue') > 0  &&  conts.textbox('getValue') > 0 )
+       var cb_conts_up=$('#cb_conts_up');
+             
        if( W.textbox('getValue') > 0    )
        {
            W.textbox('textbox').bind('keydown',function(e)
-           {
-                //var vd_val=W.textbox('getValue')*conts.textbox('getValue');
+           {              
                  var vd_val=W.textbox('getValue')*cb_conts.combobox('getValue');
                 vd.textbox('setText',vd_val);
            });
-           
-           /*
-            conts.textbox('textbox').bind('keydown',function(e)
-           {
-               var vd_val=W.textbox('getValue')*conts.textbox('getValue');
-                vd.textbox('setText',vd_val);
-           });
-           */
-           
+                              
            cb_conts.combobox({
             onSelect:function(e)
-            { 
-                
-               //alert( cb_conts.combobox('getValue') );
+            {                            
                var vd_val=W.textbox('getValue')*cb_conts.combobox('getValue');
                vd.textbox('setText',vd_val);
             }
-        });
-           
-            /*
-            var vd_val=W*conts;
-            vd.textbox('setText',vd_val);
-            */
-       }
-       
-         if( ke.textbox('getValue') > 0 && vd.textbox('getValue') > 0  )
-         {
-             //alert('test keydown');
+        });                   
+       } 
+ 
+ //------------------------------------------------------------------------------
+       if( W_up.textbox('getValue') > 0    )
+       {
+           W_up.textbox('textbox').bind('keydown',function(e)
+           {              
+                 var vd_val_up=W_up.textbox('getValue')*cb_conts.combobox('getValue');
+                vd.textbox('setText',vd_val_up);
+           });
+                              
+           cb_conts_up.combobox({
+            onSelect:function(e)
+            {                            
+               var vd_val_up=W_up.textbox('getValue')*cb_conts_up.combobox('getValue');
+               vd_up.textbox('setText',vd_val_up);
+            }
+        });                   
+       }  
+ //------------------------------------------------------------------------------
+ 
+        if( ke.textbox('getValue') > 0 && vd.textbox('getValue') > 0  )
+         {           
              ke.textbox('textbox').bind('keydown',function(e)
-             { 
-                 //alert('test ke keydown'); 
+             {              
                   var  cl_val= ke.textbox('getValue') * vd.textbox('getValue');
                   cl.textbox('setText',cl_val);
                   var  hl_val=(0.693)/ke.textbox('getValue');
                   hl.textbox('setText',hl_val);
-             });
-             
+             });            
               vd.textbox('textbox').bind('keydown',function(e)
-             { 
-                 //alert('test ke keydown'); 
+             {               
                   var  cl_val= ke.textbox('getValue') * vd.textbox('getValue');
                   cl.textbox('setText',cl_val);
              });
          }
-        
-        
+         
+ //------------------------------------------------------------------------------       
+     if( ke_up.textbox('getValue') > 0 && vd_up.textbox('getValue') > 0  )
+         {           
+             ke_up.textbox('textbox').bind('keydown',function(e)
+             {              
+                  var  cl_val_up= ke_up.textbox('getValue') * vd_up.textbox('getValue');
+                  cl_up.textbox('setText',cl_val_up);
+                  var  hl_val_up=(0.693)/ke_up.textbox('getValue');
+                  hl_up.textbox('setText',hl_val_up);
+             });            
+              vd_up.textbox('textbox').bind('keydown',function(e)
+             {               
+                  var  cl_val_up= ke_up.textbox('getValue') * vd_up.textbox('getValue');
+                  cl_up.textbox('setText',cl_val_up);
+             });
+         }    
         
     });
-    
+ //------------------------------------------------------------------------------    
     
     
     
@@ -1217,7 +1213,7 @@ $(function()
                     </td>
                     <td>
 
-                        <input class="easyui-numberbox" id="Measured_level" name="Measured_level" precision="2" value="7.96" style="width:70px;height: 30px;" />
+                        <input class="easyui-numberbox" id="Measured_level" name="Measured_level" precision="2"  style="width:70px;height: 30px;" />
                         
                          
                         
