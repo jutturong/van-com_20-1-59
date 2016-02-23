@@ -778,57 +778,19 @@ LIMIT 90 , 30   */
                 //echo "<br>";
                
                  
-                 /*
-                if(  strlen($date_record) > 0  )
-                  {
-                      $conv_date_record = $this->date->conv_date($date_record);
-                     //echo "<br>";
-                  }
+                
+             
                   
                   
                  
-                  
-                 if( strlen($id_patient) > 0 ) 
-                 {
-                   $this->db->set("id_patient",$id_patient);
-                    $ck_inst=$this->db->insert($tb);
-                 }
+                 /* 
+                
                  
-                 if( strlen($ward) > 0 )
-                 {    
-                  $this->db->set("ward_",$ward);
-                    $ck_inst=$this->db->insert($tb);
-                 }
                  
-                 if( strlen($W ) > 0 )
-                 {
-                  $this->db->set("bodyweight",$W);
-                    $ck_inst=$this->db->insert($tb);
-                 }
                  
-                 if( strlen(  ) > 0 )
-                 {
-                  $this->db->set("cb_conts",$cb_conts);
-                    $ck_inst=$this->db->insert($tb);
-                 }
+                
                  
-                 if( strlen($height) > 0 )
-                 {
-                  $this->db->set("height",$height);
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($indication_detail1) > 0 )
-                 {
-                  $this->db->set("indication1",$indication_detail1);
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if(strlen($indication_detail2) > 0 )
-                 {
-                  $this->db->set("indication2",$indication_detail2);
-                    $ck_inst=$this->db->insert($tb);
-                 }
+               
                  
                  if( strlen($disease_detail_1) > 0 )
                  {
@@ -1017,7 +979,7 @@ LIMIT 90 , 30   */
                      $ck_inst=$this->db->insert($tb);
                    }
                    
-                   
+                     
                 
                   if( $ck_inst )
                   {
@@ -1038,11 +1000,19 @@ LIMIT 90 , 30   */
 $this->db->insert('mytable', $data);
                    */
                  
-                // "id_patient",$id_patient
                 
-                 
+               
+                 // 
+                 // $this->db->set("indication2",$indication_detail2);
+                
+                 /*
                 $data=array(
-                    "id_patient"=>$id_patient,
+                   
+                   "cb_conts"=>$cb_conts,
+                   "height"=>$height,
+                   "indication1"=>$indication_detail1,
+                   "indication2"=>$indication_detail2,
+                    
                     
                 );
                 $ck_inst=$this->db->insert($tb,$data);  
@@ -1053,7 +1023,42 @@ $this->db->insert('mytable', $data);
                   {
                       echo "false";
                   }
-               
+                  * 
+                  */
+                 
+                 
+                 if( strlen($id_patient)  > 0  )
+                 {
+                     $this->db->set("id_patient",$id_patient);
+                     $this->db->insert($tb);
+                 }
+                 if( strlen($ward ) > 0 )
+                 {
+                     $this->db->set("ward_",$ward);
+                     $this->db->insert($tb);
+                 }
+                 if( strlen($W)> 0 )
+                 {
+                     $this->db->set("bodyweight",$W);
+                     $this->db->insert($tb);
+                 }
+                if( strlen($cb_conts) > 0 )
+                {
+                    $this->db->set("cb_conts",$cb_conts);
+                    $this->db->insert($tb);
+                }
+                 
+                if( strlen($height ) > 0 )
+                {
+                    $this->db->set("height",$height);
+                    $this->db->insert($tb);
+                }
+                if( strlen($indication_detail1) > 0 )
+                {
+                     $this->db->set("indication1",$indication_detail1);
+                     $this->db->insert($tb);
+                }
+                
                  
               }
               
