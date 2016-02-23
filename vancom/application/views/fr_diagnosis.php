@@ -463,7 +463,8 @@
                { field:'date_record',title:'วัน-เดือน-ปี ที่มา' },
               ]],
               toolbar:[
-              { text:'Del',iconCls:'icon-man',
+              { text:'Add',iconCls:'icon-add',handler:function(){ op_diagnosis();  }     },
+              { text:'Del',iconCls:'icon-remove',
                  handler:function(){
                     var  row=$('#dg_diagnosis').datagrid('getSelected');
                     if( row )
@@ -594,95 +595,43 @@
 <script type="text/javascript">
     $(function()
     {
-        var vd=$('#vd');
-        var  vd_up=$('#vd_up');             
-        var  cl=$('#cl');
-        var  cl_up=$('#cl_up');
-        var  ke=$('#ke');
-        var  ke_up=$('#ke_up');
-        var  hl=$('#hl');
-        var  hl_up=$('#hl_up');
-        var   W=$('#W');
-        var   W_up=$('#W_up');
-           
-       var cb_conts=$('#cb_conts');
-       var cb_conts_up=$('#cb_conts_up');
-             
-       if( W.textbox('getValue') > 0    )
-       {
-           W.textbox('textbox').bind('keydown',function(e)
-           {              
-                 var vd_val=W.textbox('getValue')*cb_conts.combobox('getValue');
-                vd.textbox('setText',vd_val);
-           });
-                              
-           cb_conts.combobox({
-            onSelect:function(e)
-            {                            
-               var vd_val=W.textbox('getValue')*cb_conts.combobox('getValue');
-               vd.textbox('setText',vd_val);
-            }
-        });                   
-       } 
- 
- //------------------------------------------------------------------------------
-       if( W_up.textbox('getValue') > 0    )
-       {
-           W_up.textbox('textbox').bind('keydown',function(e)
-           {              
-                 var vd_val_up=W_up.textbox('getValue')*cb_conts.combobox('getValue');
-                vd.textbox('setText',vd_val_up);
-           });
-                              
-           cb_conts_up.combobox({
-            onSelect:function(e)
-            {                            
-               var vd_val_up=W_up.textbox('getValue')*cb_conts_up.combobox('getValue');
-               vd_up.textbox('setText',vd_val_up);
-            }
-        });                   
-       }  
- //------------------------------------------------------------------------------
- 
+        var vd=$('#vd');                
+        var  cl=$('#cl');      
+        var  ke=$('#ke');   
+        var  hl=$('#hl');    
+        var   W=$('#W');            
+        var cb_conts=$('#cb_conts');                
+        if( W.textbox('getValue') > 0    )
+            {
+                W.textbox('textbox').bind('keydown',function(e)
+                {              
+                      var vd_val=W.textbox('getValue')*cb_conts.combobox('getValue');
+                     vd.textbox('setText',vd_val);
+                });
+
+                cb_conts.combobox({
+                 onSelect:function(e)
+                 {                            
+                    var vd_val=W.textbox('getValue')*cb_conts.combobox('getValue');
+                    vd.textbox('setText',vd_val);
+                 }
+             });                   
+            } 
         if( ke.textbox('getValue') > 0 && vd.textbox('getValue') > 0  )
-         {           
-             ke.textbox('textbox').bind('keydown',function(e)
-             {              
-                  var  cl_val= ke.textbox('getValue') * vd.textbox('getValue');
-                  cl.textbox('setText',cl_val);
-                  var  hl_val=(0.693)/ke.textbox('getValue');
-                  hl.textbox('setText',hl_val);
-             });            
-              vd.textbox('textbox').bind('keydown',function(e)
-             {               
-                  var  cl_val= ke.textbox('getValue') * vd.textbox('getValue');
-                  cl.textbox('setText',cl_val);
-             });
-         }
-         
- //------------------------------------------------------------------------------       
-     if( ke_up.textbox('getValue') > 0 && vd_up.textbox('getValue') > 0  )
-         {           
-             ke_up.textbox('textbox').bind('keydown',function(e)
-             {              
-                  var  cl_val_up= ke_up.textbox('getValue') * vd_up.textbox('getValue');
-                  cl_up.textbox('setText',cl_val_up);
-                  var  hl_val_up=(0.693)/ke_up.textbox('getValue');
-                  hl_up.textbox('setText',hl_val_up);
-             });            
-              vd_up.textbox('textbox').bind('keydown',function(e)
-             {               
-                  var  cl_val_up= ke_up.textbox('getValue') * vd_up.textbox('getValue');
-                  cl_up.textbox('setText',cl_val_up);
-             });
-         }    
-        
-    });
- //------------------------------------------------------------------------------    
-    
-    
-    
-    
+            {           
+                ke.textbox('textbox').bind('keydown',function(e)
+                {              
+                     var  cl_val= ke.textbox('getValue') * vd.textbox('getValue');
+                     cl.textbox('setText',cl_val);
+                     var  hl_val=(0.693)/ke.textbox('getValue');
+                     hl.textbox('setText',hl_val);
+                });            
+                 vd.textbox('textbox').bind('keydown',function(e)
+                {               
+                     var  cl_val= ke.textbox('getValue') * vd.textbox('getValue');
+                     cl.textbox('setText',cl_val);
+                });
+            }
 </script>
 
 <script type="text/javascript">
@@ -852,7 +801,7 @@ $(function()
                 <tr>
                     <td>Body Weight  :</td>
                     <td>
-                        <input class="easyui-numberbox" value="55" type="text" name="W" id="W" data-options="required:false"  style="  width:100px;height:30px  "></input>
+                        <input class="easyui-numberbox"  type="text" name="W" id="W" data-options="required:false"  style="  width:100px;height:30px  "></input>
                         Kg.
                         /
                         Conts. (ค่าคงที่)
@@ -1140,7 +1089,7 @@ $(function()
                         
                         <input class="easyui-textbox" id="current_medications" name="current_medications"  style="width:200px;height: 30px;"   />
                         
-                        <input class="easyui-numberbox" value="2" id="current_medications_weight" name="current_medications_weight" style="height: 30px;width: 50px" /> g
+                        <input class="easyui-numberbox"  id="current_medications_weight" name="current_medications_weight" style="height: 30px;width: 50px" /> g
                         
                         <input class="easyui-datebox" style="width:200px;height: 30px" name="current_medications_date" id="current_medications_date"/>
                         
@@ -1264,11 +1213,11 @@ $(function()
                        ke :
                     </td>
                     <td>
-                        <input class="easyui-numberbox" precision="2" id="ke" name="ke" value="49.00" style="width:70px;"></input>
+                        <input class="easyui-numberbox" precision="2" id="ke" name="ke"  style="width:70px;"></input>
                          hr-1
                          <?=nbs(4)?>
                          Half-life :
-                         <input class="easyui-numberbox" precision="4"  id="hl" name="hl" value="0.01000" style="width:100px;"></input>
+                         <input class="easyui-numberbox" precision="4"  id="hl" name="hl"  style="width:100px;"></input>
                          hr
                     </td>
                 </tr>
@@ -1334,7 +1283,20 @@ $(function()
                                   url:'<?=base_url()?>index.php/welcome/insert_dia',
                                   success:function(data)
                                   {
-                                      alert(data);      
+                                      alert(data); 
+                                      /*
+                                      if( data == 'true' )
+                                      {
+                                          $('#dg_diagnosis').datagrid('reload');
+                                          $.messager.alert('สถานะการบันทึกข้อมูล','บันทึกข้อมูลสำเร็จ','Info');
+                                          $('#add_diagnosis').window('close');
+                                          
+                                      }
+                                      else
+                                      {
+                                           $.messager.alert('สถานะการบันทึกข้อมูล','ไม่สามารถบันทึกข้อมูลได้','Error');
+                                      }
+                                      */
                                   }
                                   
                               });

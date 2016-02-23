@@ -636,6 +636,7 @@ LIMIT 90 , 30   */
                 
               public function insert_dia()//บันทึกประวัติการรักษา
               {
+                  $tb="tb_diagnosis";
                   //echo "TEST";
                     $id_patient=trim($this->input->get_post("HN_dia"));
                   //echo "<br>";
@@ -775,7 +776,9 @@ LIMIT 90 , 30   */
                 
                  $date_record=trim($this->input->get_post("date_record")); //วันที่บันทึก
                 //echo "<br>";
+               
                  
+                 /*
                 if(  strlen($date_record) > 0  )
                   {
                       $conv_date_record = $this->date->conv_date($date_record);
@@ -783,67 +786,239 @@ LIMIT 90 , 30   */
                   }
                   
                   
-                  $tb="tb_diagnosis";
-                  $this->db->set("id_patient",$id_patient);
+                 
+                  
+                 if( strlen($id_patient) > 0 ) 
+                 {
+                   $this->db->set("id_patient",$id_patient);
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($ward) > 0 )
+                 {    
                   $this->db->set("ward_",$ward);
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($W ) > 0 )
+                 {
                   $this->db->set("bodyweight",$W);
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen(  ) > 0 )
+                 {
                   $this->db->set("cb_conts",$cb_conts);
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($height) > 0 )
+                 {
                   $this->db->set("height",$height);
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($indication_detail1) > 0 )
+                 {
                   $this->db->set("indication1",$indication_detail1);
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if(strlen($indication_detail2) > 0 )
+                 {
                   $this->db->set("indication2",$indication_detail2);
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($disease_detail_1) > 0 )
+                 {
                   $this->db->set("underllyingdisease1",$disease_detail_1 );   //underllyingdisease1
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($disease_detail_2) > 0 )
+                 {
                   $this->db->set("underllyingdisease2",$disease_detail_2);
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen( $disease_detail_3 ) > 0 )
+                 {
                   $this->db->set("underllyingdisease3",$disease_detail_3);
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($disease_detail_4)> 0 )
+                 {
                   $this->db->set("underllyingdisease4",$disease_detail_4);
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($disease_detail_5) > 0 )
+                 {
                   $this->db->set("underllyingdisease5",$disease_detail_5);
-                  
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($disease_detail_6) > 0 )
+                 {
                   $this->db->set("underllyingdisease6",$disease_detail_6 );   //underllyingdisease1
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($disease_detail_7) > 0  )
+                 {
                   $this->db->set("underllyingdisease7",$disease_detail_7);
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($disease_detail_8) > 0 )
+                 {
                   $this->db->set("underllyingdisease8",$disease_detail_8);
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($disease_detail_9) > 0 )
+                 {
                   $this->db->set("underllyingdisease9",$disease_detail_9);
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($disease_detail_10) > 0 )
+                 {
                   $this->db->set("underllyingdisease10",$disease_detail_10);
+                    $ck_inst=$this->db->insert($tb);
+                 }
                   
-                  $this->db->set("reason_for_TDM",$reason_for_tdm);
+                 if( strlen($reason_for_tdm) > 0  ) 
+                 {
+                 $this->db->set("reason_for_TDM",$reason_for_tdm);
+                   $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if(strlen($id_drug) > 0 )
+                 {
                   $this->db->set("vancomycin",$id_drug  );  // Drug level requested (Vancomycin)
-                  
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($current_medications) > 0 )
+                 {
                   $this->db->set("current_medications",$current_medications  );   //Current Medications
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($current_medications_weight) > 0  )
+                 {
                   $this->db->set("current_medications_weight",$current_medications_weight); //Current Medications เป็น g
                   
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($conv_current_medications_date ) > 0 )
+                 {
                   $this->db->set("current_medications_date", $conv_current_medications_date );  //Current Medications  date
-                  
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if(strlen($conv_Sampling_Time)>0 )
+                 {
                   $this->db->set("sampling_time", $conv_Sampling_Time );//$Sampling_Time
-                  
+                    $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if(  strlen($conv_DrugAdministrationTime) > 0 )
+                 {    
                    $this->db->set("drugadministrationtime", $conv_DrugAdministrationTime );//$Sampling_Time  //$DrugAdministrationTime
-                  
+                     $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($Measured_level) > 0 )
+                 {
                    $this->db->set("measured_level",$Measured_level); //$Measured_level
-                   
+                     $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($Measured_level_cmb) > 0 )
+                 {
                    $this->db->set("measured_level_cmb",$Measured_level_cmb); // 3. Measured level :  combobox (unit)
-                   
+                     $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($vd_index) > 0 )
+                 {
                    $this->db->set("vd_index",$vd_index);   
+                     $ck_inst=$this->db->insert($tb);
+                 }
                   
-                   $this->db->set("vd",$vd);     // L/kg              
-
+                 if(strlen($vd) > 0 )
+                 {
+                   $this->db->set("vd",$vd);     // L/kg    
+                     $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($cl )> 0 )
+                 {
                    $this->db->set("cl",$cl);
-                   
+                     $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($ke) > 0 )
+                 {
                    $this->db->set("ke",$ke);
-                   
+                     $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if( strlen($hl) > 0 )
+                 {
                    $this->db->set("hl",$hl);
-                   
+                     $ck_inst=$this->db->insert($tb);
+                 }
+                 
+                 if(strlen($Assessment) > 0 )
+                 {
                    $this->db->set("assessment",$Assessment);  //Assessment
-                  
+                     $ck_inst=$this->db->insert($tb);
+                 }
+                   
+                 if( strlen( $Interpretation_Recommendation) > 0 )  
+                 {
                    $this->db->set("Interpretation_Recommendation",$Interpretation_Recommendation); //Interpretation_Recommendation  
+                     $ck_inst=$this->db->insert($tb);
+                 } 
                    
+                  if( strlen($Note ) > 0 ) 
+                  {
                    $this->db->set("Note",$Note);
+                     $ck_inst=$this->db->insert($tb);
+                  }
                    
+                  if( strlen($Pharmacist1 ) > 0 ) 
+                  {
                    $this->db->set("pharmacist1",$Pharmacist1);
+                     $ck_inst=$this->db->insert($tb);
+                  }
                    
-                   $this->db->set("pharmacist2",$Pharmacist2);      
-                   
+                   if( strlen($Pharmacist2 ) > 0 )
+                   {
+                   $this->db->set("pharmacist2",$Pharmacist2);  
+                     $ck_inst=$this->db->insert($tb);
+                   }
+                  
+                   if( strlen($tel ) > 0 )
+                   {
                    $this->db->set("tel",$tel);
+                     $ck_inst=$this->db->insert($tb);
+                   }
                    
+                   if( strlen($conv_date_record) > 0 )
+                   {
                    $this->db->set("date_record",$conv_date_record);   //date_record
+                     $ck_inst=$this->db->insert($tb);
+                   }
                    
-                  $ck_inst=$this->db->insert($tb);
+                   
+                
                   if( $ck_inst )
                   {
                       echo "true";
@@ -851,7 +1026,35 @@ LIMIT 90 , 30   */
                   {
                       echo "false";
                   }
+                  */
                   
+                  /*
+                  $data = array(
+   'title' => 'My title' ,
+   'name' => 'My Name' ,
+   'date' => 'My date'
+);
+
+$this->db->insert('mytable', $data);
+                   */
+                 
+                // "id_patient",$id_patient
+                
+                 
+                $data=array(
+                    "id_patient"=>$id_patient,
+                    
+                );
+                $ck_inst=$this->db->insert($tb,$data);  
+                 if( $ck_inst )
+                  {
+                      echo "true";
+                  }else
+                  {
+                      echo "false";
+                  }
+               
+                 
               }
               
        function  tb_diagnosis() //table datagrid diagnosis All join table
