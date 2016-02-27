@@ -735,47 +735,47 @@ LIMIT 90 , 30   */
                   }
                   
                   $Measured_level=trim($this->input->get_post("Measured_level")); //   3. Measured level :
-                 //echo "<br>";
+                
                  
                   $Measured_level_cmb=trim($this->input->get_post("Measured_level_cmb"));  //3. Measured level : combobox
-                 //echo "<br>";
+                 
                 
-                 //echo "<hr>";
+               
                   $vd_index=trim($this->input->get_post("id_vd")); //Vd :
-                 //echo "<hr>";
+                 
                  
                   $vd=trim($this->input->get_post("vd")); //Vd L/Kg.
-                 //echo "<br>";
+                 
                  
                   $cl=trim($this->input->get_post("cl"));
-                 //echo "<br>";
+                 
                  
                  $ke=trim($this->input->get_post("ke"));
-                //echo "<br>";
+                
                 
                  $hl=trim($this->input->get_post("hl"));
-                //echo "<br>";
+                
                 
                 $Assessment=trim($this->input->get_post("Assessment"));
-                //echo "<br>"; 
+                
                 
                  $Interpretation_Recommendation=trim($this->input->get_post("Interpretation_Recommendation"));//Interpretation and Recommendation
-                //echo "<br>"; 
+                
                 
                  $Note=trim($this->input->get_post("Note"));
-                //echo "<br>"; 
+                
                 
                  $Pharmacist1=trim($this->input->get_post("Pharmacist1")); //Pharmacist
-                //echo "<br>"; 
+               
                  
                  $Pharmacist2=trim($this->input->get_post("Pharmacist2")); //Pharmacist
-                //echo "<br>";
+                
                 
                 $tel=trim($this->input->get_post("tel"));
-                //echo "<br>";
                 
-                 $date_record=trim($this->input->get_post("date_record")); //วันที่บันทึก
-                //echo "<br>";
+                
+                $date_record=trim($this->input->get_post("date_record")); //วันที่บันทึก
+                
                
                  
                 
@@ -783,159 +783,18 @@ LIMIT 90 , 30   */
                   
                   
                  
-                 /* 
+                 /*
+
+                 
                 
+                  
+               
                  
-                 
+                
                  
                 
                  
                
-                 
-                 if( strlen($disease_detail_1) > 0 )
-                 {
-                  $this->db->set("underllyingdisease1",$disease_detail_1 );   //underllyingdisease1
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($disease_detail_2) > 0 )
-                 {
-                  $this->db->set("underllyingdisease2",$disease_detail_2);
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen( $disease_detail_3 ) > 0 )
-                 {
-                  $this->db->set("underllyingdisease3",$disease_detail_3);
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($disease_detail_4)> 0 )
-                 {
-                  $this->db->set("underllyingdisease4",$disease_detail_4);
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($disease_detail_5) > 0 )
-                 {
-                  $this->db->set("underllyingdisease5",$disease_detail_5);
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($disease_detail_6) > 0 )
-                 {
-                  $this->db->set("underllyingdisease6",$disease_detail_6 );   //underllyingdisease1
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($disease_detail_7) > 0  )
-                 {
-                  $this->db->set("underllyingdisease7",$disease_detail_7);
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($disease_detail_8) > 0 )
-                 {
-                  $this->db->set("underllyingdisease8",$disease_detail_8);
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($disease_detail_9) > 0 )
-                 {
-                  $this->db->set("underllyingdisease9",$disease_detail_9);
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($disease_detail_10) > 0 )
-                 {
-                  $this->db->set("underllyingdisease10",$disease_detail_10);
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                  
-                 if( strlen($reason_for_tdm) > 0  ) 
-                 {
-                 $this->db->set("reason_for_TDM",$reason_for_tdm);
-                   $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if(strlen($id_drug) > 0 )
-                 {
-                  $this->db->set("vancomycin",$id_drug  );  // Drug level requested (Vancomycin)
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($current_medications) > 0 )
-                 {
-                  $this->db->set("current_medications",$current_medications  );   //Current Medications
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($current_medications_weight) > 0  )
-                 {
-                  $this->db->set("current_medications_weight",$current_medications_weight); //Current Medications เป็น g
-                  
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($conv_current_medications_date ) > 0 )
-                 {
-                  $this->db->set("current_medications_date", $conv_current_medications_date );  //Current Medications  date
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if(strlen($conv_Sampling_Time)>0 )
-                 {
-                  $this->db->set("sampling_time", $conv_Sampling_Time );//$Sampling_Time
-                    $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if(  strlen($conv_DrugAdministrationTime) > 0 )
-                 {    
-                   $this->db->set("drugadministrationtime", $conv_DrugAdministrationTime );//$Sampling_Time  //$DrugAdministrationTime
-                     $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($Measured_level) > 0 )
-                 {
-                   $this->db->set("measured_level",$Measured_level); //$Measured_level
-                     $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($Measured_level_cmb) > 0 )
-                 {
-                   $this->db->set("measured_level_cmb",$Measured_level_cmb); // 3. Measured level :  combobox (unit)
-                     $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($vd_index) > 0 )
-                 {
-                   $this->db->set("vd_index",$vd_index);   
-                     $ck_inst=$this->db->insert($tb);
-                 }
-                  
-                 if(strlen($vd) > 0 )
-                 {
-                   $this->db->set("vd",$vd);     // L/kg    
-                     $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($cl )> 0 )
-                 {
-                   $this->db->set("cl",$cl);
-                     $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($ke) > 0 )
-                 {
-                   $this->db->set("ke",$ke);
-                     $ck_inst=$this->db->insert($tb);
-                 }
-                 
-                 if( strlen($hl) > 0 )
-                 {
-                   $this->db->set("hl",$hl);
-                     $ck_inst=$this->db->insert($tb);
-                 }
                  
                  if(strlen($Assessment) > 0 )
                  {
@@ -981,6 +840,241 @@ LIMIT 90 , 30   */
                    
                      
                 
+                
+                  */
+                  
+               
+                 
+                
+               
+                
+                
+               
+                 
+               
+                
+                 if( strlen($id_patient)  > 0  )
+                 {
+                     $this->db->set("id_patient",$id_patient);
+                     //$this->db->insert($tb);
+                 }
+                 if( strlen($ward ) > 0 )
+                 {
+                     $this->db->set("ward_",$ward);
+                     //$this->db->insert($tb);
+                 }
+                 if( strlen($W)> 0 )
+                 {
+                     $this->db->set("bodyweight",$W);
+                     //$this->db->insert($tb);
+                 }
+                if( strlen($cb_conts) > 0 )
+                {
+                    $this->db->set("cb_conts",$cb_conts);
+                    //$this->db->insert($tb);
+                }
+                 
+                if( strlen($height ) > 0 )
+                {
+                    $this->db->set("height",$height);
+                    //$this->db->insert($tb);
+                }
+                if( strlen($indication_detail1) > 0 )
+                {
+                     $this->db->set("indication1",$indication_detail1);
+                     
+                }
+                if( strlen($indication_detail2) > 0 )
+                {
+                     $this->db->set("indication2",$indication_detail2);
+                     
+                }
+                
+                 if( strlen($disease_detail_1) > 0 )
+                 {
+                    $this->db->set("underllyingdisease1",$disease_detail_1 );   //underllyingdisease1
+                   
+                 }
+                 
+                 if( strlen($disease_detail_2) > 0 )
+                 {
+                    $this->db->set("underllyingdisease2",$disease_detail_2);
+                   
+                 }
+                 
+                  if( strlen( $disease_detail_3 ) > 0 )
+                 {
+                   $this->db->set("underllyingdisease3",$disease_detail_3);
+                    
+                 }
+                 
+                 if( strlen($disease_detail_4)> 0 )
+                 {
+                   $this->db->set("underllyingdisease4",$disease_detail_4);
+                    
+                 }
+                 
+                  if( strlen($disease_detail_5) > 0 )
+                 {
+                   $this->db->set("underllyingdisease5",$disease_detail_5);
+                   
+                 }
+                 
+                  if( strlen($disease_detail_6) > 0 )
+                 {
+                   $this->db->set("underllyingdisease6",$disease_detail_6 );   //underllyingdisease1
+                   
+                 }
+                 
+                 if( strlen($disease_detail_7) > 0  )
+                 {
+                   $this->db->set("underllyingdisease7",$disease_detail_7);
+                   
+                 }
+                 
+                 if( strlen($disease_detail_8) > 0 )
+                 {
+                   $this->db->set("underllyingdisease8",$disease_detail_8);
+                    
+                 }
+                 
+                  if( strlen($disease_detail_9) > 0 )
+                 {
+                   $this->db->set("underllyingdisease9",$disease_detail_9);
+                    
+                 }
+                 
+                 if( strlen($disease_detail_10) > 0 )
+                 {
+                  $this->db->set("underllyingdisease10",$disease_detail_10);
+                    
+                 }
+                 
+                  if( strlen($reason_for_tdm) > 0  ) 
+                 {
+                   $this->db->set("reason_for_TDM",$reason_for_tdm);
+                   
+                 }
+                 
+                  if(strlen($id_drug) > 0 )
+                 {
+                   $this->db->set("vancomycin",$id_drug  );  // Drug level requested (Vancomycin)
+                   
+                 }
+                 
+                  if( strlen($current_medications) > 0 )
+                 {
+                   $this->db->set("current_medications",$current_medications  );   //Current Medications
+                    
+                 }
+                 
+                  if( strlen($current_medications_weight) > 0  )
+                 {
+                     $this->db->set("current_medications_weight",$current_medications_weight); //Current Medications เป็น g
+                  
+                   
+                 }
+                 
+                  if( strlen($conv_current_medications_date ) > 0 )
+                 {
+                      $this->db->set("current_medications_date", $conv_current_medications_date );  //Current Medications  date
+                   
+                 }
+                 
+                  #laboratorydata5day
+                 #Laboratory Data (within 5 day) :
+                 #$Laboratory_Data=trim($this->input->get_post("Laboratory_Data")); //Laboratory Data (within 5 day) :                              
+                 #  $Laboratory_Data=trim($this->input->get_post("Laboratory_Data")); //Laboratory Data (within 5 day) :
+                 if( strlen($Laboratory_Data ) > 0 )
+                 {
+                      $this->db->set("laboratorydata5day", $Laboratory_Data );  //Current Medications  date
+                   
+                 }
+                 
+
+                 #Current Medications  g                               
+                 #$Laboratory_Data_mg=trim($this->input->get_post("Laboratory_Data_mg")); //Laboratory Data (within 5 day)  mg/dL
+                 #laboratory_Data_mg
+                if( strlen($Laboratory_Data_mg ) > 0 )
+                 {
+                      $this->db->set("laboratory_Data_mg", $Laboratory_Data_mg );  //Current Medications  date
+                   
+                 }
+                 
+                 # $Laboratory_Data_date=trim($this->input->get_post("Laboratory_Data_date")); //Laboratory Data (within 5 day) date
+                 #Laboratory_Data_date
+                  if( strlen($conv_Laboratory_Data_date ) > 0 )
+                 {
+                      $this->db->set("Laboratory_Data_date", $conv_Laboratory_Data_date );  //Current Medications  date
+                   
+                 }
+                 
+                 
+                 #$conv_Sampling_Time
+                  if( strlen($conv_Sampling_Time ) > 0 )
+                 {
+                      $this->db->set("sampling_time", $conv_Sampling_Time );  //Current Medications  date
+                   
+                 }
+                 
+                  if(strlen($conv_Sampling_Time)>0 )
+                 {
+                   //echo  $conv_Sampling_Time;
+                      $this->db->set("sampling_time", $conv_Sampling_Time );//$Sampling_Time
+                    
+                 }
+                 
+                  if(  strlen($conv_DrugAdministrationTime) > 0 )
+                 {    
+                   $this->db->set("drugadministrationtime", $conv_DrugAdministrationTime );//$Sampling_Time  //$DrugAdministrationTime
+                     
+                 }
+                
+                 if( strlen($Measured_level) > 0 )
+                 {
+                   $this->db->set("measured_level",$Measured_level); //$Measured_level
+                    
+                 }
+                
+                   if( strlen($Measured_level_cmb) > 0 )
+                 {
+                   $this->db->set("measured_level_cmb",$Measured_level_cmb); // 3. Measured level :  combobox (unit)
+                    
+                 }
+                 
+                  if( strlen($vd_index) > 0 )
+                 {
+                   $this->db->set("vd_index",$vd_index);   
+                    
+                 }
+                 
+                   if(strlen($vd) > 0 )
+                 {
+                   $this->db->set("vd",$vd);     // L/kg    
+                     
+                 }
+                 
+                  if( strlen($cl )> 0 )
+                 {
+                   $this->db->set("cl",$cl);
+                    
+                 }
+                 
+                  if( strlen($ke) > 0 )
+                 {
+                   $this->db->set("ke",$ke);
+                     
+                 }
+                 
+                   if( strlen($hl) > 0 )
+                 {
+                   $this->db->set("hl",$hl);
+                    
+                 }
+                 
+                 
+                 $ck_inst=$this->db->insert($tb);  
+                  
                   if( $ck_inst )
                   {
                       echo "true";
@@ -988,77 +1082,17 @@ LIMIT 90 , 30   */
                   {
                       echo "false";
                   }
-                  */
-                  
-                  /*
-                  $data = array(
-   'title' => 'My title' ,
-   'name' => 'My Name' ,
-   'date' => 'My date'
-);
-
-$this->db->insert('mytable', $data);
-                   */
-                 
-                
                
-                 // 
-                 // $this->db->set("indication2",$indication_detail2);
-                
-                 /*
+                 
+                    /*
                 $data=array(
                    
                    "cb_conts"=>$cb_conts,
                    "height"=>$height,
                    "indication1"=>$indication_detail1,
-                   "indication2"=>$indication_detail2,
-                    
-                    
-                );
-                $ck_inst=$this->db->insert($tb,$data);  
-                 if( $ck_inst )
-                  {
-                      echo "true";
-                  }else
-                  {
-                      echo "false";
-                  }
-                  * 
+                   "indication2"=>$indication_detail2,                                       
+                );             
                   */
-                 
-                 
-                 if( strlen($id_patient)  > 0  )
-                 {
-                     $this->db->set("id_patient",$id_patient);
-                     $this->db->insert($tb);
-                 }
-                 if( strlen($ward ) > 0 )
-                 {
-                     $this->db->set("ward_",$ward);
-                     $this->db->insert($tb);
-                 }
-                 if( strlen($W)> 0 )
-                 {
-                     $this->db->set("bodyweight",$W);
-                     $this->db->insert($tb);
-                 }
-                if( strlen($cb_conts) > 0 )
-                {
-                    $this->db->set("cb_conts",$cb_conts);
-                    $this->db->insert($tb);
-                }
-                 
-                if( strlen($height ) > 0 )
-                {
-                    $this->db->set("height",$height);
-                    $this->db->insert($tb);
-                }
-                if( strlen($indication_detail1) > 0 )
-                {
-                     $this->db->set("indication1",$indication_detail1);
-                     $this->db->insert($tb);
-                }
-                
                  
               }
               
