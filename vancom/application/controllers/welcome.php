@@ -775,83 +775,13 @@ LIMIT 90 , 30   */
                 
                 
                 $date_record=trim($this->input->get_post("date_record")); //วันที่บันทึก
-                
-               
-                 
-                
-             
-                  
-                  
-                 
-                 /*
-
-                 
-                
-                  
-               
-                 
-                
-                 
-                
-                 
-               
-                 
-                 if(strlen($Assessment) > 0 )
-                 {
-                   $this->db->set("assessment",$Assessment);  //Assessment
-                     $ck_inst=$this->db->insert($tb);
-                 }
-                   
-                 if( strlen( $Interpretation_Recommendation) > 0 )  
-                 {
-                   $this->db->set("Interpretation_Recommendation",$Interpretation_Recommendation); //Interpretation_Recommendation  
-                     $ck_inst=$this->db->insert($tb);
-                 } 
-                   
-                  if( strlen($Note ) > 0 ) 
+                 if(  strlen( $date_record ) > 0  )
                   {
-                   $this->db->set("Note",$Note);
-                     $ck_inst=$this->db->insert($tb);
+                      $conv_date_record = $this->date->conv_date($date_record);
+                     //echo "<br>";
                   }
-                   
-                  if( strlen($Pharmacist1 ) > 0 ) 
-                  {
-                   $this->db->set("pharmacist1",$Pharmacist1);
-                     $ck_inst=$this->db->insert($tb);
-                  }
-                   
-                   if( strlen($Pharmacist2 ) > 0 )
-                   {
-                   $this->db->set("pharmacist2",$Pharmacist2);  
-                     $ck_inst=$this->db->insert($tb);
-                   }
-                  
-                   if( strlen($tel ) > 0 )
-                   {
-                   $this->db->set("tel",$tel);
-                     $ck_inst=$this->db->insert($tb);
-                   }
-                   
-                   if( strlen($conv_date_record) > 0 )
-                   {
-                   $this->db->set("date_record",$conv_date_record);   //date_record
-                     $ck_inst=$this->db->insert($tb);
-                   }
-                   
-                     
+     
                 
-                
-                  */
-                  
-               
-                 
-                
-               
-                
-                
-               
-                 
-               
                 
                  if( strlen($id_patient)  > 0  )
                  {
@@ -1072,6 +1002,50 @@ LIMIT 90 , 30   */
                     
                  }
                  
+                 if(strlen($Assessment) > 0 )
+                 {
+                   $this->db->set("assessment",$Assessment);  //Assessment
+                    
+                 }
+                 
+                 
+                 if( strlen( $Interpretation_Recommendation) > 0 )  
+                 {
+                   $this->db->set("Interpretation_Recommendation",$Interpretation_Recommendation); //Interpretation_Recommendation  
+                    
+                 } 
+                 
+                  if( strlen($Note ) > 0 ) 
+                  {
+                   $this->db->set("Note",$Note);
+                    
+                  }
+                  
+                   if( strlen($Pharmacist1 ) > 0 ) 
+                  {
+                    $this->db->set("pharmacist1",$Pharmacist1);
+                     
+                  }
+                 
+                   if( strlen($Pharmacist2 ) > 0 )
+                   {
+                   $this->db->set("pharmacist2",$Pharmacist2);  
+                     
+                   }
+                   
+                     if( strlen($tel ) > 0 )
+                   {
+                     $this->db->set("tel",$tel);
+                     
+                   }
+                   
+                      if( strlen($conv_date_record) > 0 )
+                   {
+                   $this->db->set("date_record",$conv_date_record);   //date_record
+                    
+                   }
+                   
+                   
                  
                  $ck_inst=$this->db->insert($tb);  
                   
