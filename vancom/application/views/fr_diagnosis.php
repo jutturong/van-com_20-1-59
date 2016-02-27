@@ -63,7 +63,7 @@
      */
      buttons:[    
      { text:'Close',iconCls:'icon-cancel',handler:function(data){ $('#dia_view_diag').dialog('close'); } } ]
-     " id="dia_view_diag" iconCls="icon-print" title="   แสดงรายละเอียดของประวัติการรักษา "  style="width:750px;left: 10px;top: 10px;height: 600px;" >
+     " id="dia_view_diag" iconCls="icon-print" title="   แสดงรายละเอียดของประวัติการรักษา "  style="width:850px;left: 10px;top: 10px;height: 600px;" >
    <!--
     <table class="easyui-datagrid" id="view_diag" style="height: 300px;" >       
     </table> 
@@ -284,6 +284,23 @@
              <input class="easyui-datebox" style="width:200px;height: 30px" name="current_medications_date_up" id="current_medications_date_up"/>
            
            </label>
+       </div>
+       
+       
+       <div style="padding: 5px;">
+           
+           <label>
+              Laboratory Data (within 5 day) : 
+            <input class="easyui-textbox"  name="Laboratory_Data_up" id="Laboratory_Data_up"  style="width:200px;height: 30px;" />
+                        
+                        <input class="easyui-numberbox" id="Laboratory_Data_mg_up" name="Laboratory_Data_mg_up" style="width:60px;height: 30px;"   />
+                        mg/dL
+                        
+                        
+                     Date Labotory Data
+                        
+                     <input class="easyui-datebox" id="Laboratory_Data_date_up" name="Laboratory_Data_date_up"  style="height: 30px;width:180px;"  data-options="required:false" ></input>
+           </label>         
        </div>
        
       
@@ -540,6 +557,12 @@
                      $('#current_medications_weight_up').textbox('setValue',row.current_medications_weight); //Current Medications
                      
                      $('#current_medications_date_up').datebox('setValue',row.current_medications_date);
+                     
+                     
+                     $('#Laboratory_Data_up').textbox('setValue',row.laboratorydata5day);
+                     $('#Laboratory_Data_mg_up').numberbox('setValue',row.laboratory_Data_mg);
+                    // $('#Laboratory_Data_date_up').datebox('setValue',row.Laboratory_Data_date);
+                     
                      
                      $('#Sampling_Time_up').datebox('setValue',row.sampling_time);
                      
