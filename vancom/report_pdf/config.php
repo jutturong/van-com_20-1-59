@@ -1,21 +1,11 @@
-<?php
-
-	  
-
-        
-
-
-
-
-
-            
+<?php            
 	  $host="localhost";
 	  $us="root";
 	  $ps="1234";
 	  $DB="vancomdb";
          
 
-               //$DB="kkhp";
+      //$DB="kkhp";
 	  //$objDB = mysql_select_db("kkhp");
 
 	  $connect=mysql_connect($host,$us,$ps) or die("Can't conect MYSQL server!!!");
@@ -26,8 +16,6 @@
 	  mysql_select_db($DB);
 	  mysql_query("SET NAMES UTF8");
           
-
-
 
 /*
  define("host","localhost");	 
@@ -48,7 +36,6 @@
   
    $connect = new mysqlconnect();
   */
-  
      
 
 ?>

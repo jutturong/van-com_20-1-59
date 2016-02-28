@@ -15,8 +15,14 @@
     <div class="easyui-panel" style="padding:5px;">
         <!--<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-large-clipart'  "><?=$head?></a>-->
          <a href="#" class="easyui-menubutton"     data-options="menu:'#mm8'   "    iconCls="icon-large-clipart"   >ประวัติผู้ป่วย/ประวัติการรักษา</a>
-         
+       
+         <!-- เป็นประวัติการรักษา report PDF http://localhost/vancom/report_pdf/vancom/report_case2.php -->
+         <!-- http://localhost/vancom/report_pdf/vancom/query_diagnosis.php -->
+         <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#window_diagnosis').window('open');"  data-options=" iconCls:'icon-man',plain:true,   "  >แสดงประวัติการรักษา</a>
+          
          <a href="#" class="easyui-menubutton"  data-options=" menu:'#mm7' ,iconCls:'icon-man'   "   >เกี่ยวกับผู้ป่วย</a>
+         
+        
          
          <a href="#" class="easyui-menubutton"  data-options=" menu:'#mm9' ,iconCls:'icon-man'   "   >Administrator</a>
        

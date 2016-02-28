@@ -70,6 +70,10 @@ $pdf->SetFillColor(255,255, 255);
 $pdf->Cell( 190  , 7 , iconv( 'UTF-8','cp874' , '' ),T,0,L,true     );
 
 
+$pdf->setXY( 10 , $y_absolute +  ($r*5)  );
+$pdf->SetFont('angsana','',13);
+$pdf->SetFillColor(255,255, 255);
+$pdf->Cell( 190  , 7 , iconv( 'UTF-8','cp874' , 'Patient \'s name : ' . $Name   )    );
 
 
 
