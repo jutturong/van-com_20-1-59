@@ -556,17 +556,17 @@
                    
                      $('#current_medications_weight_up').textbox('setValue',row.current_medications_weight); //Current Medications
                      
-                     $('#current_medications_date_up').datebox('setValue',row.current_medications_date);
+                    // $('#current_medications_date_up').datebox('setValue',row.current_medications_date); //Current Medications
                      
                      
                      $('#Laboratory_Data_up').textbox('setValue',row.laboratorydata5day);
                      $('#Laboratory_Data_mg_up').numberbox('setValue',row.laboratory_Data_mg);
-                    // $('#Laboratory_Data_date_up').datebox('setValue',row.Laboratory_Data_date);
+                    // $('#Laboratory_Data_date_up').datebox('setValue',row.Laboratory_Data_date); //Date Labotory Data
                      
                      
-                     $('#Sampling_Time_up').datebox('setValue',row.sampling_time);
+                    // $('#Sampling_Time_up').datebox('setValue',row.sampling_time); //Sampling Time
                      
-                     $('#DrugAdministrationTime_up').datebox('setValue',row.drugadministrationtime );
+                   //  $('#DrugAdministrationTime_up').datebox('setValue',row.drugadministrationtime ); //Drug Administration Time
                      
                      $('#Measured_level_up').numberbox('setValue',row.measured_level);
                      
@@ -594,7 +594,7 @@
                      
                      $('#tel_up').textbox('setValue',row.tel);
                      
-                     $('#date_record_up').datebox('setValue',row.date_record );  
+                    // $('#date_record_up').datebox('setValue',row.date_record );  //Date
                      
                   }
                 }  
