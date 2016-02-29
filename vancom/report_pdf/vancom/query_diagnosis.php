@@ -1,18 +1,21 @@
 <?php
-require_once("../config.php");
-require_once("pdf_class.php"); //class PDF
+  require_once("../config.php");
+  require_once("pdf_class.php"); //class PDF
 
-require_once("report_case2.php"); // report pdf
+  require_once("report_case2.php"); // report pdf
 
 #http://localhost/vancom/report_pdf/vancom/report_case2.php
 #http://localhost/vancom/report_pdf/vancom/query_diagnosis.php
 
-echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />";
+//echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />";
 
    $id=trim($_GET["id"]);
-  if( strlen($id) > 0 && !empty($id) )
+  if( $id  > 0  )
   {
   		//echo $id;
+   
+
+
   	  $tb1=" `tb_diagnosis` ";
   	  $tb2=" `tb_patient` ";
   	  $str=" select *  from  $tb1 
@@ -23,6 +26,8 @@ echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />"
   	  {
   	  	  $Name=$row->Name;
   	  	  $ward_ = $row->ward_;
+          $HN=$row->HN;
+
   	  }
   	  
 

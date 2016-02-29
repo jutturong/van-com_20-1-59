@@ -605,7 +605,8 @@
                     var  id=row.id_diagnosis;
                     //alert(id);
                     //http://localhost/vancom/report_pdf/vancom/query_diagnosis.php
-                    window.open('<?=base_url()?>report_pdf/vancom/query_diagnosis.php?id=' + id );
+                    //http://localhost/vancom/report_pdf/vancom/report_case2.php?id=158
+                    window.open('<?=base_url()?>report_pdf/vancom/report_case2.php?id=' + id );
                 }   
               },
               { text:'refresh',iconCls:'icon-reload',handler:function(){ $('#dg_diagnosis').datagrid('reload'); }  }

@@ -1,6 +1,7 @@
 <?php
 require_once("../config.php");
 require_once("pdf_class.php"); //class PDF
+require_once("query_diagnosis.php");
 
 ##---- PDF ---
 $pdf=new PDF('P','mm','A4');  //ของเดิม 
@@ -73,8 +74,8 @@ $pdf->Cell( 190  , 7 , iconv( 'UTF-8','cp874' , '' ),T,0,L,true     );
 $pdf->setXY( 10 , $y_absolute +  ($r*5)  );
 $pdf->SetFont('angsana','',13);
 $pdf->SetFillColor(255,255, 255);
-$pdf->Cell( 190  , 7 , iconv( 'UTF-8','cp874' , 'Patient \'s name : ' . $Name   )    );
-
+$pdf->Cell( 190  , 7 , iconv( 'UTF-8','cp874' , 'Patient \'s name : '  . $Name  .'                                     HN : '  . $HN  )   . '                           Ward : ' . $ward_  );
+//$pdf->MultiCell( 0  , 0 , iconv( 'UTF-8','cp874' , 'Patient \'s name : '  ));
 
 
 /*
