@@ -1276,9 +1276,9 @@ $(function()
                    <tr>
                     <td>Pharmacist :</td>
                     <td>
-                        <input class="easyui-textbox" data-options="iconCls:'icon-man'  " id="Pharmacist1" name="Pharmacist1" value="ภญ.ปฐมา โสภาช"  style="width:200px;height: 30px" ></input>
+                        <input class="easyui-textbox" data-options="iconCls:'icon-man'  " id="Pharmacist1" name="Pharmacist1"   style="width:200px;height: 30px" ></input>
                         /
-                        <input class="easyui-textbox" data-options="iconCls:'icon-man'  "  id="Pharmacist2" name="Pharmacist2" value="ภญ.ศิริลักษณ์ ใจซื่อ"  style="width:200px;height: 30px" ></input>
+                        <input class="easyui-textbox" data-options="iconCls:'icon-man'  "  id="Pharmacist2" name="Pharmacist2"  style="width:200px;height: 30px" ></input>
                     </td>
                 </tr>
                 
