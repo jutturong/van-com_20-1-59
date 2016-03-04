@@ -138,9 +138,39 @@ $pdf->MultiCell(0,0,iconv('UTF-8','cp874','Current Medications : '.$current_medi
 $pdf->setXY( 10 , $y_absolute +  ($r*22)  );
 $pdf->MultiCell(0,0,iconv('UTF-8','cp874','Laboratory Data (within 5 day) : '.$laboratorydata5day . '   '.$laboratory_Data_mg.'  mg/dL Date Labotory Data : '.$Laboratory_Data_date ));
 
+$pdf->setXY( 10 , $y_absolute +  ($r*23)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','1. Sampling Time : '.$sampling_time  ));
+
+$pdf->setXY( 10 , $y_absolute +  ($r*24)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','2. Drug Administration Time : '.$drugadministrationtime  ));
+
+$pdf->setXY( 10 , $y_absolute +  ($r*25)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','3. Measured level : '.$measured_level.' '.$measured_level_cmb  ));
+
+$pdf->setXY( 10 , $y_absolute +  ($r*26)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Vd : '.$vd_index.'          '.$vd.'  L/Kg.  '.'  Cl : '.$cl  ));
+
+$pdf->setXY( 10 , $y_absolute +  ($r*27)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','ke : '.$ke.' hr-1 '.'         Half-life : '.$hl .'  hr ' ));
+
+$pdf->setXY( 10 , $y_absolute +  ($r*28)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Assessment : '.$assessment ));
 
 
+$pdf->setXY( 10 , $y_absolute +  ($r*29)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Interpretation and Recommendation : '.$Interpretation_Recommendation ));
 
+$pdf->setXY( 10 , $y_absolute +  ($r*30)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Note : '.$Note ));
+
+$pdf->setXY( 10 , $y_absolute +  ($r*31)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Pharmacist : '.$pharmacist1.'  /  '.$pharmacist2 ));
+
+$pdf->setXY( 10 , $y_absolute +  ($r*32)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Tel : '.$tel ));
+
+$pdf->setXY( 10 , $y_absolute +  ($r*33)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Date : '.$date_record ));
 
 /*
 ##--หัวตาราง

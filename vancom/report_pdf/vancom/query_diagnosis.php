@@ -74,6 +74,33 @@
           $laboratory_Data_mg=$row->laboratory_Data_mg;
           $Laboratory_Data_date=$row->Laboratory_Data_date;
 
+          $sampling_time=$row->sampling_time;
+          $drugadministrationtime=$row->drugadministrationtime;
+
+          $measured_level=$row->measured_level;
+          $measured_level_cmb=$row->measured_level_cmb;
+
+          $vd_index=$row->vd_index;
+          $vd=$row->vd;
+
+          $cl=$row->cl;
+          $ke=$row->ke;
+          $hl=$row->hl;
+
+          $assessment=$row->assessment;
+          $Interpretation_Recommendation=$row->Interpretation_Recommendation;
+
+          $Note=$row->Note;
+
+          $pharmacist1=$row->pharmacist1;
+          $pharmacist2=$row->pharmacist2;
+
+          $tel=$row->tel;
+
+          $date_record=$row->date_record;
+
+
+
   	  }
   	  
 
