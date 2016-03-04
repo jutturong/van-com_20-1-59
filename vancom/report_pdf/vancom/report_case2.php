@@ -124,6 +124,24 @@ $pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 9 : '.$underllyin
 $pdf->setXY( 10 , $y_absolute +  ($r*18)  );
 $pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 10 : '.$underllyingdisease10  ));
 
+$pdf->setXY( 10 , $y_absolute +  ($r*19)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Reason for TDM : '.$reason_detail  ));
+
+$pdf->setXY( 10 , $y_absolute +  ($r*20)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Drug level requested (Vancomycin) : '.$drug_detail  ));
+
+
+$pdf->setXY( 10 , $y_absolute +  ($r*21)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Current Medications : '.$current_medications . '   '.$current_medications_weight.'  g  Current Medications date : '.$current_medications_date ));
+
+
+$pdf->setXY( 10 , $y_absolute +  ($r*22)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Laboratory Data (within 5 day) : '.$laboratorydata5day . '   '.$laboratory_Data_mg.'  mg/dL Date Labotory Data : '.$Laboratory_Data_date ));
+
+
+
+
+
 /*
 ##--หัวตาราง
 $pdf->setXY($x_absolute , $y_absolute +  ($r*3.5)  );

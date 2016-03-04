@@ -20,11 +20,16 @@
   	  $tb2=" `tb_patient` ";
       $tb3="`tb_indication`"; //Reason for TDM 1 (Indication)     $tb1.indication1=$tb3.id_indication
       $tb4="`tb_disease`"; //Underllying disease 1 :   $tb1.underllyingdisease1=$tb4.id_disease
+      $tb5="`reason_tdm`"; //Reason for TDM :
+      $tb6="`tb_drug`";  //Drug level requested (Vancomycin)
+
   	  $str=" select *  from  $tb1 
                  left  join  $tb2  on  $tb1.id_patient=$tb2.id_patient
                  left  join  $tb3  on  $tb1.indication1=$tb3.id_indication
                 
                  left  join  $tb4  on  $tb1.underllyingdisease1=$tb4.id_disease
+                 left  join  $tb5  on  $tb1.reason_for_TDM=$tb5.id_reason
+                 left  join  $tb6  on   $tb1.vancomycin=$tb6.id_drug
 
   	              where  id_diagnosis=$id ; ";
   	  $result=mysql_query($str); 
@@ -53,6 +58,21 @@
           $underllyingdisease8=$row->underllyingdisease8;
           $underllyingdisease9=$row->underllyingdisease9;
           $underllyingdisease10=$row->underllyingdisease10;
+
+          $reason_for_TDM=$row->reason_for_TDM;
+          $reason_detail=$row->reason_detail;
+
+          $vancomycin=$row->vancomycin;
+          $drug_detail=$row->drug_detail;
+
+          $current_medications=$row->current_medications;
+          $current_medications_weight=$row->current_medications_weight;
+
+          $current_medications_date=$row->current_medications_date;
+
+          $laboratorydata5day=$row->laboratorydata5day;
+          $laboratory_Data_mg=$row->laboratory_Data_mg;
+          $Laboratory_Data_date=$row->Laboratory_Data_date;
 
   	  }
   	  
