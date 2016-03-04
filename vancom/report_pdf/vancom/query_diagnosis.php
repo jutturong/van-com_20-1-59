@@ -43,21 +43,74 @@
           $height=$row->height;
           $indication1=$row->indication1;
           $indication_detail=$row->indication_detail;
+
           $indication2=$row->indication2;
+          $str2=" select  *   from  $tb3  where   id_indication=$indication2 ; ";
+          $result2=mysql_query($str2);
+          $row2=mysql_fetch_row($result2);
+          $indication_detail2=$row2[1];
+
           //$indication_detail2=$row->indication_detail;
           $underllyingdisease1=$row->underllyingdisease1;
           $disease_detail=$row->disease_detail;
+
           $underllyingdisease2=$row->underllyingdisease2;
+          $str2=" select  *   from  $tb4  where  id_disease=$underllyingdisease2 ; ";
+          $result2=mysql_query($str2);
+          $row2=mysql_fetch_row($result2);
+          $disease_detail2=$row2[1];
+
           $underllyingdisease3=$row->underllyingdisease3;
+          $str3=" select  *   from  $tb4  where  id_disease=$underllyingdisease3 ; ";
+          $result3=mysql_query($str3);
+          $row3=mysql_fetch_row($result3);
+          $disease_detail3=$row3[1];
+
+
           $underllyingdisease4=$row->underllyingdisease4;
+          $str4=" select  *   from  $tb4  where  id_disease=$underllyingdisease4 ; ";
+          $result4=mysql_query($str4);
+          $row4=mysql_fetch_row($result4);
+          $disease_detail4=$row4[1];
+
           $underllyingdisease5=$row->underllyingdisease5;
+          $str5=" select  *   from  $tb4  where  id_disease=$underllyingdisease5 ; ";
+          $result5=mysql_query($str5);
+          $row5=mysql_fetch_row($result5);
+          $disease_detail5=$row5[1];
+
 
           $underllyingdisease6=$row->underllyingdisease6;
+          $str6=" select  *   from  $tb4  where  id_disease=$underllyingdisease6 ; ";
+          $result6=mysql_query($str6);
+          $row6=mysql_fetch_row($result6);
+          $disease_detail6=$row6[1];
+
          
           $underllyingdisease7=$row->underllyingdisease7;
+          $str6=" select  *   from  $tb4  where  id_disease=$underllyingdisease7 ; ";
+          $result6=mysql_query($str6);
+          $row6=mysql_fetch_row($result6);
+          $disease_detail7=$row6[1];
+
           $underllyingdisease8=$row->underllyingdisease8;
+          $str6=" select  *   from  $tb4  where  id_disease=$underllyingdisease8 ; ";
+          $result6=mysql_query($str6);
+          $row6=mysql_fetch_row($result6);
+          $disease_detail8=$row6[1];
+
           $underllyingdisease9=$row->underllyingdisease9;
+          $str6=" select  *   from  $tb4  where  id_disease=$underllyingdisease9 ; ";
+          $result6=mysql_query($str6);
+          $row6=mysql_fetch_row($result6);
+          $disease_detail9=$row6[1];
+
           $underllyingdisease10=$row->underllyingdisease10;
+          $str6=" select  *   from  $tb4  where  id_disease=$underllyingdisease10 ; ";
+          $result6=mysql_query($str6);
+          $row6=mysql_fetch_row($result6);
+          $disease_detail10=$row6[1];
+
 
           $reason_for_TDM=$row->reason_for_TDM;
           $reason_detail=$row->reason_detail;

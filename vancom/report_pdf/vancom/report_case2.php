@@ -90,39 +90,39 @@ $pdf->SetFillColor(255,255, 255);
 $pdf->MultiCell( 0  , 0 , iconv( 'UTF-8','cp874' , 'Reason for TDM 1 (Indication) : '.$indication_detail )  );
 
 $pdf->setXY( 10 , $y_absolute +  ($r*8)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Reason for TDM 2 (Indication) : '.$indication2  ));
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Reason for TDM 2 (Indication) : '.$indication_detail2  ));
 
 $pdf->setXY( 10 , $y_absolute +  ($r*9)  );
 $pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 1 : '.$disease_detail  ));
 
 $pdf->setXY( 10 , $y_absolute +  ($r*10)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 2 : '.$underllyingdisease2  ));
-
+//$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 2 : '.$underllyingdisease2 .'  '.$disease_detail2 ));
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 2 : '.$disease_detail2 ));
 
 $pdf->setXY( 10 , $y_absolute +  ($r*11)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 3 : '.$underllyingdisease3  ));
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 3 : '.$disease_detail3  ));
 
 
 $pdf->setXY( 10 , $y_absolute +  ($r*12)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 4 : '.$underllyingdisease4  ));
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 4 : '.$disease_detail4  ));
 
 $pdf->setXY( 10 , $y_absolute +  ($r*13)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 5 : '.$underllyingdisease5  ));
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 5 : '.$disease_detail5  ));
 
 $pdf->setXY( 10 , $y_absolute +  ($r*14)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 6 : '.$underllyingdisease6  ));
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 6 : '.$disease_detail6  ));
 
 $pdf->setXY( 10 , $y_absolute +  ($r*15)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 7 : '.$underllyingdisease7  ));
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 7 : '.$disease_detail7  ));
 
 $pdf->setXY( 10 , $y_absolute +  ($r*16)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 8 : '.$underllyingdisease8  ));
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 8 : '.$disease_detail8  ));
 
 $pdf->setXY( 10 , $y_absolute +  ($r*17)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 9 : '.$underllyingdisease9  ));
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 9 : '.$disease_detail9  ));
 
 $pdf->setXY( 10 , $y_absolute +  ($r*18)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 10 : '.$underllyingdisease10  ));
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 10 : '.$disease_detail10  ));
 
 $pdf->setXY( 10 , $y_absolute +  ($r*19)  );
 $pdf->MultiCell(0,0,iconv('UTF-8','cp874','Reason for TDM : '.$reason_detail  ));
