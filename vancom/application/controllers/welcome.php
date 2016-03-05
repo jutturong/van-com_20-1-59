@@ -207,8 +207,39 @@ LIMIT 0 , 30
                             
                     }
                     
+                    public  function search_byname() //ใช้สำหรับค้นหาประวัติคนไข้จาก ชื่อ
+                    {
+                        # http://127.0.0.1/vancom/index.php/welcome/search_byname/ 
+                          // $this->authentication->check_authentication(); //ใช้สำหรับการ authentication login เข้าสู่โปรแกรม
+                         $tb="tb_patient";
+                         $q = isset($_POST['q']) ? strval($_POST['q']) : '';
+                         $this->db->like('Name',$q);
+                         $query=$this->db->get($tb,20);
+                         foreach($query->result() as $row )
+                         {
+                             $rows[]=$row;
+                             
+                         }
+                         echo json_encode($rows);
+                    }
                     
-                   public function  sr_NAME() //ประวัติของผู้ป่วย จาก HN
+                    public function patient_byid()
+                    {
+                        # http://127.0.0.1/vancom/index.php/welcome/patient_byid/ 
+                        $tb="tb_patient";
+                        $id=trim($this->uri->segment(3)); //5
+                       // $id=5;
+                        $query=$this->db->get_where($tb,array("id_patient"=>$id));
+                         foreach($query->result() as $row )
+                         {
+                             $rows[]=$row;
+                             
+                         }
+                         echo json_encode($rows);
+                    }
+
+
+                    public function  sr_NAME() //ประวัติของผู้ป่วย จาก HN
                     {
                          # http://127.0.0.1/vancom/index.php/welcome/dg_patient_sr_NAME/
                        //echo'<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';     
@@ -329,6 +360,8 @@ LIMIT 90 , 30   */
                         }
                          echo json_encode($rows);
                  }
+                 
+                 
                  
                  public function vancomycin()// combobox vancomycin
                  {

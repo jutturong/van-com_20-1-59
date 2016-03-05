@@ -5,7 +5,7 @@
                  closable:true,
                  resizable:true,
                  "
-                 style="width:700px;height:270px;padding:10px;">
+                 style="width:700px;height:270px;padding:10px;top:10px;left:10px;">
             <div style="padding:10px 60px 20px 60px">
                 <form id="fr_patient" method="post">
             <table cellpadding="1">

@@ -22,7 +22,7 @@
           
          <a href="#" class="easyui-menubutton"  data-options=" menu:'#mm7' ,iconCls:'icon-man'   "   >เกี่ยวกับผู้ป่วย</a>
          
-        
+         <a href="javascript:void(0)" class="easyui-menubutton" data-options=" plain:true, menu:'#mm_search'  " >ค้นหาผู้ป่วยและประวัติผู้ป่วย</a>
          
          <a href="#" class="easyui-menubutton"  data-options=" menu:'#mm9' ,iconCls:'icon-man'   "   >Administrator</a>
        
@@ -33,12 +33,19 @@
        <!--  <a href="#" class="easyui-menubutton" data-options="menu:'#mm1',iconCls:'icon-edit'">Tool (ข้อมูลต่างๆ)</a> -->
         
          <a href="#" class="easyui-menubutton" data-options="menu:'#mm5',iconCls:'icon-large-shapes'">Add ComboBox (เพิ่มข้อมูล)</a>
-        
+       
+         <!--
         <a href="#" class="easyui-menubutton" data-options="menu:'#mm4',iconCls:'icon-large-picture'">Report</a>
+        -->
+        
           <a href="#" class="easyui-menubutton" data-options="menu:'#mm6', iconCls:' icon-large-smartart '  ">Graph</a>
-        <a href="#" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-help'">Help</a>
+       
+        <!--
+          <a href="#" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-help'">Help</a>
+        -->
+          
        <!-- <a href="#" class="easyui-menubutton" data-options="menu:'#mm3'">ออกจากระบบ</a> -->
-        <a href="<?=base_url()?>index.php/welcome/index/" class="easyui-linkbutton" iconCls="icon-cancel">Sign Out</a>
+        <a href="<?=base_url()?>index.php/welcome/index/" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">Sign Out</a>
     </div>
     
    
@@ -48,6 +55,8 @@
        
         <div class="menu-sep"></div>
         <div   onclick="javascript:$('#p_patient').panel('open')"   data-options=" iconCls:'icon-reload'   " >Open </div>
+        
+        <!--
         <div class="menu-sep"></div>
         <div    onclick="javascript:$('#p_patient').panel('close')"  data-options=" iconCls:' icon-remove'   ">Close</div>
         
@@ -56,15 +65,15 @@
             <span>ค้นหาเพิ่มเติม</span>
             <div>
                 <div onclick="$('#win_hn_sr').window('open')">ค้นหาจาก HN </div>
-                <!--<div class="menu-sep"></div>-->
+                <div class="menu-sep"></div>
                 <div onclick="$('#win_name_sr').window('open')">ค้นหาจาก ชื่อ - นามสกุล</div>
                <div class="menu-sep"></div>
                <div>Vancomycin</div>
                <div>Date</div>
-                <!--<div>New Toolbar...</div>-->
+               <div>New Toolbar...</div>
             </div>
         </div>
-        
+        -->
         
         <!--<div data-options="iconCls:'icon-remove'">Delete</div>
         <div>Select All</div>-->
@@ -169,7 +178,7 @@
  
  
  
-  <div id="mm5" style="width:150px;">
+  <div id="mm5" style="width:250px;">
         <!--<div data-options="iconCls:'icon-add'">เพิ่มชื่อผู้ป่วย</div>-->
         <div data-options="iconCls:'icon-large-shapes'   ">เพิ่มข้อมูล</div>
         <div class="menu-sep"></div>
@@ -234,10 +243,35 @@
         <div>Select All</div>
         -->
     </div>
-    
-    
+   
+  <div id="mm_search" style="width:200px;" >
+      
+      <div data-options="iconCls:'icon-man' " >
+          <span onclick="$('#sr_patient').window('open');">ผู้ป่วย</span>
+          <!--
+          <div>
+              <div data-options="iconCls:'icon-ok' " onclick="$('#sr_patient').window('open')">ค้นหาจากชื่อ-นามสกุล</div>
+              <div>HN</div>
+          </div>
+          -->
+      </div>
+      <div class="menu-sep"></div>
+      <div data-options="iconCls:'icon-help' ">
+          <span>ประวัติการรักษา</span>
+          
+          <!--
+          <div>
+          <div data-options=" iconCls:'icon-ok' " >ค้นหาจากชื่อ-นามสกุล</div>
+          <div>HN</div>
+          </div>
+          -->
+          
+      </div>
+  </div>
+  
+    <!--
      <div id="mm4" style="width:150px;">
-        <!--<div data-options="iconCls:'icon-add'">เพิ่มชื่อผู้ป่วย</div>-->
+        <div data-options="iconCls:'icon-add'">เพิ่มชื่อผู้ป่วย</div>
         <div data-options="iconCls:'icon-add'">ระบุการค้นหา</div>
         <div class="menu-sep"></div>
         <div  onclick="send_report()">จาก HN</div>
@@ -247,7 +281,7 @@
         <div>Date Sampling Time </div>
         <div class="menu-sep"></div>
         
-        <!--
+        
         <div>
             <span>Toolbar</span>
             <div>
@@ -259,21 +293,23 @@
                 <div>New Toolbar...</div>
             </div>
         </div>
-        -->
         
-        <!--
+        
+        
         <div data-options="iconCls:'icon-remove'">Delete</div>
         <div>Select All</div>
-        -->
+       
     </div>
+    -->
     
     
+    <!--
     <div id="mm2" style="width:100px;">
         <div>คู่มือการใช้งาน</div>
         <div>Update</div>
         <div>เกี่ยวกับเรา</div>
     </div>
-    
+    -->
   
     <!--
     <div id="mm3" class="menu-content" style="background:#f0f0f0;padding:10px;text-align:left">

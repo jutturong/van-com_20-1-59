@@ -1,14 +1,14 @@
 <!--  ผู้ป่วยทัังหมด/ประวัติการรักษา   -->  
      
-<div style="padding:10px 60px 20px 60px"></div>
-    <div id="p_patient" class="easyui-panel" title=" แสดงรายการทั้งหมด ประวัติผู้ป่วย/ประวัติการรักษา "  
+<div style="padding:10px 60px 20px 60px;"></div>
+    <div id="p_patient" class="easyui-window" title=" แสดงรายการทั้งหมด ประวัติผู้ป่วย/ประวัติการรักษา "  
          data-options=" iconCls:'icon-man' ,  
-                                     tools:'#t_patient'  ,
-                                     closable:true ,
-                                     maximizable:true ,
-                                     collapsible:true,
+                                    
+                                     closed:true,
+                                    
+                                     
                                     "  
-         style="width:450px;height:450px;padding:10px;">
+         style="width:450px;height:450px;padding:10px;left:10px;top:10px;">
         <!-- <p style="font-size:14px">jQuery EasyUI framework helps you build your web pages easily.</p> -->
         
             <table class="easyui-datagrid"  id="dg_patient"   name="dg_patient"  style="width:420px;height:400px"
@@ -16,7 +16,10 @@
                                       ,fitColumns:true,
                                       singleSelect:true,
                                       pagination: true  ,
-                                     rownumbers:true ,    
+                                     rownumbers:true ,  
+                                     toolbar:[ { text:'Reload',iconCls:'icon-reload',handler:function(){ $('#dg_patient').datagrid('reload'); } }
+                                     ,{  text:'Search',iconCls:'icon-search',handler:function(){ $('#sr_patient').window('open'); }  }
+                                     ],
                                       columns:[[
                                           {  field:'Name',title:'Name' },
                                           {  field:'Surname',title:'Lastname' },
@@ -41,5 +44,69 @@
     </div>
 
 <!--  ผู้ป่วยทัังหมด/ประวัติการรักษา   -->  
+
+<!--  Search  ค้นหาประวัติผู้ป่วย -->
+<div class="easyui-window" id="sr_patient" title="ค้นหาผู้ป่วย"data-options="
+     iconCls:'icon-man', closed:true,
+     
+     " style="width:400px;height: 200px;padding: 10px;left: 10px;top: 10px;">
+    <div>
+        <label>
+            ชื่อ-นามสกุล :
+            <input class="easyui-combogrid" id="sr_id_patient" style="height: 40px;width: 200px;" data-options="
+                  url:'<?=base_url()?>index.php/welcome/search_byname',                 
+                  method:'post',
+                  idField:'id_patient',
+                  textField:'Name',
+                  mode:'remote',
+                  fitColumns:true,
+                  columns:[[
+                                          {  field:'Name',title:'Name' },
+                                          {  field:'Surname',title:'Lastname' },
+                                          {  field:'HN',title:'HN' },
+                                          {  field:'BirthDate',title:'Birth Date' },
+                                          {  field:'Sex',title:'Sex' },
+                                          {field:'id_patient',title:'ID'},
+                                      ]],
+                             
+                  onSelect:function()
+                  {
+                     var  id=$('#sr_id_patient').combogrid('getValue');
+                     
+                     var  url='http://127.0.0.1/vancom/index.php/welcome/patient_byid/' + id;
+                    
+                     
+                     $('#dg_patient').datagrid({
+                         url:'<?=base_url()?>index.php/welcome/patient_byid/' + id  ,
+                         fitColumns:true,
+                                      singleSelect:true,
+                                      pagination: true  ,
+                                     rownumbers:true ,  
+                                     toolbar:[ 
+                                     { text:'Reload',iconCls:'icon-reload',handler:function(){ $('#dg_patient').datagrid('reload'); } },
+                                     {  text:'Search',iconCls:'icon-search',handler:function(){ $('#sr_patient').window('open'); }  },
+                                     ],
+                                      columns:[[
+                                          {  field:'Name',title:'Name' },
+                                          {  field:'Surname',title:'Lastname' },
+                                          {  field:'HN',title:'HN' },
+                                          {  field:'BirthDate',title:'Birth Date' },
+                                          {  field:'Sex',title:'Sex' },
+                                          {field:'id_patient',title:'ID'},
+                                      ]]
+                                      
+                     });
+                     
+                     $('#p_patient').window('open');
+                     
+                     $('#sr_id_patient').combogrid('reload');
+                     $('#sr_patient').window('close');
+                  }
+                 
+                   " />
+        </label>
+    </div>
+</div>
+<!--  Search  ค้นหาประวัติผู้ป่วย -->
 
 
