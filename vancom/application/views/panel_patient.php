@@ -47,15 +47,16 @@
 
 <!--  Search  ค้นหาประวัติผู้ป่วย -->
 <div class="easyui-window" id="sr_patient" title="ค้นหาผู้ป่วย"data-options="
-     iconCls:'icon-man', closed:true,
+     iconCls:'icon-man', closed:false,
      
      " style="width:400px;height: 200px;padding: 10px;left: 10px;top: 10px;">
-    <div>
+    <div style="padding: 10px;">
         <label>
-            ชื่อ-นามสกุล :
-            <input class="easyui-combogrid" id="sr_id_patient" style="height: 40px;width: 200px;" data-options="
+            
+            ชื่อ-นามสกุล : <input class="easyui-combogrid" id="sr_id_patient" style="height: 40px;width: 200px;" data-options="
                   url:'<?=base_url()?>index.php/welcome/search_byname',                 
                   method:'post',
+                   panelWidth:400,
                   idField:'id_patient',
                   textField:'Name',
                   mode:'remote',
@@ -68,6 +69,7 @@
                                           {  field:'Sex',title:'Sex' },
                                           {field:'id_patient',title:'ID'},
                                       ]],
+                                    
                              
                   onSelect:function()
                   {
@@ -99,12 +101,73 @@
                      
                      $('#p_patient').window('open');
                      
-                     $('#sr_id_patient').combogrid('reload');
+                     $('#sr_id_patient').combogrid('clear');
                      $('#sr_patient').window('close');
-                  }
+                  },
+                  
                  
                    " />
         </label>
+        <div>
+            
+            <div style="padding: 10px;">
+                <label> 
+               
+            HN : <input class="easyui-combogrid"  id="sr_hn"  style="height: 40px;width: 200px;" data-options="
+                         url:'<?=base_url()?>index.php/welcome/search_hn',                 
+                  method:'post',
+                  idField:'id_patient',
+                  textField:'Name',
+                  mode:'remote',
+                  fitColumns:true,
+                  panelWidth:400,
+                  columns:[[
+                                          {  field:'HN',title:'HN' },                       
+                                          {  field:'Name',title:'Name' },
+                                          {  field:'Surname',title:'Lastname' },
+                                         
+                                          {  field:'BirthDate',title:'Birth Date' },
+                                          {  field:'Sex',title:'Sex' },
+                                          {field:'id_patient',title:'ID'},
+                                      ]],
+                                      
+                                       onSelect:function()
+                  {
+                     var  id=$('#sr_hn').combogrid('getValue');
+                     
+                     var  url='http://127.0.0.1/vancom/index.php/welcome/patient_byid/' + id;
+                    
+                     
+                     $('#dg_patient').datagrid({
+                         url:'<?=base_url()?>index.php/welcome/patient_byid/' + id  ,
+                         fitColumns:true,
+                                      singleSelect:true,
+                                      pagination: true  ,
+                                     rownumbers:true ,  
+                                     toolbar:[ 
+                                     { text:'Reload',iconCls:'icon-reload',handler:function(){ $('#dg_patient').datagrid('reload'); } },
+                                     {  text:'Search',iconCls:'icon-search',handler:function(){ $('#sr_patient').window('open'); }  },
+                                     ],
+                                      columns:[[
+                                          {  field:'Name',title:'Name' },
+                                          {  field:'Surname',title:'Lastname' },
+                                          {  field:'HN',title:'HN' },
+                                          {  field:'BirthDate',title:'Birth Date' },
+                                          {  field:'Sex',title:'Sex' },
+                                          {field:'id_patient',title:'ID'},
+                                      ]]
+                                      
+                     });
+                     
+                     $('#p_patient').window('open');
+                     
+                     $('#sr_hn').combogrid('clear');
+                     $('#sr_patient').window('close');
+                  }
+                        " />
+                </label>
+            </div>    
+        </div>
     </div>
 </div>
 <!--  Search  ค้นหาประวัติผู้ป่วย -->
