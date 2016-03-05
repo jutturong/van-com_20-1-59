@@ -22,6 +22,8 @@
       $tb4="`tb_disease`"; //Underllying disease 1 :   $tb1.underllyingdisease1=$tb4.id_disease
       $tb5="`reason_tdm`"; //Reason for TDM :
       $tb6="`tb_drug`";  //Drug level requested (Vancomycin)
+      $tb7="tb_unit_measured_level";  //3. Measured level : หน่วย
+      $tb8="`tb_vd`";  //Vd :
 
   	  $str=" select *  from  $tb1 
                  left  join  $tb2  on  $tb1.id_patient=$tb2.id_patient
@@ -29,7 +31,11 @@
                 
                  left  join  $tb4  on  $tb1.underllyingdisease1=$tb4.id_disease
                  left  join  $tb5  on  $tb1.reason_for_TDM=$tb5.id_reason
-                 left  join  $tb6  on   $tb1.vancomycin=$tb6.id_drug
+                 left  join  $tb6  on  $tb1.vancomycin=$tb6.id_drug
+
+                 left  join  $tb7  on   $tb1.measured_level_cmb=$tb7.id_unit
+
+                 left  join  $tb8  on    $tb1.vd_index=$tb8.id_vd
 
   	              where  id_diagnosis=$id ; ";
   	  $result=mysql_query($str); 
@@ -39,7 +45,12 @@
   	  	  $ward_ = $row->ward_;
           $HN=$row->HN;
           $bodyweight=$row->bodyweight;
+          $cb_conts=$row->cb_conts;
           $Sex=$row->Sex;
+          if( $Sex == 1 )
+           {   $sex_detail="ชาย";     }
+          elseif( $Sex == 2 )  
+            {  $sex_detail="หญิง";    }
           $height=$row->height;
           $indication1=$row->indication1;
           $indication_detail=$row->indication_detail;
@@ -123,18 +134,25 @@
 
           $current_medications_date=$row->current_medications_date;
 
+          $current_medications_date_format=dmy_format($current_medications_date);
+
           $laboratorydata5day=$row->laboratorydata5day;
           $laboratory_Data_mg=$row->laboratory_Data_mg;
           $Laboratory_Data_date=$row->Laboratory_Data_date;
+          $Laboratory_Data_date_format=dmy_format($current_medications_date);
 
           $sampling_time=$row->sampling_time;
+          $sampling_time_conv=dmy_date_format($sampling_time);
+
           $drugadministrationtime=$row->drugadministrationtime;
+          $drugadministrationtime_conv=dmy_date_format($drugadministrationtime);
 
           $measured_level=$row->measured_level;
           $measured_level_cmb=$row->measured_level_cmb;
 
           $vd_index=$row->vd_index;
           $vd=$row->vd;
+          $vd_detail=$row->vd_detail;
 
           $cl=$row->cl;
           $ke=$row->ke;
@@ -151,6 +169,9 @@
           $tel=$row->tel;
 
           $date_record=$row->date_record;
+          $date_record_conv=dmy_format($date_record);
+
+          $unit_detail=$row->unit_detail;
 
 
 
@@ -158,5 +179,35 @@
   	  
 
 
+
+
   }
+
+  function   dmy_format($dmy) // date
+      {
+          if( strlen($dmy) > 0 )
+          {
+             //return  $dmy;
+              $ex=explode("-",$dmy);
+              $Y=$ex[0]+543;
+              //return  $ex[2]."/".$ex[1]."/".$ex[0];
+              return  $ex[2]."/".$ex[1]."/".$Y;
+          }
+      }
+  function   dmy_date_format($dmy)
+  {
+         if( strlen($dmy) > 0 )
+         {
+             $ex=explode(" ",$dmy);
+             //return  $ex[0];
+             if( strlen($ex[0]) > 0 )
+             {
+                    $s1=explode("-",$ex[0]);
+                    $YY=$s1[0]+543;
+                    return  $s1[2]."/".$s1[1]."/".$YY." ".$ex[1];
+
+             }
+         }
+  }
+
 ?>
