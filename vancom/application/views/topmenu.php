@@ -55,6 +55,7 @@
        
         <div class="menu-sep"></div>
         <div   onclick="javascript:$('#p_patient').panel('open')"   data-options=" iconCls:'icon-reload'   " >Open </div>
+        <div   onclick="op_addpatien()"  data-options=" iconCls:'icon-man'   " >เพิ่มประวัติผู้ป่วย </div>
         
         <!--
         <div class="menu-sep"></div>
@@ -256,8 +257,8 @@
           -->
       </div>
       <div class="menu-sep"></div>
-      <div data-options="iconCls:'icon-help' ">
-          <span>ประวัติการรักษา</span>
+      <div data-options="iconCls:'icon-ok' ">
+          <span onclick="$('#sr_dialog_dia').dialog('open')">ประวัติการรักษา</span>
           
           <!--
           <div>

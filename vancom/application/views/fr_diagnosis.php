@@ -1313,7 +1313,8 @@ $(function()
                               //alert('t');
                               //$.messager.alert('t');
                               $('#fr_diag').form({
-                                  url:'<?=base_url()?>index.php/welcome/insert_dia',
+                                  //http://127.0.0.1/vancom/index.php/welcome/insert_patient/
+                                  url:'<?=base_url()?>index.php/welcome/insert_patient',
                                   success:function(data)
                                   {
                                       alert(data); 
@@ -1352,10 +1353,8 @@ $(function()
 
 
 <!-- ค้นหาประวัติการรักษา-->
-
-
-
-<div class="easyui-dialog" title=" ค้นหาประวัติการรักษา " style="top: 10px;left:10px;width:400px;height: 300px;" data-options=" iconCls:'icon-man',closed:false,  ">
+<div class="easyui-dialog" title=" ค้นหาประวัติการรักษา " id="sr_dialog_dia" style="top: 10px;left:10px;width:400px;height: 300px;" 
+     data-options=" iconCls:'icon-man',closed:true,  ">
     <div style="padding:10px;">
                 <label>
                     ชื่อ-นามสกุล : <input class="easyui-combogrid" id="sr_id_diag" style="height: 40px;width: 200px;" 

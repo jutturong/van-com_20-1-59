@@ -19,6 +19,52 @@
                                      rownumbers:true ,  
                                      toolbar:[ { text:'Reload',iconCls:'icon-reload',handler:function(){ $('#dg_patient').datagrid('reload'); } }
                                      ,{  text:'Search',iconCls:'icon-search',handler:function(){ $('#sr_patient').window('open'); }  }
+                                     ,{ text:'Delete',iconCls:'icon-remove',handler:function()
+                                        {
+                                                var  row=$('#dg_patient').datagrid('getSelected');
+                                               // alert(row.id_patient);
+                                               if( row )
+                                               {
+                                                  id=row.id_patient;
+                                                 //alert(id);
+                                                 //http://127.0.0.1/vancom/index.php/welcome/del_patient/
+                                                 $.post('<?=base_url()?>index.php/welcome/del_patient/'+ id ,function(data)
+                                                 { 
+                                                    
+                                                     $('#dg_patient').datagrid('reload');
+                                                     //alert(data);
+                                                     if( data='success'  )
+                                                     {
+                                                        $.messager.alert('สถานะการลบข้อมูล','ลบข้อมูลสำเร็จ','Info');
+                                                     }else
+                                                     {
+                                                        $.messager.alert('สถานะการลบข้อมูล','ลบข้อมูลผิดพลาด','Error');
+                                                     }
+                                                     
+                                                 });
+                                                  
+                                               }
+                                        } 
+                                     },
+                                     {  text:'เพิ่ม',iconCls:'icon-add',handler:function(){ $('#add_patient').window('open');  }  },
+                                     { text:'Update', iconCls:'icon-edit',handler:function()
+                                            {
+                                                    var  row=$('#dg_patient').datagrid('getSelected');
+                                                    if( row )
+                                                    {
+                                                       //var id=row.id_patient;
+                                                       $('#update_patient').window('open');
+                                                       
+                                                       //http://127.0.0.1/vancom/index.php/welcome/fetch_patient/4758
+                                                       $('#Name_up').textbox('setValue',row.Name);
+                                                       $('#Surname_up').textbox('setValue',row.Surname);
+                                                       $('#HN_up').textbox('setValue',row.HN);
+                                                       $('#Sex_up').combobox('setValue',row.Sex);
+                                                       $('#id_patient').textbox('setValue',row.id_patient);
+                                                       
+                                                    }
+                                            }   
+                                     }
                                      ],
                                       columns:[[
                                           {  field:'Name',title:'Name' },

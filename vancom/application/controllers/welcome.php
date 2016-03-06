@@ -328,7 +328,7 @@ LIMIT 0 , 30
                  {
 
                      # http://127.0.0.1/vancom/index.php/welcome/dg_patient
-                           $this->authentication->check_authentication(); //ใช้สำหรับการ authentication login เข้าสู่โปรแกรม
+                         //  $this->authentication->check_authentication(); //ใช้สำหรับการ authentication login เข้าสู่โปรแกรม
                            
                         $tb="tb_patient";
                       
@@ -363,17 +363,17 @@ LIMIT 0 , 30
                             $query=$this->db->get_where($tb,array("UserName"=>$UserName, "Password"=>$Password ,"Unused"=>"N"  ));
                             $check=$query->num_rows();
                           */
-                          $strmax= $this->db->query("  SELECT   *    FROM    `tb_patient`   ");
+                          $strmax= $this->db->query("  SELECT * FROM `tb_patient` order by `id_patient` DESC  ");
                           $max=$strmax->num_rows();
                         
-                          $this->db->order_by("id_patient","DESC");
+                        //  $this->db->order_by("id_patient","DESC");
                        //    $query = $this->db->get($tb,   $rows  );
                           /*SELECT *
 FROM `tb_patient`
 LIMIT 90 , 30   */
-                           $query = $this->db->get($tb, 200  ,  $section  );  //100 คือจำนวนข้อมูลทั้้งหมด  
+                         //  $query = $this->db->get($tb, 200  ,  $section  );  //100 คือจำนวนข้อมูลทั้้งหมด  
                           
-                           
+                         $query= $this->db->query("  SELECT * FROM `tb_patient` order by `id_patient` DESC  limit 100"); 
                         
                         $rows=array();
                         foreach( $query->result() as $row  )
@@ -443,6 +443,8 @@ LIMIT 90 , 30   */
                      }
                      echo json_encode($rows);
                  }
+                 
+                 
                  
                  public  function insert_indication()
                  {
@@ -719,7 +721,140 @@ LIMIT 90 , 30   */
                          echo json_encode(array("success"=>false));
                      }
                  }
-                
+               
+              public function del_patient()//ลบประวัติคนไข้
+              {
+                  //http://127.0.0.1/vancom/index.php/welcome/del_patient/
+                   $tb="tb_patient";
+                   $id=trim($this->uri->segment(3));
+                  if( $id > 0 )
+                  {
+                      $this->db->where("id_patient",$id);
+                      $ck=$this->db->delete($tb);
+                      if( $ck )
+                                {
+                                    echo "success";
+                                }
+                                else{
+                                    echo "false";
+                                }
+                  }
+                   
+              }
+              
+              public function  update_patient()//updte ประวัติผู้ป่วย
+              {
+                  //http://127.0.0.1/vancom/index.php/welcome/update_patient/4758
+                  $tb="tb_patient";
+                  $id=trim($this->uri->segment(3));
+                  
+                  /*
+                  $query=$this->db->get_where($tb,array("id_patient"=>$id));
+                  if( $query->num_rows() == 1 )
+                  {
+                      //echo $query->num_rows();
+                      foreach($query->result() as $row )
+                      {
+                          $rows[]=$row;
+                      }
+                      echo json_encode($rows);
+                  }
+                  */
+                  
+                  $id_patient=trim($this->input->get_post("id_patient"));
+                  
+                  $Name=trim($this->input->get_post("Name_up"));
+                  //echo"<br>";
+                  $Surname=trim($this->input->get_post("Surname_up"));
+                  //echo "<br>";
+                  $HN=trim($this->input->get_post("HN_up"));
+                  //echo "<br>";
+                  $BirthDate=trim($this->input->get_post("BirthDate_up"));
+                  //echo "<br>";
+                  
+                   
+                 // if(  strlen( $BirthDate ) > 0  )
+                 // {
+                     $conv_BirthDate = $this->date->conv_date($BirthDate);
+                     //echo "<br>";
+                 // }
+                  
+                  
+                   $Sex=trim($this->input->get_post("Sex_up"));
+                   
+                    $data=array(
+                      "Name"=>$Name,
+                      "Surname"=>$Surname,
+                      "HN"=>$HN,
+                      "Sex"=>$Sex,
+                      "BirthDate"=>$conv_BirthDate ,
+                  );
+                    
+                    $this->db->where("id_patient",$id_patient);
+                    $ck=$this->db->update($tb,$data);
+                    if( $ck )
+                    {
+                        echo "success";
+                    }else
+                    {
+                        echo "false";
+                    }
+                  
+              }
+              
+                 public  function  insert_patient()//เพิ่มประวัติผู้ป่วย
+              {
+                 //http://127.0.0.1/vancom/index.php/welcome/insert_patient/
+                  $tb="tb_patient";
+                   $Name=trim($this->input->get_post("Name"));
+                  //echo"<br>";
+                  $Surname=trim($this->input->get_post("Surname"));
+                  //echo "<br>";
+                  $HN=trim($this->input->get_post("HN"));
+                  //echo "<br>";
+                  $BirthDate=trim($this->input->get_post("BirthDate"));
+                  //echo "<br>";
+                  
+                   
+                 // if(  strlen( $BirthDate ) > 0  )
+                 // {
+                     $conv_BirthDate = $this->date->conv_date($BirthDate);
+                     //echo "<br>";
+                 // }
+                  
+                  
+                   $Sex=trim($this->input->get_post("Sex"));
+                 // echo "<br>";
+                  
+                  $data=array(
+                      "Name"=>$Name,
+                      "Surname"=>$Surname,
+                      "HN"=>$HN,
+                      "Sex"=>$Sex,
+                      "BirthDate"=>$conv_BirthDate ,
+                  );
+                  
+                  $qck=$this->db->get_where($tb,array("Name"=>$Name,"Surname"=>$Surname));
+                 // echo $qck;
+                  
+                  if( $qck->num_rows() == 0 )
+                  {
+                        $ck=$this->db->insert($tb,$data);
+                        if( $ck )
+                        {
+                            echo "success";
+                        }
+                        else{
+                            echo "false";
+                        }
+                  }
+                    elseif( $qck->num_rows() >= 1) {
+                            echo "false";
+                    }
+                  
+                  
+              }
+                 
               public function insert_dia()//บันทึกประวัติการรักษา
               {
                   $tb="tb_diagnosis";
@@ -1171,8 +1306,9 @@ LIMIT 90 , 30   */
            $this->db->join($tbj3,$tb.".indication1=".$tbj3.".id_indication"); #Reason for TDM 1 (Indication) :
            $this->db->join($tbj4,$tb.".underllyingdisease1=".$tbj4.".id_disease"); #Underllying disease 1
           // $this->db->join($tbj5,$tb.".reason_for_TDM=".$tbj5.".id_indication"); //Reason for TDM
-           
+           $this->db->order_by("id_diagnosis","DESC");
            $query=$this->db->get($tb,10,0);
+           
            foreach($query->result() as $row )
            {
                $rows[]=$row;
