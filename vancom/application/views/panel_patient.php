@@ -47,7 +47,7 @@
 
 <!--  Search  ค้นหาประวัติผู้ป่วย -->
 <div class="easyui-window" id="sr_patient" title="ค้นหาผู้ป่วย"data-options="
-     iconCls:'icon-man', closed:false,
+     iconCls:'icon-man', closed:true,
      
      " style="width:400px;height: 200px;padding: 10px;left: 10px;top: 10px;">
     <div style="padding: 10px;">
@@ -101,7 +101,7 @@
                      
                      $('#p_patient').window('open');
                      
-                     $('#sr_id_patient').combogrid('clear');
+                     //$('#sr_id_patient').combogrid('setValue','clear');
                      $('#sr_patient').window('close');
                   },
                   
@@ -117,7 +117,7 @@
                          url:'<?=base_url()?>index.php/welcome/search_hn',                 
                   method:'post',
                   idField:'id_patient',
-                  textField:'Name',
+                  textField:'HN',
                   mode:'remote',
                   fitColumns:true,
                   panelWidth:400,
@@ -161,7 +161,7 @@
                      
                      $('#p_patient').window('open');
                      
-                     $('#sr_hn').combogrid('clear');
+                     //$('#sr_hn').combogrid('clear');
                      $('#sr_patient').window('close');
                   }
                         " />

@@ -239,6 +239,9 @@ LIMIT 0 , 30
                          echo json_encode($rows);
                     }
                     
+                    
+                    
+                    
                     public function patient_byid()
                     {
                         # http://127.0.0.1/vancom/index.php/welcome/patient_byid/ 
@@ -252,6 +255,40 @@ LIMIT 0 , 30
                              
                          }
                          echo json_encode($rows);
+                    }
+                    
+                    public function diag_byid()
+                    {
+                        # http://127.0.0.1/vancom/index.php/welcome/diag_byid/4
+           $id=$this->uri->segment(3);             
+           $tb="tb_diagnosis";
+           
+           $tbj1="tb_drug";
+           $tbj2="tb_patient";
+           $tbj3="tb_indication";
+           $tbj4="tb_disease"; //underllyingdisease1  id_disease
+           
+        
+          
+           $this->db->join($tbj1,$tb.".vancomycin=".$tbj1.".id_drug"); # Drug level requested (Vancomycin)
+           $this->db->join($tbj2,$tb.".id_patient=".$tbj2.".id_patient"); #ชื่อนามสกุล ของคนไข้
+           $this->db->join($tbj3,$tb.".indication1=".$tbj3.".id_indication"); #Reason for TDM 1 (Indication) :
+           $this->db->join($tbj4,$tb.".underllyingdisease1=".$tbj4.".id_disease"); #Underllying disease 1
+          // $this->db->join($tbj5,$tb.".reason_for_TDM=".$tbj5.".id_indication"); //Reason for TDM
+         
+         
+           
+          
+           $query=$this->db->get_where($tb,array($tb.".id_patient"=>$id));
+           foreach($query->result() as $row )
+           {
+               $rows[]=$row;
+           }
+           echo json_encode($rows);
+                       
+                        
+         
+                         
                     }
 
 

@@ -1351,6 +1351,71 @@ $(function()
 <!-- เพิ่มประวัติการรักษา -->
 
 
+<!-- ค้นหาประวัติการรักษา-->
+
+
+
+<div class="easyui-dialog" title=" ค้นหาประวัติการรักษา " style="top: 10px;left:10px;width:400px;height: 300px;" data-options=" iconCls:'icon-man',closed:false,  ">
+    <div style="padding:10px;">
+                <label>
+                    ชื่อ-นามสกุล : <input class="easyui-combogrid" id="sr_id_diag" style="height: 40px;width: 200px;" 
+                    data-options="
+                    url:'<?=base_url()?>index.php/welcome/search_byname',                 
+                  method:'post',
+                   panelWidth:400,
+                  idField:'id_patient',
+                  textField:'Name',
+                  mode:'remote',
+                  fitColumns:true,
+                  
+                  columns:[[
+                                          {  field:'Name',title:'Name' },
+                                          {  field:'Surname',title:'Lastname' },
+                                          {  field:'HN',title:'HN' },
+                                          {  field:'BirthDate',title:'Birth Date' },
+                                          {  field:'Sex',title:'Sex' },
+                                          {field:'id_patient',title:'ID'},
+                                      ]],
+                 onSelect:function()
+                 { 
+                    
+                    var  id=$('#sr_id_diag').combogrid('getValue'); //alert(id);
+                    
+                     
+                    
+                   //http://127.0.0.1/vancom/index.php/welcome/diag_byid/4 
+                   //url:'http://127.0.0.1/vancom/index.php/welcome/diag_byid/' + id ,
+                   
+                    $('#window_diagnosis').dialog('open');                   
+                    $('#dg_diagnosis').datagrid({ 
+                        url:'<?=base_url()?>index.php/welcome/diag_byid/' + id ,
+                         fitColumns:true,
+                        singleSelect:true,
+                        rownumbers:true,
+                      columns:[[
+                         { field:'Name',title:'ชื่อ' },
+                         { field:'Surname',title:'นามสกุล'  },
+                         { field:'HN',title:'HN' },
+                         { field:'Sex',title:'เพศ'  },
+                         { field:'Status',title:'สถานะ'  },
+                         { field:'BirthDate',title:'วัน-เดือน-ปี เกิด'  },
+                         { field:'ward_',title:'Ward' },
+                         { field:'date_record',title:'วัน-เดือน-ปี ที่มา' },
+                      ]]
+                    });
+                     
+                  
+                 }   
+                                                           
+                                      
+                    "                      
+                                          />
+            </label>  
+       </div> 
+</div>
+
+<!-- ค้นหาประวัติการรักษา-->
+
 
 
 
