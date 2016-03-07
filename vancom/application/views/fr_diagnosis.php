@@ -29,7 +29,9 @@
 </script>
 
 <script type="text/javascript">
- function sub_update(id)
+    
+    /*
+ function sub_update()
  {
     //alert('t'); 
      $('#fr_detail_diag').form({ 
@@ -43,12 +45,25 @@
              $('#dg_diagnosis').datagrid('reload');
              
          } 
-     });
-          
-                                
-     
+     });                                           
  }
+ */
+   
+   
+    
      
+</script>
+
+<script type="text/javascript">
+   function  dia_update2()
+   {
+      // alert('t');
+      $('#fr_detail_diag').form({
+          url:'http://localhost/vancom/index.php/welcome/update_diagnosis',
+          success:function(){  alert('t');    }
+          
+      });
+   }
 </script>
 
 
@@ -62,12 +77,12 @@
      ]
      */
      buttons:[    
-     { text:'Close',iconCls:'icon-cancel',handler:function(data){ $('#dia_view_diag').dialog('close'); } } ]
+     { text:'Close',iconCls:'icon-cancel',handler:function(data){ $('#dia_view_diag').dialog('close'); } } 
+     
+    
+     ]
      " id="dia_view_diag" iconCls="icon-print" title="   แสดงรายละเอียดของประวัติการรักษา "  style="width:850px;left: 10px;top: 10px;height: 600px;" >
-   <!--
-    <table class="easyui-datagrid" id="view_diag" style="height: 300px;" >       
-    </table> 
-   -->
+   
    <form id="fr_detail_diag"   method="post"  enctype="multipart/form-data" >
        <div style="padding: 5px 0" >
            <label>
@@ -369,7 +384,7 @@
                          Cl :
                          <input class="easyui-numberbox" precision="4" id="cl_up" name="cl_up"  style="width:70px;"></input>
                          L/hr
-          
+                         <a href="javascript:void(0)"  class="easyui-linkbutton" onclick="cal1_()" >Cal Cl</a>
           
           </label>
       </div>
@@ -384,6 +399,7 @@
                          Half-life :
                          <input class="easyui-numberbox" precision="4"  id="hl_up" name="hl_up"  style="width:100px;"></input>
                          hr
+                         <a href="javascript:void(0)" class="easyui-linkbutton"  onclick="half_()" >Cal Half-life</a>
             </label>
       
         </div>
@@ -445,7 +461,36 @@
        </div>             
          
        <div style="padding:10px 100px;">
-           <input type="submit" onClick="sub_update()"  />
+           
+           <!--
+           <input type="submit"   onclick="sub_update()" />
+           -->
+           
+           <input type="submit" onclick="
+              $('#fr_detail_diag').form({
+                  url:'<?=base_url()?>index.php/welcome/update_diagnosis',
+                  success:function(data)
+                  {  
+                      //alert('t'); 
+                      //alert(data);
+                      if( data == '' )
+                      {
+                           $('#dg_diagnosis').datagrid('reload');
+                           $.messager.alert('สถานะการแก้ไขข้อมูล','แก้ไขข้อมูลสำเร็จ','Info');
+                           //$('#add_diagnosis').window('close'); 
+                            $('#dia_view_diag').dialog('close');
+                      }
+                       else
+                      {
+                           $.messager.alert('สถานะการแก้ไขข้อมูล','ไม่สามารถแก้ไขข้อมูลได้','Error');
+                      }
+                      
+                  }
+                  
+              });
+              
+              " />
+           
        </div>
        
    </form>
@@ -623,6 +668,50 @@
 </div>
 <!--  dialog  หลังจากเพิ่มประวัติการรักษา --> 
 
+<script type="text/javascript">
+    function cal1()
+    {
+        
+        var vd=$('#vd');                
+        var  cl=$('#cl');      
+        var  ke=$('#ke');   
+        var  hl=$('#hl');    
+        var   W=$('#W');            
+        var cb_conts=$('#cb_conts');  
+       
+        var  ans1=ke.numberbox('getValue')*vd.numberbox('getValue');
+            cl.numberbox('setValue',ans1);
+           //$('#cl').numberbox('setValue')
+    }
+    
+     function cal1_()
+    {
+        
+        var vd=$('#vd_up');                
+        var  cl=$('#cl_up');      
+        var  ke=$('#ke_up');   
+        var  hl=$('#hl');    
+        var   W=$('#W');            
+        var cb_conts=$('#cb_conts');  
+       
+        var  ans1=ke.numberbox('getValue')*vd.numberbox('getValue');
+            cl.numberbox('setValue',ans1);
+           //$('#cl').numberbox('setValue')
+    }
+    
+    function half_()
+    {
+        var  ans2= 0.693/$('#ke_up').numberbox('getValue');
+        $('#hl_up').numberbox('setValue',ans2);
+    }
+    
+     function half()
+    {
+        var  ans2= 0.693/$('#ke').numberbox('getValue');
+        $('#hl').numberbox('setValue',ans2);
+    }
+    
+</script>
 
 
 <script type="text/javascript">
@@ -725,10 +814,7 @@ $(function()
 });
 </script>
 
-<script type="text/javascript">
 
-
-</script>
 
 
 <!-- เพิ่มประวัติการรักษา -->
@@ -751,7 +837,7 @@ $(function()
                     <td>
                         
                         <!--<input class="easyui-textbox" type="text" name="name" data-options="required:true,iconCls:'icon-man'  "  style="  width:100px;height:30px  ">-->
-                        <select class="easyui-combogrid" id="HN_dia" name="HN_dia" style="width:150px;height: 40px" data-options="
+                        <select class="easyui-combogrid" id="HN_dia" required="true" name="HN_dia" style="width:150px;height: 40px" data-options="
             panelWidth: 300,
             idField: 'HN',
             textField: 'HN',
@@ -1237,6 +1323,7 @@ $(function()
                          Cl :
                          <input class="easyui-numberbox" precision="4" id="cl" name="cl"  style="width:70px;"></input>
                          L/hr
+                         <a href="javascript:void(0)" class="easyui-linkbutton" onclick="cal1()" >Cal Cl</a>
                     </td>
                 </tr>
                 
@@ -1246,12 +1333,13 @@ $(function()
                        ke :
                     </td>
                     <td>
-                        <input class="easyui-numberbox" precision="2" id="ke" name="ke"  style="width:70px;"></input>
+                        <input class="easyui-numberbox" precision="2" id="ke" name="ke" onkeydown="cal1()" style="width:70px;"></input>
                          hr-1
                          <?=nbs(4)?>
                          Half-life :
                          <input class="easyui-numberbox" precision="4"  id="hl" name="hl"  style="width:100px;"></input>
                          hr
+                         <a href="javascript:void(0)"  class="easyui-linkbutton" onclick="half()" >Cal Half-life</a>
                     </td>
                 </tr>
                 
@@ -1293,7 +1381,7 @@ $(function()
                  <tr>
                     <td>Date :</td>
                     <td>
-                        <input class="easyui-datebox"id="date_record" name="date_record" data-options="required:false" style="height: 30px;"></input>
+                        <input class="easyui-datebox"id="date_record " name="date_record" data-options="required:false" style="height: 30px;"></input>
                    
                     </td>
                 </tr>
@@ -1314,11 +1402,11 @@ $(function()
                               //$.messager.alert('t');
                               $('#fr_diag').form({
                                   //http://127.0.0.1/vancom/index.php/welcome/insert_patient/
-                                  url:'<?=base_url()?>index.php/welcome/insert_patient',
+                                  url:'<?=base_url()?>index.php/welcome/insert_dia',
                                   success:function(data)
                                   {
-                                      alert(data); 
-                                      /*
+                                      //alert(data); 
+                                     
                                       if( data == 'true' )
                                       {
                                           $('#dg_diagnosis').datagrid('reload');
@@ -1330,7 +1418,7 @@ $(function()
                                       {
                                            $.messager.alert('สถานะการบันทึกข้อมูล','ไม่สามารถบันทึกข้อมูลได้','Error');
                                       }
-                                      */
+                                     
                                   }
                                   
                               });
@@ -1385,7 +1473,9 @@ $(function()
                    //http://127.0.0.1/vancom/index.php/welcome/diag_byid/4 
                    //url:'http://127.0.0.1/vancom/index.php/welcome/diag_byid/' + id ,
                    
-                    $('#window_diagnosis').dialog('open');                   
+                    $('#window_diagnosis').dialog('open'); 
+                    
+                    
                     $('#dg_diagnosis').datagrid({ 
                         url:'<?=base_url()?>index.php/welcome/diag_byid/' + id ,
                          fitColumns:true,
@@ -1402,6 +1492,7 @@ $(function()
                          { field:'date_record',title:'วัน-เดือน-ปี ที่มา' },
                       ]]
                     });
+                    
                      
                   
                  }   
@@ -1443,6 +1534,7 @@ $(function()
                    //http://127.0.0.1/vancom/index.php/welcome/diag_byid/4 
                    //url:'http://127.0.0.1/vancom/index.php/welcome/diag_byid/' + id ,
                    
+                   /*
                     $('#window_diagnosis').dialog('open');                   
                     $('#dg_diagnosis').datagrid({ 
                         url:'<?=base_url()?>index.php/welcome/diag_byid/' + id ,
@@ -1460,7 +1552,7 @@ $(function()
                          { field:'date_record',title:'วัน-เดือน-ปี ที่มา' },
                       ]]
                     });
-                     
+                    */ 
                   
                  }  
                                       

@@ -848,7 +848,8 @@ LIMIT 90 , 30   */
                             echo "false";
                         }
                   }
-                    elseif( $qck->num_rows() >= 1) {
+                    elseif( $qck->num_rows() >= 1 )
+                            {
                             echo "false";
                     }
                   
@@ -921,11 +922,11 @@ LIMIT 90 , 30   */
                    $current_medications_date=trim($this->input->get_post("current_medications_date")); //Current Medications  date
                   //echo "<br>";
                   
-                  if(  strlen($current_medications_date) > 0  )
-                  {
+                 // if(  strlen($current_medications_date) > 0  )
+                 // {
                       $conv_current_medications_date = $this->date->conv_date($current_medications_date);
                      //echo "<br>";
-                  }
+                 // }
                   
                    $Laboratory_Data=trim($this->input->get_post("Laboratory_Data")); //Laboratory Data (within 5 day) :
                   //echo "<br>";
@@ -934,26 +935,26 @@ LIMIT 90 , 30   */
                   //echo "<br>";
                   
                   $Laboratory_Data_date=trim($this->input->get_post("Laboratory_Data_date")); //Laboratory Data (within 5 day) date
-                  if(  strlen( $Laboratory_Data_date ) > 0  )
-                  {
+                 // if(  strlen( $Laboratory_Data_date ) > 0  )
+                 // {
                       $conv_Laboratory_Data_date = $this->date->conv_date($Laboratory_Data_date);
-                     //echo "<br>";
-                  }
+                    
+                 // }
                   
                   $Sampling_Time=trim($this->input->get_post("Sampling_Time")); // 1. Sampling Time :
-                  //echo "<br>";
-                  if( strlen($Sampling_Time) > 0 )
-                  {
+                 
+                 // if( strlen($Sampling_Time) > 0 )
+                 // {
                       $conv_Sampling_Time=$this->date->conv_date_time($Sampling_Time);
                       
-                  }
+                //  }
                   
                   $DrugAdministrationTime=trim($this->input->get_post("DrugAdministrationTime"));// 2. Drug Administration Time :
-                   if( strlen($DrugAdministrationTime) > 0 )
-                  {
+                 //  if( strlen($DrugAdministrationTime) > 0 )
+                 // {
                       $conv_DrugAdministrationTime=$this->date->conv_date_time($DrugAdministrationTime);
                       
-                  }
+                 // }
                   
                   $Measured_level=trim($this->input->get_post("Measured_level")); //   3. Measured level :
                 
@@ -994,7 +995,11 @@ LIMIT 90 , 30   */
                 
                 $tel=trim($this->input->get_post("tel"));
                 
+                $date_record=trim($this->input->get_post("date_record"));
+                 $conv_date_record = $this->date->conv_date($date_record);
+               
                 
+               
                 $date_record=trim($this->input->get_post("date_record")); //วันที่บันทึก
                  if(  strlen( $date_record ) > 0  )
                   {
@@ -1266,10 +1271,132 @@ LIMIT 90 , 30   */
                     
                    }
                    
+                
+            /*    
+                 $data=array(
+                     "id_patient"=>$id_patient,                
+                     "ward_"=>$ward,                                                     
+                     "cb_conts"=>$cb_conts,
+                  //   "bodyweight"=>$W,                             
+                  //   "height"=>$height,
+                  
+                  //   "indication1"=>$indication_detail1,
+                     
+                
+                  //   "indication2"=>$indication_detail2,
+                     
+               
+                 //   "underllyingdisease1"=>$disease_detail_1 ,
+                   
+                
+                 //   "underllyingdisease2"=>$disease_detail_2,
+                   
+                
+                 //  "underllyingdisease3"=>$disease_detail_3,
+                    
+               
+                //   "underllyingdisease4"=>$disease_detail_4,
+                    
+                
+                //   "underllyingdisease5"=>$disease_detail_5,
+                   
+                
+                 //  "underllyingdisease6"=>$disease_detail_6,
                    
                  
-                 $ck_inst=$this->db->insert($tb);  
+                //   "underllyingdisease7"=>$disease_detail_7,
+                   
+                
+                 // "underllyingdisease8"=>$disease_detail_8,
+                    
+                
+                //  "underllyingdisease9"=>$disease_detail_9,
+                    
+                 
+                //  "underllyingdisease10"=>$disease_detail_10,
+                    
+               
+                //   "reason_for_TDM"=>$reason_for_tdm,
+                   
+               
+                //   "vancomycin"=>$id_drug,
+                   
+                
+                //  "current_medications"=>$current_medications,
+                    
+               
+                //    "current_medications_weight"=>$current_medications_weight,
                   
+                   
+              
+                 //     "current_medications_date"=>$conv_current_medications_date ,
+                   
+
+                 //    "laboratorydata5day"=>$Laboratory_Data ,
+                   
+                
+                 //    "laboratory_Data_mg"=>$Laboratory_Data_mg ,
+                   
+                
+                 //     "Laboratory_Data_date"=> $conv_Laboratory_Data_date ,
+                   
+                
+                 //    "sampling_time"=>$conv_Sampling_Time ,
+                   
+                
+                  //    "sampling_time"=>$conv_Sampling_Time ,
+                    
+                  
+                //  "drugadministrationtime"=>$conv_DrugAdministrationTime ,
+                     
+               
+                //  "measured_level"=>$Measured_level,
+                    
+                 
+                //  "measured_level_cmb"=>$Measured_level_cmb,
+                    
+                
+                //  "vd_index"=>$vd_index,  
+                    
+                
+                 //  "vd"=>$vd,
+                     
+                 
+                //   "cl"=>$cl,
+                    
+                
+                //   "ke"=>$ke,
+                     
+               
+                 //  "hl"=>$hl,
+                    
+                 
+                 //  "assessment"=>$Assessment,
+                    
+                
+                 //  "Interpretation_Recommendation"=>$Interpretation_Recommendation,
+                    
+                
+                 //  "Note"=>$Note,
+                    
+                
+                  //  "pharmacist1"=>$Pharmacist1,
+                     
+                  
+                 //  "pharmacist2"=>$Pharmacist2, 
+                     
+                 
+                  //   "tel"=>$tel,
+                     
+                 
+                 //  "date_record"=>$conv_date_record
+                    
+                   );
+              */
+                 
+                 
+                // $ck_inst=$this->db->insert($tb,$data);  
+                  $ck_inst=$this->db->insert($tb);   
                   if( $ck_inst )
                   {
                       echo "true";
@@ -1389,7 +1516,7 @@ LIMIT 90 , 30   */
           //  trim($this->input->get_post('ward_up'));
          
           $id_diagnosis = trim($this->input->get_post("id_diagnosis"));
-          //echo "<br>";
+        //echo "<br>";
           
           if( $id_diagnosis > 0 )
           {
@@ -1566,7 +1693,7 @@ LIMIT 90 , 30   */
                   }
            */
                   
-                  
+              //$this->db->update($tb);    
            
           }
           
