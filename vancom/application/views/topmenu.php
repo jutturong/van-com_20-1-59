@@ -10,9 +10,11 @@
        <p style="font-size:14px;color:#444;"><h1><?=$title?></h1></p> 
        
        
-
+<div style="padding:5px;width:400px;"  class="easyui-panel">
+    <a href="javascript:void(0)" class="easyui-linkbutton"  plain="true"  >User system : <?=$sess_UserName?> <?=$sess_UserSurname?></a>
+</div>
 <div style="margin:10px 0;"></div>
-    <div class="easyui-panel" style="padding:5px;">
+    <div class="easyui-panel" style="padding:15px;">
         <!--<a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-large-clipart'  "><?=$head?></a>-->
          <a href="#" class="easyui-menubutton"     data-options="menu:'#mm8'   "    iconCls="icon-large-clipart"   >ประวัติผู้ป่วย/ประวัติการรักษา</a>
        
@@ -25,7 +27,7 @@
          <a href="javascript:void(0)" class="easyui-menubutton" data-options=" plain:true, menu:'#mm_search'  " >ค้นหาผู้ป่วยและประวัติผู้ป่วย</a>
          
          <a href="#" class="easyui-menubutton"  data-options=" menu:'#mm9' ,iconCls:'icon-man'   "   >Administrator</a>
-       
+        
          
        <!--  <a href="#" class="easyui-linkbutton" iconCls="icon-large-shapes" onclick="op_diagnosis()">เพิ่มประวัติการรักษา</a> -->
          
@@ -124,6 +126,7 @@
        
         <div class="menu-sep"></div>
         <div  data-options=" iconCls:'icon-add'   " onclick=" $('#win_user').window('open'); ">เพิ่ม User</div>
+        <div data-options="iconCls:'icon-man' " onclick=" $('#dia_alluser').dialog('open'); "  >User ทั้งหมด</div>
        
         <!--
         <div class="menu-sep"></div>

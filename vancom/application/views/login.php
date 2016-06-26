@@ -24,11 +24,11 @@
 		<div class="avatar">
       <img src="<?=base_url()?>img/KKU.png">
 		</div>
-        <input type="text" placeholder="username"  id="username"  name="username"  required  maxlength="10" value="ศิริลักษณ์"  />
+        <input type="text" placeholder="username"  id="username"  name="username"  required  maxlength="10"   />
 		<div class="bar">
 			<i></i>
 		</div>
-        <input type="password" placeholder="password"  id="password"   name="password"   required maxlength="10" value="jumkku"  />
+        <input type="password" placeholder="password"  id="password"   name="password"   required maxlength="10"   />
 		<!--<a href="" class="forgot_link">forgot ?</a>-->
 		<button>Sign in</button>
                                    <!--   <input type="submit" >Sign in</input> -->

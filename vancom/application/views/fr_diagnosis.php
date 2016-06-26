@@ -1373,7 +1373,7 @@ $(function()
                 <tr>
                     <td>Tel :</td>
                     <td>
-                        <input class="easyui-numberbox" id="tel" name="tel" value="11221"  style="width:100px;height: 30px" ></input>
+                        <input class="easyui-numberbox" id="tel" name="tel" value="48417"  style="width:100px;height: 30px" ></input>
                    
                     </td>
                 </tr>
@@ -1396,16 +1396,45 @@ $(function()
                       <?=nbs(60)?>    
                             
                         
-                          
-                       <input type="submit" onclick="
-                              //alert('t');
-                              //$.messager.alert('t');
-                              $('#fr_diag').form({
+                     <a href="javascript:void(0)"  class="easyui-linkbutton"  style="width: 100px;height: 40px;"  data-options="
+                        iconCls:'icon-man',
+                        onClick:function()
+                        {
+                             //alert('t');
+                               $('#fr_diag').form('submit',{
                                   //http://127.0.0.1/vancom/index.php/welcome/insert_patient/
                                   url:'<?=base_url()?>index.php/welcome/insert_dia',
                                   success:function(data)
                                   {
                                       //alert(data); 
+                                      
+                                      if( data == 'true' )
+                                      {
+                                          $('#dg_diagnosis').datagrid('reload');
+                                          $.messager.alert('สถานะการบันทึกข้อมูล','บันทึกข้อมูลสำเร็จ','Info');
+                                          $('#add_diagnosis').window('close');
+                                          
+                                      }
+                                      else
+                                      {
+                                           $.messager.alert('สถานะการบันทึกข้อมูล','ไม่สามารถบันทึกข้อมูลได้','Error');
+                                      }
+                                     
+                                     
+                                  }
+                                  
+                              });
+                        }
+                        "  >บันทึก</a>     
+                     
+                     <!--
+                       <input type="submit" onclick="        
+                              $('#fr_diag').form({
+                                
+                                  url:'<?=base_url()?>index.php/welcome/insert_dia',
+                                  success:function(data)
+                                  {
+                                     
                                      
                                       if( data == 'true' )
                                       {
@@ -1423,8 +1452,9 @@ $(function()
                                   
                               });
                               "  /> 
+                       -->
                        
-                        <a href="javascript:void(0)" class="easyui-linkbutton"  data-options=" iconCls:'icon-cancel'   "  onclick="$('#add_diagnosis').window('close')   "  >Close</a>  
+                        <a href="javascript:void(0)" class="easyui-linkbutton"  data-options=" iconCls:'icon-cancel'   "   style="width: 100px;height: 40px;" onclick="$('#add_diagnosis').window('close')   "  >Close</a>  
                        
                        
                     </td>

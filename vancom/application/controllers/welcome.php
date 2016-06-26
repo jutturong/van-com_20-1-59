@@ -79,9 +79,9 @@ class Welcome extends CI_Controller {
                                                
                                      $tb="user";
                                       $UserName=$this->input->get_post("username");
+                                  //echo "<br>";
+                                    $Password=$this->input->get_post("password");
                                  // echo "<br>";
-                                     $Password=$this->input->get_post("password");
-                                //  echo "<br>";
                                      //echo "<br>";
                                      /*
                                       SELECT *
@@ -101,7 +101,7 @@ LIMIT 0 , 30
                                       * Unused
                                       */
                                    $query=$this->db->get_where($tb,array("UserName"=>$UserName, "Password"=>$Password ,"Unused"=>"N"  ));
-                                    $check=$query->num_rows();
+                                   $check=$query->num_rows();
                                   //echo "<br>";
                                    if( $check != 1 )
                                    {
@@ -150,10 +150,10 @@ LIMIT 0 , 30
                                             $this->session->set_userdata($arr_login);
                                             
                                              // $data['sess_username']=$this->session->userdata('sess_username'); //ชื่อผู้สัมภาษณ์
-                                               $data['sess_UserName']=$this->session->userdata('sess_UserName');
+                                            $data['sess_UserName']=$this->session->userdata('sess_UserName');
                                               //echo "<br>";
                                               
-                                              $data['sess_UserSurname']=$this->session->userdata('sess_UserSurname');
+                                             $data['sess_UserSurname']=$this->session->userdata('sess_UserSurname');
                                              // echo "<br>";
                                               
                                               $data['sess_UserType']=$this->session->userdata('sess_UserType');
@@ -184,6 +184,7 @@ LIMIT 0 , 30
                          # http://127.0.0.1/vancom/index.php/welcome/dg_patient_sr_HN/HS1553
                             $this->authentication->check_authentication(); //ใช้สำหรับการ authentication login เข้าสู่โปรแกรม
                             
+                           
                             
                             $tb="tb_patient";
                             
@@ -1428,10 +1429,10 @@ LIMIT 90 , 30   */
            $tbj4="tb_disease"; //underllyingdisease1  id_disease
           // $tbj5="tb_indication"; //Reason for TDM    id_indication   reason_for_TDM
            
-           $this->db->join($tbj1,$tb.".vancomycin=".$tbj1.".id_drug"); # Drug level requested (Vancomycin)
-           $this->db->join($tbj2,$tb.".id_patient=".$tbj2.".id_patient"); #ชื่อนามสกุล ของคนไข้
-           $this->db->join($tbj3,$tb.".indication1=".$tbj3.".id_indication"); #Reason for TDM 1 (Indication) :
-           $this->db->join($tbj4,$tb.".underllyingdisease1=".$tbj4.".id_disease"); #Underllying disease 1
+           $this->db->join($tbj1,$tb.".vancomycin=".$tbj1.".id_drug","left"); # Drug level requested (Vancomycin)
+           $this->db->join($tbj2,$tb.".id_patient=".$tbj2.".id_patient","left"); #ชื่อนามสกุล ของคนไข้
+           $this->db->join($tbj3,$tb.".indication1=".$tbj3.".id_indication","left"); #Reason for TDM 1 (Indication) :
+           $this->db->join($tbj4,$tb.".underllyingdisease1=".$tbj4.".id_disease","left"); #Underllying disease 1
           // $this->db->join($tbj5,$tb.".reason_for_TDM=".$tbj5.".id_indication"); //Reason for TDM
            $this->db->order_by("id_diagnosis","DESC");
            $query=$this->db->get($tb,10,0);
@@ -1698,6 +1699,171 @@ LIMIT 90 , 30   */
           }
           
       }
+      
+      #----- USER -----------
+      function   tb_user()
+      {
+          # http://localhost/vancom/index.php/welcome/tb_user
+          $q=$this->input->get_post('q');
+          $tb="user";
+          $this->db->like('UserName',$q);
+          $this->db->order_by("id_user","DESC");
+          $query=$this->db->get($tb);
+          foreach($query->result() as $row)
+          {
+              $rows[]=$row;
+          }
+          echo  json_encode($rows);
+          
+      }
+      function add_user()
+      {
+         # http://localhost/vancom/index.php/welcome/add_user 
+          //echo "T";
+           $UserName=trim($this->input->get_post("UserName"));
+          //echo "<br>";
+          $UserSurname=trim($this->input->get_post("UserSurname"));
+          //echo "<br>";
+            $Password=trim($this->input->get_post("Password"));
+          //echo "<br>";
+           $UserType=trim($this->input->get_post("UserType"));
+          //echo "<br>";
+          $Unused=trim($this->input->get_post("Unused"));
+          //echo "<br>";
+        
+          $tb="user";
+          
+          $str_=$this->db->get_where($tb,array("UserName"=>$UserName,"UserSurname"=>$UserSurname));
+          $num=$str_->num_rows();
+        
+         
+         
+         if( $num == 0 )
+         {    
+                $data=array(
+                    "UserName"=>$UserName,
+                    "UserSurname"=>$UserSurname,
+                    "Password"=>$Password,
+                    "UserType"=>$UserType,
+                    "Unused"=>$Unused,
+                );
+
+                $ck=$this->db->insert($tb,$data);
+                if( $ck )
+                {
+                    echo "1";
+                }else
+                {
+                    echo "0";
+                }
+         }
+         else if( $num >= 1 )
+         {
+             echo "m";
+         }
+          
+          
+          
+      }
+      function sr_user()
+      {
+          # http://localhost/vancom/index.php/welcome/sr_user/481 
+          $id_user=$this->uri->segment(3);
+          if( $id_user > 0 )
+          {
+              $tb="user";
+              $query=$this->db->get_where($tb,array("id_user"=>$id_user));
+              foreach($query->result() as $row )
+              {
+                  $rows[]=$row;
+              }
+              echo json_encode($rows);
+          }
+      }
+      function del_user()
+      {
+           # http://localhost/vancom/index.php/welcome/del_user/484 
+          $id_user=$this->uri->segment(3);
+          if( $id_user > 0 )
+          {
+              $tb="user";
+              $this->db->where("id_user",$id_user);
+              $ck=$query=$this->db->delete($tb);
+               if( $ck )
+                {
+                    echo "1";
+                }else
+                {
+                    echo "0";
+                }
+          }
+          
+      }
+      function call_user()
+      {
+           # http://localhost/vancom/index.php/welcome/call_user/481 
+          $id_user=$this->uri->segment(3);
+          if( $id_user > 0 )
+          {
+              $tb="user";
+              $query=$this->db->get_where($tb,array("id_user"=>$id_user));
+              foreach($query->result() as $row )
+              {
+                  $rows[]=$row;
+              }
+              echo json_encode($rows);
+          }
+          
+      }
+      
+     function update_user()
+     {
+          # http://localhost/vancom/index.php/welcome/update_user 
+         $tb="user";
+          $id_user=trim($this->input->get_post('id_user'));
+         //echo "<br>";
+          $UserName=trim($this->input->get_post("UserName"));
+         //echo "<br>";
+          $UserSurname=trim($this->input->get_post("UserSurname"));
+          //echo "<br>";
+            $Password=trim($this->input->get_post("Password"));
+          //echo "<br>";
+           $UserType=trim($this->input->get_post("UserType"));
+          //echo "<br>";
+          $Unused=trim($this->input->get_post("Unused"));
+          
+          $data=array(
+                    "UserName"=>$UserName,
+                    "UserSurname"=>$UserSurname,
+                    "Password"=>$Password,
+                    "UserType"=>$UserType,
+                    "Unused"=>$Unused,
+                );
+          
+          $this->db->where("id_user",$id_user);
+          $ck=$this->db->update($tb,$data);
+           if( $ck )
+                {
+                    echo "1";
+                }else
+                {
+                    echo "0";
+                }
+     }
+     
+     #----- อาชีพ ----------------
+     #SELECT * FROM `tb_vocation`
+     # http://localhost/servey1/index.php/welcome/tb_vocation
+     function  tb_vocation()
+     {
+         $tb="tb_vocation";
+         $q=$this->db->get($tb);
+         foreach($q->result() as $row)
+         {
+             $rows[]=$row;
+         }
+         echo  json_encode($rows);
+     }
 }
 
 /* End of file welcome.php */

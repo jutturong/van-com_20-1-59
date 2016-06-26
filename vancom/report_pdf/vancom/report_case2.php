@@ -27,7 +27,7 @@ $r=7;  //ระยะห่าง
 ##---- เลขหน้า ----------
     $pdf->SetFont('angsana','',12);
     $pdf->setXY( $x_absolute + 160 , $y_absolute - 10 );
-    $pdf->MultiCell( 0  , 0 , iconv( 'UTF-8','cp874' , 'Page  1' )  );
+    $pdf->MultiCell( 0  , 0 , iconv( 'UTF-8','cp874' , 'Page  1/2' )  );
 ##---- เลขหน้า ---------- 
 
 ##-- head table -----
@@ -55,6 +55,7 @@ $pdf->Image('../icon/px.jpeg',10,12,20,0,'','');//Image(string file [, float x [
 $pdf->setXY( 120 , $y_absolute +  ($r*2)  );
 $pdf->SetFont('angsana','',13);
 
+/*
 ##-- วันที่ วัน เดือน ปี
 if( !empty($b)  && !empty($e)   )
 {    
@@ -64,6 +65,8 @@ if( !empty($b)  && !empty($e)   )
          // $str_query="SELECT * FROM ESN.`04-monitoring`where `MonitoringDate` between '1467-05-04' and '1990-1-1' ;    ";
       //   date_eng_format($begin)
 } 
+*/
+
 
 $pdf->setXY( 10 , $y_absolute +  ($r*4)  );
 $pdf->SetFont('angsana','B',18);
@@ -71,106 +74,157 @@ $pdf->SetFillColor(255,255, 255);
 $pdf->Cell( 190  , 7 , iconv( 'UTF-8','cp874' , '' ),T,0,L,true     );
 
 
-$pdf->setXY( 10 , $y_absolute +  ($r*5)  );
-$pdf->SetFont('angsana','',13);
+$pdf->setXY( 10 , $y_absolute +  ($r*6)  );
+$pdf->SetFont('angsana','B',15); #------ set fonts-----------
 $pdf->SetFillColor(255,255, 255);
 //$pdf->Cell( 190  , 7 , iconv( 'UTF-8','cp874' , 'Patient \'s name : '  . $Name  .'                                     HN : '  . $HN  )   . '                           Ward : ' . $ward_  );
-$pdf->MultiCell( 0  , 0 , iconv( 'UTF-8','cp874' , 'Patient \'s name : ' . $Name .'                                     HN : '  . $HN  )   . '                           Ward : ' . $ward_  );
-
-$pdf->setXY( 10 , $y_absolute +  ($r*6)  );
-$pdf->SetFont('angsana','',13);
-$pdf->SetFillColor(255,255, 255);
-$pdf->MultiCell( 0  , 0 , iconv( 'UTF-8','cp874' , 'Age : ' .' '.'   years '.'     '.'Sex :  '. $sex_detail .'         Weight : '. $bodyweight . '  Kg. '. '         Height : '.$height. ' cm.  '.'        Body Weight : '.$bodyweight .'  Kg. / Conts. (ค่าคงที่) : '.$cb_conts )  );
-
+$pdf->MultiCell( 0  , 0 , iconv( 'UTF-8','cp874' , 'Patient \'s name : ' . $Name .'                                                          HN : '  . $HN  )   . '                           Ward : ' . $ward_  );
 
 $pdf->setXY( 10 , $y_absolute +  ($r*7)  );
-$pdf->SetFont('angsana','',13);
+//$pdf->SetFont('angsana','',13);
+$pdf->SetFillColor(255,255, 255);
+$pdf->MultiCell( 0  , 0 , iconv( 'UTF-8','cp874' , 'Age : ' .' '.'          years '.'           '.'Sex :  '. $sex_detail .'         Weight : '. $bodyweight . '  Kg. '. '         Height : '.$height. ' cm.  '.'        Body Weight : '.$bodyweight .'  Kg. / Conts. '.$cb_conts )  );
+
+
+
+
+$pdf->setXY( 10 , $y_absolute +  ($r*9)  );
+//$pdf->SetFont('angsana','B',13);
 $pdf->SetFillColor(255,255, 255);
 
 $pdf->MultiCell( 0  , 0 , iconv( 'UTF-8','cp874' , 'Reason for TDM 1 (Indication) : '.$indication_detail )  );
 
-$pdf->setXY( 10 , $y_absolute +  ($r*8)  );
+
+
+$pdf->setXY( 97 , $y_absolute +  ($r*9)  );
 $pdf->MultiCell(0,0,iconv('UTF-8','cp874','Reason for TDM 2 (Indication) : '.$indication_detail2  ));
 
-$pdf->setXY( 10 , $y_absolute +  ($r*9)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 1 : '.$disease_detail  ));
-
+//$pdf->SetFillColor(200, 200, 200,200);  //ไม่ใส่สี
 $pdf->setXY( 10 , $y_absolute +  ($r*10)  );
-//$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 2 : '.$underllyingdisease2 .'  '.$disease_detail2 ));
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 2 : '.$disease_detail2 ));
 
-$pdf->setXY( 10 , $y_absolute +  ($r*11)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 3 : '.$disease_detail3  ));
+//$pdf->SetFont('angsana','B',13);
+$pdf->Cell(180,10,iconv('UTF-8','cp874','Underllying disease' ),LRTB,1,'C',true);
+$pdf->setXY( 10 , $y_absolute +  ($r*11.45)  );
 
+$pdf->Cell(90,10,iconv('UTF-8','cp874','(1) '.$disease_detail ),LRB,1,'L',true);
+$pdf->setXY( 100 , $y_absolute +  ($r*11.45)  );
+$pdf->Cell(90,10,iconv('UTF-8','cp874','(6) '.$disease_detail6 ),LRB,0,'L',true);
 
-$pdf->setXY( 10 , $y_absolute +  ($r*12)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 4 : '.$disease_detail4  ));
+$pdf->setXY( 10 , $y_absolute +  ($r*12.9)  );
+$pdf->Cell(90,10,iconv('UTF-8','cp874','(2) '.$disease_detail2 ),LRB,1,'L',true);
+$pdf->setXY( 100 , $y_absolute +  ($r*12.9)  );
+$pdf->Cell(90,10,iconv('UTF-8','cp874','(7) '.$disease_detail7 ),LRB,0,'L',true);
 
-$pdf->setXY( 10 , $y_absolute +  ($r*13)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 5 : '.$disease_detail5  ));
+$pdf->setXY( 10 , $y_absolute +  ($r*14.35)  );
+$pdf->Cell(90,10,iconv('UTF-8','cp874','(3) '.$disease_detail3 ),LRB,1,'L',true);
+$pdf->setXY( 100 , $y_absolute +  ($r*14.35)  );
+$pdf->Cell(90,10,iconv('UTF-8','cp874','(8) '.$disease_detail8 ),LRB,0,'L',true);
 
-$pdf->setXY( 10 , $y_absolute +  ($r*14)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 6 : '.$disease_detail6  ));
+$pdf->setXY( 10 , $y_absolute +  ($r*15.8)  );
+$pdf->Cell(90,10,iconv('UTF-8','cp874','(4) '.$disease_detail4 ),LRB,1,'L',true);
+$pdf->setXY( 100 , $y_absolute +  ($r*15.8)  );
+$pdf->Cell(90,10,iconv('UTF-8','cp874','(9) '.$disease_detail9 ),LRBT,0,'L',true);
 
-$pdf->setXY( 10 , $y_absolute +  ($r*15)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 7 : '.$disease_detail7  ));
+$pdf->setXY( 10 , $y_absolute +  ($r*17.25)  );
+$pdf->Cell(90,10,iconv('UTF-8','cp874','(5) '.$disease_detail5 ),LRB,1,'L',true);
+$pdf->setXY( 100 , $y_absolute +  ($r*17.25)  );
+$pdf->Cell(90,10,iconv('UTF-8','cp874','(10) '.$disease_detail10 ),LRBT,0,'L',true);
 
-$pdf->setXY( 10 , $y_absolute +  ($r*16)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 8 : '.$disease_detail8  ));
-
-$pdf->setXY( 10 , $y_absolute +  ($r*17)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 9 : '.$disease_detail9  ));
-
-$pdf->setXY( 10 , $y_absolute +  ($r*18)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Underllying disease 10 : '.$disease_detail10  ));
-
-$pdf->setXY( 10 , $y_absolute +  ($r*19)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Reason for TDM : '.$reason_detail  ));
 
 $pdf->setXY( 10 , $y_absolute +  ($r*20)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Reason for TDM : '.$reason_detail  ));
+
+
+$pdf->setXY( 100 , $y_absolute +  ($r*20)  );
 $pdf->MultiCell(0,0,iconv('UTF-8','cp874','Drug level requested (Vancomycin) : '.$drug_detail  ));
 
 
-$pdf->setXY( 10 , $y_absolute +  ($r*21)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Current Medications : '.$current_medications . '   '.$current_medications_weight.'  g  Current Medications date : '.$current_medications_date_format ));
-
-
 $pdf->setXY( 10 , $y_absolute +  ($r*22)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Laboratory Data (within 5 day) : '.$laboratorydata5day . '   '.$laboratory_Data_mg.'  mg/dL Date Labotory Data : '.$Laboratory_Data_date_format ));
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Current Medications                   : '.$current_medications ));
 
-$pdf->setXY( 10 , $y_absolute +  ($r*23)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','1. Sampling Time : '.$sampling_time_conv  ));
 
-$pdf->setXY( 10 , $y_absolute +  ($r*24)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','2. Drug Administration Time : '.$drugadministrationtime_conv  ));
+$pdf->setXY( 58 , $y_absolute +  ($r*23) );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874',': '. $current_medications_weight.'  g  '  ));
+$pdf->setXY( 58 , $y_absolute +  ($r*24) );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874',': '. $current_medications_date_format  ));
 
-$pdf->setXY( 10 , $y_absolute +  ($r*25)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','3. Measured level : '.$measured_level.' '.$unit_detail  ));
 
 $pdf->setXY( 10 , $y_absolute +  ($r*26)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Vd : '.$vd_detail.'          '.$vd.'  L/Kg.  '.'  Cl : '.$cl  ));
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Laboratory Data (within 5 day) : '.$laboratorydata5day  ));
 
-$pdf->setXY( 10 , $y_absolute +  ($r*27)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','ke : '.$ke.' hr-1 '.'         Half-life : '.$hl .'  hr ' ));
+$pdf->setXY( 58 , $y_absolute +  ($r*27)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874',': ' . $laboratory_Data_mg.'  mg/dL ' ));
 
-$pdf->setXY( 10 , $y_absolute +  ($r*28)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Assessment : '.$assessment ));
+$pdf->setXY( 58 , $y_absolute +  ($r*28)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874',': '.$Laboratory_Data_date_format ));
 
-
-$pdf->setXY( 10 , $y_absolute +  ($r*29)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Interpretation and Recommendation : '.$Interpretation_Recommendation ));
 
 $pdf->setXY( 10 , $y_absolute +  ($r*30)  );
-$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Note : '.$Note ));
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Sampling results (within 2 weeks) :' ));
 
-$pdf->setXY( 10 , $y_absolute +  ($r*31)  );
+$pdf->setXY( 30 , $y_absolute +  ($r*31)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Sampling Time : '  ));
+
+$pdf->setXY( 30 , $y_absolute +  ($r*32)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874',$sampling_time_conv  ));
+
+$pdf->setXY( 90 , $y_absolute +  ($r*31)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Drug Administration Time : '  ));
+
+$pdf->setXY( 90 , $y_absolute +  ($r*32)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874', $drugadministrationtime_conv  ));
+
+$pdf->setXY( 160 , $y_absolute +  ($r*31)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Measured level : '  ));
+
+$pdf->setXY( 160 , $y_absolute +  ($r*32)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874', $measured_level.'   '.$unit_detail  ));
+
+$pdf->setXY( 10 , $y_absolute +  ($r*34)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Pharmacokinetic parameters : '  ));
+
+$pdf->setXY( 60 , $y_absolute +  ($r*34)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Vd='.$vd_detail.' '.$vd.' L/Kg.  '.'       Cl='.$cl. '        ke='.$ke.' hr-1 '.'       Half-life='.$hl .' hr '  ));
+
+$pdf->setXY( 10 , $y_absolute +  ($r*35)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874', 'Assessment : '.$assessment ));
+
+/* ------Footer */
+$pdf->footer_(80,272,' Page 1 of 2  ');
+/* ------Footer */
+
+
+#---- หน้า 2
+$pdf->AddPage();
+
+##---- เลขหน้า ----------
+    $pdf->SetFont('angsana','',12);
+    $pdf->setXY( $x_absolute + 160 , $y_absolute - 10 );
+    $pdf->MultiCell( 0  , 0 , iconv( 'UTF-8','cp874' , 'Page  2/2' )  );
+##---- เลขหน้า ---------- 
+
+
+$pdf->setXY( 10 , $y_absolute +  ($r*1)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','Interpretation and Recommendation : '));
+
+$pdf->setXY( 10 , $y_absolute +  ($r*2)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874',$Interpretation_Recommendation ));
+
+$pdf->setXY( 10 , $y_absolute +  ($r*4)  );
+$pdf->MultiCell(0,0,iconv('UTF-8','cp874','NB : '));
+$pdf->setXY( 10 , $y_absolute +  ($r*5)  );
 $pdf->MultiCell(0,0,iconv('UTF-8','cp874','Pharmacist : '.$pharmacist1.'  /  '.$pharmacist2 ));
 
-$pdf->setXY( 10 , $y_absolute +  ($r*32)  );
+$pdf->setXY( 100 , $y_absolute +  ($r*5)  );
 $pdf->MultiCell(0,0,iconv('UTF-8','cp874','Tel : '.$tel ));
 
-$pdf->setXY( 10 , $y_absolute +  ($r*33)  );
+$pdf->setXY( 140 , $y_absolute +  ($r*5)  );
 $pdf->MultiCell(0,0,iconv('UTF-8','cp874','Date : '.$date_record_conv ));
+
+
+/* ------Footer */
+$pdf->footer_(80,272,' Page 2 of 2  ');
+/* ------Footer */
 
 /*
 ##--หัวตาราง
@@ -310,7 +364,7 @@ $pdf->Cell( 35  , 7 , iconv( 'UTF-8','cp874' , $va_other_[4] ),LRB,1,C,true     
 
 //footer
 //$pdf->footer_(25,272,'- คณะเภสัชศาสตร์ มข.  ');
-$pdf->footer_(80,272,' Page 1 of 1  ');
+
 
 
 /*
